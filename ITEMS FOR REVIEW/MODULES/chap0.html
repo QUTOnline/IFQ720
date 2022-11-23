@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>MXB107</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">MXB107</h1>
+<h3 class="subtitle">Introduction to Statistical Modelling</h3>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#getting-the-most-out-of-online-learning"
+id="toc-getting-the-most-out-of-online-learning">Getting the Most Out of
+Online Learning</a>
+<ul>
+<li><a href="#communications"
+id="toc-communications">Communications</a></li>
+<li><a href="#managing-your-online-learning-experience"
+id="toc-managing-your-online-learning-experience">Managing Your online
+Learning Experience</a></li>
+<li><a href="#and-finally-..." id="toc-and-finally-...">And finally
+...</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="getting-the-most-out-of-online-learning"
+class="section level1">
+<h1>Getting the Most Out of Online Learning</h1>
+<p>Welcome to MXB107 2022, it’s great to have so many students
+interested in Statistics and Statistical Modelling, and hopefully, you
+all will have an exciting and rewarding semester. Online learning
+presents new challenges for both students and staff. The lack of
+face-to-face in-person communication between students and teachers means
+that both students and teachers need to adapt how they communicate and
+how they work to ensure that students learn the material. There are two
+broad areas where the differences between traditional in-person learning
+and online learning create challenges for students: Communication and
+Time and Task Management. To help MXB107 students navigate these
+challenges, here are some guidelines for communication and a suggested
+framework for managing learning activities.</p>
+<p>As an online unit, MXB107 2022 will differ from the traditional
+classroom experience, and while some aspects of the unit may feel more
+isolated, there will be ample opportunity to interact with your fellow
+students and the teaching staff.</p>
+<div id="weekly-readings" class="section level4">
+<h4>Weekly Readings</h4>
+<p>Instead of a traditional two-hour lecture each week, written notes or
+Weekly Readings will be released on Mondays by noon. These notes will be
+in the form of an electronic document with embedded videos.<br />
+Please note that the readings may be revised as needed throughout the
+semester.</p>
+<p>You must read the weekly readings and watch the videos actively. Take
+notes of where you need more detail or explanation, and try to solve the
+example problems yourself. Most importantly, feel free to post your
+questions or comments about the weeks readings and videos via Slack.</p>
+</div>
+<div id="online-consultation" class="section level4 unnumbered">
+<h4 class="unnumbered">In-Person and Online Consultation</h4>
+Each week there will be two one-hour online consultation sessions hosted
+concurrently in-person and via Zoom, on Mondays and Thursdays.
+<center>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="44%" />
+<col width="24%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Day</th>
+<th align="center">Time</th>
+<th align="center">Location</th>
+<th align="center">Zoom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Monday</td>
+<td align="center">10:00AM - 11:00AM</td>
+<td align="center">GP H-405</td>
+<td align="center"><a
+href="https://qut.zoom.us/j/86080570070?pwd=R2lFRXF3eXBUN2FRK0plZURnWXM5QT09">Click
+Here</a> <br> Password: 181778</td>
+</tr>
+<tr class="even">
+<td align="center">Thursday</td>
+<td align="center">2:00PM-3:00PM</td>
+<td align="center">GP H-405</td>
+<td align="center"><a
+href="https://qut.zoom.us/j/86080570070?pwd=R2lFRXF3eXBUN2FRK0plZURnWXM5QT09">Click
+Here</a> <br> Password: 181778</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>The notes and comments you post on Slack will serve as a guide for
+the teaching staff in preparing for these consultation sessions; there
+will also be plenty of opportunities for you to ask questions and
+interact with the teaching staff.</p>
+</div>
+<div id="workshops-and-workshop-activities"
+class="section level4 unnumbered">
+<h4 class="unnumbered">Workshops and Workshop Activities</h4>
+<p>The teaching staff will conduct weekly Workshops concurrently online
+and in-person.</p>
+<center>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="44%" />
+<col width="24%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Day</th>
+<th align="center">Time</th>
+<th align="center">Location</th>
+<th align="center">Zoom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Monday</td>
+<td align="center">2:00PM - 4:00PM</td>
+<td align="center">GP O-314</td>
+<td align="center">In-Person Only</td>
+</tr>
+<tr class="even">
+<td align="center">Tuesday</td>
+<td align="center">9:00AM-11:00AM</td>
+<td align="center">GP O-314</td>
+<td align="center"><a
+href="https://qut.zoom.us/j/81664645372?pwd=YkFOK1hkUDNMRXNYSGNySjMvVHFkdz09">Click
+Here</a> <br>Password: 957774</td>
+</tr>
+<tr class="odd">
+<td align="center">Wednesday</td>
+<td align="center">9:00AM-11:00AM</td>
+<td align="center">GP O-314</td>
+<td align="center">In-Person Only</td>
+</tr>
+<tr class="even">
+<td align="center">Friday</td>
+<td align="center">11:00AM-1:00PM</td>
+<td align="center">GP O-308</td>
+<td align="center"><a
+href="https://qut.zoom.us/j/82726786804?pwd=UEpzUTBhSHFsajdRT24zK2ZmSE40Zz09">Click
+Here</a> <br>Password: 514068</td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>The workshops will use online interactive exercises allowing you to
+explore concepts from the readings hands-on. The links to these
+exercises are on the MXB107 Learning Resources site.</p>
+</div>
+<div id="communications" class="section level2">
+<h2>Communications</h2>
+<p>In addition to email, MXB107 also has an active Slack workspace that
+you can join here <a
+href="https://join.slack.com/t/mxb1072022/shared_invite/zt-1cla55xlx-TnfY6YrcgEXWI2p025VYJQ"
+class="uri">https://join.slack.com/t/mxb1072022/shared_invite/zt-1cla55xlx-TnfY6YrcgEXWI2p025VYJQ</a>.
+Students are encouraged to join this workspace and take full advantage
+of this platform as a way of both communicating with the teaching staff,
+but also with fellow students. The Slack workspace has five dedicated
+channels where you can post questions regarding the weekly readings,
+videos, assessments, workshops, and both general and random questions
+about MXB107.</p>
+<p>The most effective way to communicate with the teaching staff and
+fellow students depends on the situation.</p>
+<ul>
+<li><p>General questions about the readings, videos, workshops,
+assessment, or general (or random) questions or comments about the unit
+should be posted to the appropriate channel.</p></li>
+<li><p>Posting questions to the appropriate channel ensures that all
+students can benefit from the response. If you have a question or
+comment, other people probably have the same questions or comments.
+Posting these on channels can help your fellow students learn and help
+the teaching staff create better resources or experiences so that
+everyone can get the most out of MXB107.</p></li>
+<li><p>Email the teaching staff directly for questions about your
+circumstances or academic performance. For example, questions about how
+your assessment was marked, or other circumstances you wish to discuss
+privately with the teaching staff should be communicated via
+email.</p></li>
+</ul>
+<p>Please note that responses to emails will be as timely as possible,
+but responses to questions posted publicly may not be immediate. Also,
+please note that teaching staff may have specific times allocated for
+responding to students’ publicly posted questions, so that may result in
+a natural delay in replying to your post. This delay in reply allows you
+and your fellow students to discuss problems and possible answers.</p>
+<p>We request you maintain a respectful tone in any communication. It is
+a good idea to address the unit teaching staff and fellow students by
+their preferred manner and use clear and precise language. Please note
+that the teaching staff may work across multiple units, so your emails
+should include your student id number and the unit code.</p>
+</div>
+<div id="managing-your-online-learning-experience"
+class="section level2 unnumbered">
+<h2 class="unnumbered">Managing Your online Learning Experience</h2>
+<p>Learning online can seem overwhelming; without a regular schedule for
+attending classes and workshops, you can feel disoriented and confused
+about what you should be doing each week and when. In creating this the
+online version of MXB107, we have tried to address this by creating a
+general framework for your activities throughout the semester and some
+specific day-to-day schedules for your learning activities.</p>
+<p>While each week’s specific activities may vary, in general, each week
+you should:</p>
+<ul>
+<li><p><strong>Read the posted Readings</strong> —</p>
+<ul>
+<li><p>Each week, the Readings will be updated with the new notes and
+content for that week. These readings are the primary source of content
+for MXB107.</p></li>
+<li><p>Note that each week’s posting may also include updates or
+revisions to the previous weeks’ materials; if so, we will tell you. In
+any case, you are responsible for the most recent version of the
+readings.</p></li>
+<li><p>When you read the weekly content, treat it like attending or
+listening to a traditional lecture: write down questions or comments you
+have about the material and the examples. These can serve as a guide for
+your participation in the weekly consultation sessions.</p></li>
+</ul></li>
+<li><p><strong>Watch the recorded videos</strong> —</p>
+<ul>
+<li><p>Each week, the teaching staff will post short videos going over
+the examples from the weekly notes in more detail and working through
+solutions to the problems. These videos will contain no content not
+already in the weekly notes, but will seek to clarify and expand on
+them, and show systematic solutions to example problems in the weekly
+notes.</p></li>
+<li><p>As with the notes themselves, as you watch the videos write down
+questions or comments about the material and the examples. Again, these
+can serve as a guide for your participation in the weekly consultation
+sessions.</p></li>
+<li><p>Additional recordings of workshops and consultation sessions will
+also be posted each week, if you cannot attend these workshops or
+consultations, make sure you watch these recordings.</p></li>
+</ul></li>
+<li><p><strong>Do the activities</strong> —</p>
+<ul>
+<li><p>Attend the weekly consultation sessions and actively participate,
+these are your opportunity to interact directly with the teaching staff
+and gain the benefit of live feedback. Bring your questions and comments
+on the readings and the videos, or questions about the
+assessment.</p></li>
+<li><p>Attempt or complete the pre-workshop activities. Part of MXB107
+requires that you learn the statistical programming language R and its
+graphical user interface R Studio. There are materials posted on the
+Blackboard page to help you get started using R and R Studio, and each
+week there will be pre-workshop exercises for you to attempt or
+complete.</p></li>
+<li><p>Attend the workshops. Workshops are another opportunity for your
+to interact with the teaching staff and your fellow students to get
+hands-on experience with example problems similar to the assessment and
+to learn and practice your R skills.</p></li>
+</ul></li>
+</ul>
+<div id="zoom-guidelines" class="section level3 unnumbered">
+<h3 class="unnumbered">Zoom Guidelines</h3>
+<p>Much of the live online interactions will take place on Zoom; it is
+important to remember that you should view these experiences the same as
+classroom experiences, and you should expect the same level of respect
+and consideration for Zoom sessions as you would for the classroom. To
+facilitate this, here are a few guidelines:</p>
+<ul>
+<li><p>When joining a Zoom session, you will be placed in a waiting room
+and then allowed to enter by the session host, your microphone will be
+muted. We request that you please keep your microphone muted unless you
+ask a question or otherwise participate in the session.</p></li>
+<li><p>Be respectful of bandwidth. Please join the session with your
+camera turned off and kept off for the session. This helps make sure
+that everyone can benefit from the session regardless of the quality of
+their connection.</p></li>
+<li><p>If you don’t want to speak, please post your questions or
+comments so that everyone can read them, the host will re-read your
+question or comment aloud and respond.</p></li>
+<li><p>Please realise that using technology like Zoom as a part of the
+learning experience is still new, and there may be issues. Please be
+patient and know that your constructive feedback is welcome and
+appreciated.</p></li>
+</ul>
+</div>
+</div>
+<div id="and-finally-..." class="section level2 unnumbered">
+<h2 class="unnumbered">And finally ...</h2>
+<p>We recognise that taking units online can seem daunting; the most
+important thing to keep in mind is that the teaching staff focuses on
+creating the best possible experience for students and helping them
+learn. Communication is important; if you feel you are falling behind or
+getting lost, speak up, you are probably not alone. If we could improve
+the unit and how it is offered online, please let us know. Learning is a
+cooperative experience and an active experience, so please communicate
+with the teaching staff and fellow students and participate in the unit
+activities throughout the semester.</p>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

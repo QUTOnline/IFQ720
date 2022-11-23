@@ -1,0 +1,4919 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Module 4</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Module 4</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#statistical-hypothesis-testing-for-large-samples"
+id="toc-statistical-hypothesis-testing-for-large-samples">Statistical
+Hypothesis Testing for Large Samples</a>
+<ul>
+<li><a href="#hypothesis-testing" id="toc-hypothesis-testing">Hypothesis
+Testing</a></li>
+<li><a href="#hypothesis-testing-for-the-population-mean"
+id="toc-hypothesis-testing-for-the-population-mean">Hypothesis Testing
+for the Population Mean</a></li>
+<li><a href="#hypothesis-testing-for-the-population-proportions"
+id="toc-hypothesis-testing-for-the-population-proportions">Hypothesis
+Testing for the Population Proportions</a></li>
+<li><a
+href="#test-for-hypotheses-about-the-difference-in-population-means"
+id="toc-test-for-hypotheses-about-the-difference-in-population-means">Test
+for Hypotheses About the Difference in Population Means</a></li>
+<li><a
+href="#hypotheses-about-the-difference-between-population-proportions"
+id="toc-hypotheses-about-the-difference-between-population-proportions">Hypotheses
+About the Difference Between Population Proportions</a></li>
+<li><a href="#additional-considerations"
+id="toc-additional-considerations">Additional Considerations</a></li>
+<li><a href="#caveats-and-food-for-thought"
+id="toc-caveats-and-food-for-thought">Caveats and Food for
+Thought</a></li>
+<li><a href="#videos" id="toc-videos">Videos</a></li>
+<li><a
+href="#small-sample-sampling-statistic-distribution-students-t-distribution"
+id="toc-small-sample-sampling-statistic-distribution-students-t-distribution">Small
+Sample Sampling Statistic Distribution: Student’s <span
+class="math inline">\(t\)</span>-distribution</a></li>
+<li><a href="#inference-about-the-population-mean-for-small-samples"
+id="toc-inference-about-the-population-mean-for-small-samples">Inference
+About the Population Mean for Small Samples</a></li>
+<li><a
+href="#inference-about-the-difference-in-population-means-for-small-samples"
+id="toc-inference-about-the-difference-in-population-means-for-small-samples">Inference
+About the Difference in Population Means for Small Samples</a></li>
+<li><a
+href="#inference-about-the-difference-in-population-means-for-small-samples-paired-differences"
+id="toc-inference-about-the-difference-in-population-means-for-small-samples-paired-differences">Inference
+About the Difference in Population Means for Small Samples: Paired
+Differences</a></li>
+<li><a href="#students-t-distribution-table"
+id="toc-students-t-distribution-table">Student’s <em>t</em> distribution
+table</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="statistical-hypothesis-testing-for-large-samples"
+class="section level1">
+<h1>Statistical Hypothesis Testing for Large Samples</h1>
+<p>Statistical hypothesis testing is quite possibly one of the most
+important scientific advances of the last 100 years. It created a means
+of assessing evidence in the presence of uncertainty or randomness and
+provided a means of testing the “reasonableness” of scientific
+statements and theories.</p>
+<div id="hypothesis-testing" class="section level2">
+<h2>Hypothesis Testing</h2>
+<p>Hypothesis testing refers to the practice of testing scientific
+hypotheses using data and taking into account the uncertainty in the
+data. Hypothesis testing relies on both a set of scientifically valid
+hypotheses and a statistical model for evaluating the data and assessing
+the hypotheses.</p>
+<div id="falsifiability" class="section level3 unnumbered">
+<h3 class="unnumbered">Falsifiability</h3>
+<div class="sidenote">
+<p><strong>Falsifiablity</strong><br />
+Consider the assertion that ghosts or spirits are real. Is this a
+falsifiable hypothesis?</p>
+</div>
+<p>The modern basis for scientific reasoning can be attributed to the
+work of philosopher Karl Popper. Popper created the criteria for
+defining a hypothesis as “scientific” if it could be shown to be
+falsifiable, or able to be proven incorrect.</p>
+<div class="boxed">
+<p><strong>Example:</strong><br />
+Consider the assertion that ghosts or spirits are real. Is this a
+falsifiable hypothesis?</p>
+<p>Any attempt to disprove this hypothesis can be countered with the
+argument that the lack of evidence of existence is not evidence of
+non-existence, i.e. Just becuase you don’t observe a ghost dowsn’t mean
+that they don’t exist, it just means that you didn’t see one. So the
+statement is not falsifiable, hence this is not a valid hypothesis.</p>
+<p>Conversely, people used to believe that all swans were white. To
+disprove this hypothesis would only require one example of a non-white
+swan. In 1697 the Dutch explorer Willem de Vlamingh sailed up what is
+now known as the Swan River in Western Australia and saw black swans.
+The term “black swan” is now used to refer to unexpected, rare (and
+usually extreme) events.</p>
+</div>
+</div>
+<div id="the-neyman-pearson-lemma-and-hypothesis-testing"
+class="section level3">
+<h3>The Neyman-Pearson Lemma and Hypothesis Testing</h3>
+<p>The Neyman-Pearson Lemma is a formal mathematical proof that guides
+how to construct a hypothesis test. The details of the lemma are beyond
+the scope of this unit.</p>
+<div class="boxed">
+<p>The central idea of the <strong>Neyman-Pearson lemma</strong>
+is:<br />
+</p>
+<p>A test is constructed based on the <strong>hypotheses</strong> <span
+class="math display">\[
+H_0: \mbox{The null hypothesis}\qquad H_A:\mbox{The alternative
+hypothesis}.
+\]</span> A <strong>test statistic</strong> that is a function of the
+observed data. <span class="math display">\[
+T(\mathbf{x}).
+\]</span></p>
+<p>And a <strong>rejection region</strong> or a set of possible values
+of the test statistic such that if the test statistic falls in that
+region, the null hypothesis is rejected.</p>
+</div>
+<p>The hypotheses are designed such that the <strong>null
+hypothesis</strong> is a falsifiable statement. The null hypothesis is
+typically a statement that there is no effect or that a parameter is
+equal to some value. The <strong>alternative hypothesis</strong> is the
+complement to the null hypothesis, or that the null hypothesis is not
+true.</p>
+<p>The test statistic is a function of observations modelled as random
+variables and as such, has its own <strong>sampling
+distribution</strong>. We can use this sampling distribution to identify
+the rejection region or make decisions to reject or fail to reject null
+hypotheses depending on how “probable” the test statistic assuming that
+the null hypothesis is true.</p>
+<p>A <strong>rejection region</strong> is defined, such that if the null
+hypothesis is true, the probability that the test statistic falls in the
+rejection region is sufficiently small as to suggest that the
+preponderance of the evidence indicates that that the null hypothesis is
+false.</p>
+</div>
+<div id="hypothesis-testing-and-errors" class="section level3">
+<h3>Hypothesis Testing and Errors</h3>
+<p>Hypothesis tests consist of a set of hypotheses, a test statistic
+<span class="math inline">\(T(\mathbf{x})\)</span> and the resulting
+rejection region. A hypothesis test is either two-tailed (also known as
+a point null hypotheses): <span class="math display">\[
+H_0:\theta=\theta_0\qquad H_A:\theta\neq \theta_0
+\]</span> or single-tailed <span class="math display">\[
+H_0:\theta\leq \theta_0\qquad H_A:\theta&gt;\theta_0
+\]</span> or <span class="math display">\[
+H_0:\theta\geq \theta_0\qquad H_A:\theta&lt;\theta_0.
+\]</span> The rejection region is chosen so that <span
+class="math inline">\(Pr(T(\mathbf{x}\in\mbox{Rejection
+Region})=\alpha\)</span> where <span
+class="math inline">\(\alpha\)</span> is the Type I error rate <span
+class="math display">\[
+\alpha = Pr(\mbox{Reject }H_0|H_0\mbox{ is True}).
+\]</span>. The Type II error rate, <span
+class="math inline">\(\beta\)</span>, is <span class="math display">\[
+Pr(\mbox{Fail to Reject }H_0 |H_0\text{ is False})
+\]</span>. The compliment to the Type II error rate <span
+class="math inline">\(1-\beta\)</span> is <span class="math display">\[
+1-\beta = Pr(\mbox{Reject }H_0|H_0\mbox{ is False})
+\]</span> and is called the <strong>power</strong> of a test. We will
+see that power is an important design consideration when planning a
+study. We can understand <span class="math inline">\(\alpha\)</span>,
+<span class="math inline">\(\beta\)</span> and power as the
+probabilities of various outcomes:</p>
+<div class="boxed">
+<div class="narrow-table">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(H_0\)</span> is True</th>
+<th align="center"><span class="math inline">\(H_0\)</span> is
+False</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reject <span class="math inline">\(H_0\)</span></td>
+<td align="center"><span class="math inline">\(\alpha\)</span> (Type I
+Error Rate)</td>
+<td align="center">1-<span class="math inline">\(\beta\)</span>
+(Power)</td>
+</tr>
+<tr class="even">
+<td>Fail to Reject <span class="math inline">\(H_0\)</span></td>
+<td align="center">1-<span class="math inline">\(\alpha\)</span></td>
+<td align="center"><span class="math inline">\(\beta\)</span> (Type II
+Error Rate)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The interpretation of all this is that in hypothesis testing we
+reject the null hypothesis, if the test statistic, which is a function
+of the data is too improbable, given the assumption that the null
+hypothesis is true. Note that as in the case of confidence intervals,
+hypothesis testing is based on probability statements about the test
+statistic or data, not the parameter.</p>
+</div>
+</div>
+<div id="hypothesis-testing-for-the-population-mean"
+class="section level2">
+<h2>Hypothesis Testing for the Population Mean</h2>
+<div class="sidenote">
+<p><strong>Example: Ore Refining Operations</strong><br />
+An ore processing facility has a record of producing an average of <span
+class="math inline">\(880\)</span> tons of refined ore per day. Process
+engineers would like to see if this has changed over time. The records
+from <span class="math inline">\(n=50\)</span> days randomly selected
+over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. Is there
+evidence to assume that the output has changed? Assume a Type I error
+rate of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<div class="sidenote">
+<p><strong>Example: Equal Pay</strong><br />
+Gender imbalance in pay is a concern for ensuring equitable treatment of
+individuals. Data for employees at a large company show that for
+employees in a certain role, the average weekly salary for men is $725.
+A sample of <span class="math inline">\(n=40\)</span> female employees
+show that they earn an average weekly salary of $670 with a standard
+deviation of $102. Does this data support the hypothesis that women are
+paid at least as well as men? Assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.10\)</span>.</p>
+</div>
+<p>The hypothesis test for the population mean is based on the sample
+statistic <span class="math inline">\(\bar{x}\)</span> with the sampling
+distribution <span class="math display">\[\bar{x}\sim
+N\left(\mu,\frac{\sigma^2}{n}\right).\]</span> For simplicity we define
+the rejection region in terms of the test statistic <span
+class="math display">\[\begin{aligned}
+Z&amp;=&amp;\frac{\bar{x}-\mu_0}{\sigma/\sqrt{n}}\\
+Z&amp;\sim&amp; N(0,1)\end{aligned}\]</span> where we can define the
+rejection region(s) depending on the null hypothesis</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Null Hypothesis</th>
+<th align="center">Rejection Region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_0:
+\mu=\mu_0\)</span></td>
+<td align="center"><span
+class="math inline">\(|Z|&gt;Z_{\alpha/2}\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(H_0: \mu
+\leq\mu_0\)</span></td>
+<td align="center"><span
+class="math inline">\(Z&gt;Z_\alpha\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(H_0:
+\mu\geq\mu_0\)</span></td>
+<td align="center"><span class="math inline">\(Z =
+Z_\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <span class="math inline">\(Z_{\alpha/2}\)</span> and <span
+class="math inline">\(Z_\alpha\)</span> refer to the upper tail Gaussian
+pdf areas, i.e. <span class="math display">\[Pr(Z&gt;Z_{\alpha/2}) =
+\alpha/2\mbox{ and }Pr(Z&gt;Z_\alpha)=\alpha.\]</span></p>
+<p>Values for commonly used Type I Error Rate<br />
+</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Type I Error Rate</th>
+<th align="left"><span class="math inline">\(Z_{\alpha}\)</span>
+(one-sided)</th>
+<th align="left"><span class="math inline">\(Z_{\alpha/2}\)</span>
+(two-sided)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">0.10</td>
+<td align="left">1.28</td>
+<td align="left">1.645</td>
+</tr>
+<tr class="even">
+<td align="center">0.05</td>
+<td align="left">1.645</td>
+<td align="left">1.96</td>
+</tr>
+<tr class="odd">
+<td align="center">0.02</td>
+<td align="left">2.054</td>
+<td align="left">2.33</td>
+</tr>
+<tr class="even">
+<td align="center">0.01</td>
+<td align="left">2.33</td>
+<td align="left">2.58</td>
+</tr>
+</tbody>
+</table>
+<div id="example-ore-refining-operations"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Ore Refining Operations</h3>
+<p>An ore processing facility has a record of producing an average of
+<span class="math inline">\(880\)</span> tons of refined ore per day.
+Process engineers would like to see if this has changed over time. The
+records from <span class="math inline">\(n=50\)</span> days randomly
+selected over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. Is there
+evidence to assume that the output has changed? Assume a Type I error
+rate of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:\mu=990\qquad H_A:\: \mu\neq 880
+\]</span> We are given <span class="math display">\[
+\begin{align}
+\bar{x}&amp;=871\\
+s&amp;=21\\
+n&amp;=50\\
+\alpha&amp;=0.05
+\end{align}
+\]</span> This is a two-sided test so the critical value that defines
+our rejection region is <span class="math display">\[
+|Z|&gt;Z_{\alpha/2}\equiv |Z|&gt;1.96.
+\]</span> We can compute <span class="math inline">\(Z\)</span> <span
+class="math display">\[
+\begin{align}
+Z&amp;=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}\\
+&amp;=\frac{871-880}{21/\sqrt{50}}\\
+&amp;= -3.03
+\end{align}
+\]</span> Because <span class="math display">\[
+|-3.03|&gt;1.96
+\]</span> we reject the null hypothesis that the process mean is <span
+class="math inline">\(880\)</span> tons.</p>
+</div>
+<div id="code" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>mu0 = 880
+xbar = 871
+s = 21
+n = 50
+alpha = 0.05
+Zcritical = scipy.stats.norm.ppf(0.975).round(2)
+
+Z = (xbar-mu0)/(s/numpy.sqrt(n))
+test = numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+<div id="example-equal-pay"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Equal Pay</h3>
+<p>Gender imbalance in pay is a concern for ensuring equitable treatment
+of individuals. Data for employees at a large company show that for
+employees in a certain role, the average weekly salary for men is $725.
+A sample of <span class="math inline">\(n=40\)</span> female employees
+show that they earn an average weekly salary of $670 with a standard
+deviation of $102. Does this data support the hypothesis that women are
+paid at least as well as men? Assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.10\)</span>.</p>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:\mu\geq 725\qquad H_A:\: \mu&lt; 725
+\]</span> where <span class="math inline">\(\mu\)</span> in this case is
+the average weekly pay for women. Note we could specify this as a
+point-null or two-sided hypothesis test, but we specify the test as
+single-sided based on the null hypothesis that women are paid the same
+or more than men. We are given <span class="math display">\[
+\begin{align}
+\bar{x}&amp;=670\\
+s&amp;=102\\
+n&amp;=40\\
+\alpha&amp;=0.10
+\end{align}
+\]</span> This is a two-sided test so the critical value that defines
+our rejection region is <span class="math display">\[
+Z&lt;Z_{\alpha}\equiv Z = 1.28.
+\]</span> We can compute <span class="math inline">\(Z\)</span> <span
+class="math display">\[
+\begin{align}
+Z&amp;=\frac{\bar{x}-\mu_0}{s/\sqrt{n}}\\
+&amp;=\frac{670-725}{102/\sqrt{40}}\\
+&amp;= -3.41
+\end{align}
+\]</span> Because <span class="math display">\[
+-3.41 = 1.28
+\]</span> we reject the null hypothesis that women are paid at least as
+much as men.</p>
+</div>
+<div id="code-1" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>mu0 = 725
+xbar = 670
+s = 102
+n = 50
+alpha = 0.1
+Zcritical = scipy.stats.norm.ppf(1-0.1).round(2)
+
+Z = (xbar-mu0)/(s/numpy.sqrt(n))
+test  =  Z&lt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+</div>
+<div id="hypothesis-testing-for-the-population-proportions"
+class="section level2">
+<h2>Hypothesis Testing for the Population Proportions</h2>
+<div class="sidenote">
+<p><strong>Example: Exercise Participation and Age</strong><br />
+On average, 30% of all adults in Australia exercise weekly. A survey of
+<span class="math inline">\(n=100\)</span> adults over 40 years of age
+revealed that 15 of the respondents indicated that they exercised
+weekly. Does this indicate that the proportion of adults who exercise
+weekly decreases with age? Assume a Type I error rate of <span
+class="math inline">\(0.05\)</span>.</p>
+</div>
+<div class="sidenote">
+<p><strong>Example: Driverless Cars</strong><br />
+A research study showed that out of 500 individuals surveys, 276
+reported that they would be willing to ride in a driverless vehicle.
+Test the hypothesis that over <span class="math inline">\(50\%\)</span>
+of the population would be willing to ride in a driverless vehicle.
+Assume a Type I error rate of <span class="math inline">\(\alpha =
+0.1\)</span>.</p>
+</div>
+<p>The sample statistic for the population proportion is <span
+class="math inline">\(\hat{p}\)</span> which follows a sampling
+distribution of <span
+class="math display">\[\hat{p}\sim\left(p,\frac{p(1-p)}{n}\right)\]</span>
+when <span class="math inline">\(np&gt;5\)</span> and <span
+class="math inline">\(n(1-p)&gt;5\)</span>. The resulting test is of the
+form <span class="math display">\[H_0:p = p_0\qquad H_A:p\neq
+p_0\]</span> or <span class="math display">\[H_0:p \geq p_0\qquad
+H_A:p&lt; p_0\]</span> or <span class="math display">\[H_0:p \leq
+p_0\qquad H_A:p&gt; p_0\]</span> with the rejection region defined by
+the test statistic for <span class="math inline">\(\hat{p}\)</span>
+<span class="math display">\[Z =
+\frac{\sqrt{n}(\hat{p}-p_0)}{\sqrt{p_0(1-p_0)}}\]</span> Note that the
+rejection rules for the hypotheses are similar to those for the
+population mean.</p>
+<div id="example-exercise-participation-and-age"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Exercise Participation and
+Age</h3>
+<p>On average, 30% of all adults in Australia exercise weekly. A survey
+of <span class="math inline">\(n=100\)</span> adults over 40 years of
+age revealed that 15 of the respondents indicated that they exercised
+weekly. Does this indicate that the proportion of adults who exercise
+weekly decreases with age? Assume a Type I error rate of <span
+class="math inline">\(0.05\)</span>.</p>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:p\geq 0.30\qquad H_A:\: p&lt;0.30
+\]</span> Where <span class="math inline">\(p\)</span> is the proportion
+of adults in Australia over the age of 40 who exercise weekly. Note we
+could specify this as a point-null or two-sided hypothesis test, but we
+specify the test as single-sided based on the null hypothesis that the
+proportion of adults over 40 years of age that exercise is at least
+<span class="math inline">\(0.30\)</span>. <span class="math display">\[
+\begin{align}
+x&amp; = 15\\
+n&amp;=100\\
+\hat{p}&amp;=\frac{15}{100}=0.15\\
+\alpha&amp;=0.05
+\end{align}
+\]</span> This is a one-sided test so the critical value that defines
+our rejection region is <span class="math display">\[
+Z&gt;Z_{\alpha}\equiv Z&gt;1.645.
+\]</span> We can compute <span class="math inline">\(Z\)</span> <span
+class="math display">\[
+\begin{align}
+Z&amp;=\frac{\sqrt{n}(\hat{p}-p_0)}{\sqrt{p_0(1-p_0)}}\\
+&amp;=\frac{\sqrt{100}(0.15-0.30)}{\sqrt{0.30(1-0.30)}}\\
+&amp;=3
+\end{align}
+\]</span> Because <span class="math display">\[
+3&gt;1.645
+\]</span> we reject the null hypothesis that adults over the age of 40
+exercise at least as much as the adult population as a whole.</p>
+</div>
+<div id="code-2" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x = 15
+n = 100
+p = x/n
+alpha = 0.1
+Zcritical = scipy.stats.norm.ppf(1-alpha).round(2)
+
+Z  =  numpy.sqrt(n)*(x/n-0.3)/numpy.sqrt(0.3*0.7)
+test  =  numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+<div id="example-driverless-cars"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Driverless Cars</h3>
+<p>A research study showed that out of 500 individuals surveyed, 276
+reported that they would be willing to ride in a driverless vehicle. Is
+there evidence to support the assertion that over <span
+class="math inline">\(50\%\)</span> of the population would be willing
+to ride in a driverless vehicle. Assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.1\)</span>.</p>
+<div id="solution-3" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:p\leq 0.50\qquad H_A:\: p&gt;0.50
+\]</span> Where <span class="math inline">\(p\)</span> is the proportion
+of the population willing to ride in a driverless car. This is a
+one-sided test and we can note this because the questions asks if “over”
+50% of the population is willing to ride in a driverless car. <span
+class="math display">\[
+\begin{align}
+x&amp; = 276\\
+n&amp;=500\\
+\hat{p}&amp;=\frac{236}{500}=0.55\\
+\alpha&amp;=0.1
+\end{align}
+\]</span> This is a one-sided test so the critical value that defines
+our rejection region is <span class="math display">\[
+Z&gt;Z_{\alpha}\equiv Z&lt;1.28.
+\]</span> We can compute <span class="math inline">\(Z\)</span> <span
+class="math display">\[
+\begin{align}
+Z&amp;=\frac{\sqrt{n}(\hat{p}-p_0)}{\sqrt{p_0(1-p_0)}}\\
+&amp;=\frac{\sqrt{500}(0.55-0.50)}{\sqrt{0.50(1-0.50)}}\\
+&amp;=2
+\end{align}
+\]</span> Because <span class="math display">\[
+2&gt;1.28
+\]</span> we reject the null hypothesis that less than 50% of the
+population is willing to ride in a driverless car.</p>
+</div>
+<div id="code-3" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x = 276
+n = 500
+p = x/n
+alpha = 0.1
+Zcritical = scipy.stats.norm.ppf(1-alpha).round(2)
+
+Z  =  numpy.sqrt(500)*(x/n-0.5)/numpy.sqrt(0.25)
+test  =  numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+</div>
+<div id="test-for-hypotheses-about-the-difference-in-population-means"
+class="section level2">
+<h2>Test for Hypotheses About the Difference in Population Means</h2>
+<div class="sidenote">
+<p><strong>Example: Braking Distance</strong><br />
+Two different braking systems for cars are being evaluated. The distance
+in metres required to come to a complete stop from a speed of 80 km/h
+was measured for the two systems in an experiment consisting of 64
+trials for each system. The following information was recorded</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">System 1</th>
+<th align="center">System 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\bar{x} =
+36.75\)</span></td>
+<td align="center"><span class="math inline">\(\bar{x} =
+33.53\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(s_1^2 =
+9.48\)</span></td>
+<td align="center"><span class="math inline">\(s_2^2 =
+8.09\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Is there sufficient evidence to reject the null hypothesis that these
+two systems are equally effective? Test assuming an <span
+class="math inline">\(\alpha = 0.05\)</span> Type I error rate.</p>
+</div>
+<div class="sidenote">
+<p><strong>Example: Electric Car Ranges</strong><br />
+While there is a significant difference between the purchase price of a
+Tesla Y and a Nissan Leaf, is there a significant difference in the
+operating ranges? Real-world testing yielded these results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Car</th>
+<th align="center">Mean (km)</th>
+<th align="center">Std. Dev. (km)</th>
+<th align="center">Sample Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Tesla Y</td>
+<td align="center">370</td>
+<td align="center">63</td>
+<td align="center">40</td>
+</tr>
+<tr class="even">
+<td align="center">Nissan Leaf</td>
+<td align="center">315</td>
+<td align="center">47</td>
+<td align="center">40</td>
+</tr>
+</tbody>
+</table>
+<p>Is there sufficient evidence to support the claim that the Tesla has
+a greater average real-world range than the Nissan Leaf? Test assuming
+an <span class="math inline">\(\alpha = 0.05\)</span> Type I error
+rate.</p>
+<p><br />
+<strong>HINT:</strong><br />
+Is there enough evidence to reject the hypothesis that the average
+real-world range of the Nissan Leaf is equal to or greater than that of
+the Tesla Y?</p>
+</div>
+<p>Often times the more interesting question is is there a difference
+between two groups, for this we need a means of testing hypotheses about
+the difference of two population means. In this case we would formulate
+the hypotheses and rejection regions as</p>
+<p><span class="math display">\[
+\begin{array}{cc}
+      \mbox{Null Hypothesis}   &amp;   \mbox{Rejection Region}\\
+      \hline
+   H_0: \mu_1 = \mu_2 &amp;    |Z|&gt;Z_{\alpha/2}\\
+   H_0: \mu_1\leq\mu_2 &amp;      Z&gt;Z_\alpha\\
+   H_0: \mu_1\geq\mu_2 &amp;    Z = Z_\alpha
+\end{array}   
+\]</span> Note that these hypotheses are equivalent to</p>
+<p><span class="math display">\[
+\begin{array}{cc}
+       \mbox{Null Hypothesis}  &amp;       \mbox{Rejection Region}\\
+       \hline
+   H_0: \mu_1 -\mu_2 = 0 &amp;    |Z|&gt;Z_{\alpha/2}\\
+   H_0: \mu_1-\mu_2\leq 0  &amp; Z&gt;Z_\alpha\\
+   H_0: \mu_1-\mu_2\geq 0  &amp; Z = Z_\alpha\\
+\end{array}
+\]</span></p>
+<p>and that because the labels for <span
+class="math inline">\(\mu_1\)</span> and <span
+class="math inline">\(\mu_2\)</span> are arbitrary the last two
+hypotheses with the inequalities are equivalent.</p>
+<div id="test-statistic" class="section level3 unnumbered">
+<h3 class="unnumbered">Test Statistic</h3>
+<p>The test statistic <span class="math inline">\(Z\)</span> is
+previously defined for a single sample mean or proportion as <span
+class="math display">\[Z_{\theta}=\frac{\hat{\theta}-\theta_0}{SE_{\hat{\theta}}}\]</span>
+where <span class="math inline">\(\hat{\theta}\)</span> is the sample
+estimate of the parameter <span class="math inline">\(\theta\)</span>,
+<span class="math inline">\(\theta_0\)</span> is the hypothesised value
+of <span class="math inline">\(\theta\)</span>, and <span
+class="math inline">\(SE_{\hat{\theta}}\)</span> is the standard error
+of <span class="math inline">\(\hat{\theta}\)</span>. In the case of
+hypotheses about the difference between two population means we need an
+estimate and its standard error. The estimator of <span
+class="math inline">\(\mu_1-\mu_2\)</span> is easy to intuit as <span
+class="math display">\[\bar{x}_1-\bar{x}_2.\]</span> The standard error
+is slightly less intuitive <span
+class="math display">\[SE_{\bar{x}_1-\bar{x}_2}=\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}.\]</span>
+The resulting test statistic is <span class="math display">\[Z =
+\frac{(\bar{x}_1-\bar{x}_2)-\Delta_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}\]</span>
+where <span class="math inline">\(\Delta_0=\mu_1-\mu_2\)</span>.</p>
+</div>
+<div id="example-braking-distance"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Braking Distance</h3>
+<p>Two different braking systems for cars are being evaluated. The
+distance in metres required to come to a complete stop from a speed of
+80 km/h was measured for the two systems in an experiment consisting of
+64 trials for each system. The following information was recorded</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">System 1</th>
+<th align="center">System 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\bar{x} =
+36.75\)</span></td>
+<td align="center"><span class="math inline">\(\bar{x} =
+33.53\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(s_1^2 =
+9.48\)</span></td>
+<td align="center"><span class="math inline">\(s_2^2 =
+8.09\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Is there sufficient evidence to reject the null hypothesis that these
+two systems are equally effective? Test assuming an <span
+class="math inline">\(\alpha = 0.05\)</span> Type I error rate.</p>
+<div id="solution-4" class="section level4">
+<h4>Solution</h4>
+<p>Because we are asked if the two systems are “equally effective” we
+can assume that the hypotheses are <span class="math display">\[
+H_0:\mu_1-\mu_2=0\qquad H_A:\:\mu_1-\mu_2\neq=0
+\]</span> where <span class="math inline">\(\mu_1\)</span> and <span
+class="math inline">\(\mu_2\)</span> are the expected stopping distance
+for each system. This is a two-sided test to so the rejection region is
+defined as <span class="math display">\[
+|Z|&gt;Z_{\alpha/2}\equiv |Z|&gt;1.96
+\]</span></p>
+<p>We are given: <span class="math display">\[
+\begin{align}
+\bar{x}_1&amp;=36.75\\
+\bar{x}_2&amp;=33.53\\
+s^2_1&amp;=9.48\\
+s^2_2&amp;=8.09\\
+n_1&amp;=64\\
+n_2&amp;=64.
+\end{align}
+\]</span> The resulting test statisitic is <span class="math display">\[
+\begin{align}
+Z&amp;=\frac{\bar{x}_1-\bar{x}_2-\Delta_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}}\\
+&amp;=\frac{36.75-33.53-0}{\sqrt{\frac{9.48}{64}+\frac{8.09}{64}}}\\
+&amp;=\frac{3.22 }{ 0.5239573 }\\
+&amp;= 6.15
+\end{align}
+\]</span> because <span class="math display">\[
+6.15&gt;1.96
+\]</span> we reject the null hypothesis that the two systems are
+equivalent.</p>
+</div>
+<div id="code-4" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>xbar_1 = 36.75
+xbar_2 = 33.53
+s21 = 9.48
+s22 = 8.09
+n1 = 64
+n2 = 64
+alpha = 0.05   
+
+Zcritical = scipy.stats.norm.ppf(1-alpha/2).round(2)
+
+Z = (xbar_1-xbar_2)/numpy.sqrt((9.48+8.09)/64)
+
+test = numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+<div id="example-electric-car-ranges"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Electric Car Ranges</h3>
+<p>While there is a significant difference between the purchase price of
+a Tesla Y and a Nissan Leaf, is there a significant difference in the
+operating ranges? Real-world testing yielded these results:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Car</th>
+<th align="center">Mean (km)</th>
+<th align="center">Std. Dev. (km)</th>
+<th align="center">Sample Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Tesla Y</td>
+<td align="center">370</td>
+<td align="center">63</td>
+<td align="center">40</td>
+</tr>
+<tr class="even">
+<td align="center">Nissan Leaf</td>
+<td align="center">315</td>
+<td align="center">47</td>
+<td align="center">40</td>
+</tr>
+</tbody>
+</table>
+<p>Is there sufficient evidence to support the claim that the Tesla has
+a greater average real-world range than the Nissan Leaf? Test assuming
+an <span class="math inline">\(\alpha = 0.05\)</span> Type I error
+rate.</p>
+<p><br />
+<strong>HINT:</strong><br />
+Is there enough evidence to reject the hypothesis that the average
+real-world range of the Nissan Leaf is equal to or greater than that of
+the Tesla Y?</p>
+<div id="solution-5" class="section level4">
+<h4>Solution</h4>
+<p>In this case the null hypothesis is that the average real-world range
+of the Nissan Leaf (<span class="math inline">\(\mu_1\)</span>) is
+greater than or equal to that of the Tesla Y (<span
+class="math inline">\(\mu_2\)</span>), i.e.<br />
+<span class="math display">\[
+H_0:\:\mu_1-\mu_2\geq 0\qquad H_1:\:\mu_1-\mu_2&lt;0.
+\]</span> This is a one-sided test so the rejection region is <span
+class="math display">\[
+Z&lt;Z_{\alpha}\equiv Z = 1.645
+\]</span></p>
+<p>We are given: <span class="math display">\[
+\begin{align}
+\bar{x}_1&amp;=370\\
+\bar{x}_2&amp;=315\\
+s_1&amp;=63\\
+s_2&amp;=47\\
+n_1&amp;=40\\
+n_2&amp;=40
+\end{align}
+\]</span></p>
+<p>The resulting test statistic is <span class="math display">\[
+\begin{align}
+Z&amp;=\frac{\bar{x}_1-\bar{x}_2-\Delta_0}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}}\\
+&amp;=\frac{315-370-0}{\sqrt{\frac{47^2}{40}+\frac{63^2}{40}}}\\
+&amp;=\frac{ -55 }{ 12.4277914 }\\
+&amp;= -4.43
+\end{align}
+\]</span> because <span class="math display">\[
+-4.43 = 1.645
+\]</span> we reject the null hypothesis that difference in range for the
+two vehicles is greater than or equal to <span
+class="math inline">\(0\)</span>.</p>
+</div>
+<div id="code-5" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>xbar_1 = 315
+xbar_2 = 370
+s21 = 47^2
+s22 = 63^2
+n1 = 40
+n2 = 40
+alpha = 0.05   
+
+Zcritical = scipy.stats.norm.ppf(1-alpha)
+
+Z  =  (xbar_1-xbar_2)/numpy.sqrt((s21+s22)/n1)
+
+test  =  numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+</div>
+<div id="hypotheses-about-the-difference-between-population-proportions"
+class="section level2">
+<h2>Hypotheses About the Difference Between Population Proportions</h2>
+<div class="sidenote">
+<p><strong>Example: Tai Chi and Fibromyalgia</strong><br />
+There is some evidence to suggest that tai chi can alleviate chronic
+pain from fibromyalgia. Sixty-six individuals participated in a 12-week
+trial where they were divided into two equally sized groups. Group 1
+participated in a tai chi class for the study period, while Group 2
+participated in a wellness education class for the study period. At the
+end of the study, each participant was asked if they felt that their
+pain had reduced; a summary of the results is:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Tai Chi</th>
+<th align="center">Wellness Education</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reduced Pain</td>
+<td align="center"><span class="math inline">\(x_1 = 26\)</span></td>
+<td align="center"><span class="math inline">\(x_2=13\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Perform a test of the hypothesis that tai chi is more effective than
+the wellness class in alleviating chronic pain from fibromyalgia. Assume
+a Type I error rate of <span
+class="math inline">\(\alpha=0.1\)</span>.</p>
+</div>
+<div class="sidenote">
+<p><strong>Example: The Effects of Hormone Replacement Therapy and
+Dementia</strong> A four-year study of 4532 women conducted at 39
+different medical centres divided the women at random into two equally
+sized groups. One group received hormone replacement therapy (HRT), and
+the other received a placebo. At the end of the study, there were 40
+cases of dementia in the HRT group and 21 in the placebo group. Is there
+sufficient evidence to reject the hypothesis that the risk for dementia
+is lower in the HRT group? Assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.01\)</span>.</p>
+</div>
+<p>As is the case with comparing two population means, questions about
+the difference between two population proportions often arise. In these
+cases we define the hypotheses and rejection regions as:</p>
+<p><span class="math display">\[
+\begin{array}{cc}
+    \mbox{Null Hypothesis}  &amp; \mbox{Rejection Region}\\
+    \hline
+    H_0: p_1 = p_2 &amp;     |Z|&gt;Z_{\alpha/2}\\
+   H_0: p_1\leq p_2 &amp;      Z&gt;Z_\alpha\\
+   H_0: p_1\geq p_2 &amp;     Z = Z_\alpha
+\end{array}
+\]</span></p>
+<p>Note that these hypotheses are equivalent to <span
+class="math display">\[
+\begin{array}{cc}
+     \mbox{Null Hypothesis}      &amp;     \mbox{Rejection Region}\\
+     \hline
+   H_0: p_1 - p_2 = 0      &amp;   |Z|&gt;Z_{\alpha/2}\\
+   H_0: p_1-p_2\leq 0      &amp;      Z&gt;Z_\alpha\\
+   H_0: p_1-p_2\geq 0      &amp;     Z = Z_\alpha
+\end{array}
+\]</span></p>
+<div id="test-statistic-1" class="section level3 unnumbered">
+<h3 class="unnumbered">Test Statistic</h3>
+<p>The test statistic of comparing two population proportions differs
+slightly from that used to compare two populations means. The null
+hypotheses assume that <span class="math inline">\(p_1=p_2\)</span>
+(regardless of the inequality), thus while the point estimator for the
+difference in proportions in <span
+class="math display">\[\hat{p}_1-\hat{p}_2\]</span> the standard error
+is <span
+class="math display">\[SE_{\hat{p}_1-\hat{p}_2}=\sqrt{p_0(1-p_0)\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}\]</span>
+where <span class="math display">\[p_0 =
+\frac{x_1+x_2}{n_1+n_2}\]</span> which follows as the best estimate of
+<span class="math inline">\(p=p_1=p_2\)</span>. The resulting test
+statistic is then <span
+class="math display">\[Z=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{p_0(1-p_0)\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}.\]</span>
+Note that in the event that the hypothesised difference is not <span
+class="math inline">\(0\)</span>, i.e. <span
+class="math inline">\(p_1-p_2=\Delta_0\)</span> where <span
+class="math inline">\(\Delta\neq 0\)</span>, the test statistic is <span
+class="math display">\[Z=\frac{(\hat{p}_1-\hat{p}_2)-\Delta_0}{\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1}+\frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}}.\]</span>
+This statistic is rarely used, but the evaluation and interpretation of
+the test results are the same.</p>
+</div>
+<div id="example-tai-chi-and-fibromyalgia"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Tai Chi and Fibromyalgia</h3>
+<p>There is some evidence to suggest that tai chi can alleviate chronic
+pain from fibromyalgia. Sixty-six individuals participated in a 12-week
+trial where they were divided into two equally sized groups. Group 1
+participated in a tai chi class for the study period, while Group 2
+participated in a wellness education class for the study period. At the
+end of the study, each participant was asked if they felt that their
+pain had reduced; a summary of the results is:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">Tai Chi</th>
+<th align="center">Wellness Education</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reduced Pain</td>
+<td align="center"><span class="math inline">\(x_1 = 26\)</span></td>
+<td align="center"><span class="math inline">\(x_2=13\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Perform a test to determine if tai chi is (statistically) more
+effective than the wellness class in alleviating chronic pain from
+fibromyalgia. Assume a Type I error rate of <span
+class="math inline">\(\alpha=0.1\)</span>.</p>
+<div id="solution-6" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:p_1-p_2\leq 0\qquad H_A:\:p_1-p_2&gt;0
+\]</span> That is that the proportion of patients who did Tai Chi and
+experienced reduced pain (<span class="math inline">\(p_1\)</span>) is
+less than or equal to the proportion of patients who took the wellness
+education classes (<span class="math inline">\(p_2\)</span>).</p>
+<p>This is a one-sided test so the rejection region is <span
+class="math display">\[
+Z&gt;Z_{\alpha}\equiv Z&gt;1.28
+\]</span></p>
+<p>We are given: <span class="math display">\[
+\begin{align}
+x_1&amp;=26\\
+x_2&amp;=13\\
+n_1&amp;=33\\
+n_2&amp;=33\\
+\hat{p}_1&amp;=\frac{26}{33}= 0.79 \\
+\hat{p}_2&amp;=\frac{13}{33}= 0.39 \\
+p_0&amp;=\frac{26+13}{33+33}= 0.59 \\
+\alpha&amp;=0.1
+\end{align}
+\]</span> The resulting test statistic is <span class="math display">\[
+\begin{align}
+Z&amp;=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{p_0(1-p_0)\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\\
+&amp;=\frac{0.79-0.39}{\sqrt{0.59(1-0.59)\left(\frac{1}{33}+\frac{1}{33}\right)}}\\
+&amp;=\frac{0.4}{\sqrt{\frac{2(0.59(1-0.59))}{33}}}\\
+&amp;=3.25
+\end{align}
+\]</span> because <span class="math display">\[
+3.25&gt;1.28
+\]</span> we reject the null hypothesis that the proportion of patients
+who experienced pain after taking Tai Chi reduction equal to or less
+than the proportion of patients who experienced pain reduction after
+taking wellness education classes.</p>
+</div>
+<div id="code-6" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x1 = 26
+x2 = 13
+n1 = 33
+n2 = 33
+p1 = x1/n1
+p2 = x2/n2
+p0 = (x1+x2)/(n1+n2)
+alpha = 0.1
+
+Zcritical = scipy.stats.norm.ppf(1-alpha)
+
+Z = (p1-p2)/numpy.sqrt(p0*(1-p0)*(1/n1+1/n2))
+
+test = numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+<div
+id="example-the-effects-of-hormone-replacement-therapy-and-dementia"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: The Effects of Hormone
+Replacement Therapy and Dementia</h3>
+<p>A four-year study of 4532 women conducted at 39 different medical
+centres divided the women at random into two equally sized groups. One
+group received hormone replacement therapy (HRT), and the other received
+a placebo. At the end of the study, there were 40 cases of dementia in
+the HRT group and 21 in the placebo group. Is there sufficient evidence
+to reject the hypothesis that the risk for dementia is lower in the HRT
+group? Assume a Type I error rate of <span class="math inline">\(\alpha
+= 0.01\)</span>.</p>
+<div id="solution-7" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0:\:p_1-p_2\leq 0\qquad H_A:\:p_1-p_2&gt;0
+\]</span> These are the hypotheses to test that the risk for dementia is
+lower in the HRT group (<span class="math inline">\(p_1\)</span>) than
+for the placebo group (<span class="math inline">\(p_2\)</span>).</p>
+<p>This is a one-sided test so the rejection region is <span
+class="math display">\[
+Z&gt;Z_{\alpha}\equiv Z&gt;2.33
+\]</span></p>
+<p>We are given: <span class="math display">\[
+\begin{align}
+x_1&amp;=40\\
+x_2&amp;=21\\
+n_1&amp;=2266\\
+n_2&amp;=2266\\
+\hat{p}_1&amp;=\frac{40}{2266}= 0.018 \\
+\hat{p}_2&amp;=\frac{21}2266= 0.009 \\
+p_0&amp;=\frac{40+21}{2266+2266}= 0.013 \\
+\alpha&amp;=0.1
+\end{align}
+\]</span> The resulting test statistic is</p>
+<p><span class="math display">\[
+\begin{align}
+Z&amp;=\frac{\hat{p}_1-\hat{p}_2}{\sqrt{p_0(1-p_0)\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\\
+&amp;=\frac{0.018-0.009}{\sqrt{0.013(1-0.013)\left(\frac{1}{2266}+\frac{1}{2266}\right)}}\\
+&amp;=\frac{0.009}{\sqrt{\frac{2(0.013(1-0.013))}{2266}}}\\
+&amp;=2.45
+\end{align}
+\]</span> because <span class="math display">\[
+2.45&gt;2.33
+\]</span> we reject the null hypothesis that the proportion the risk of
+dementia for HRT patients is less than or equal to that of the palcebo
+patients.</p>
+</div>
+<div id="code-7" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x1 = 40
+x2 = 21
+n1 = 2266
+n2 = 2266
+p1 = x1/n1
+p2 = x2/n2
+p0 = (x1+x2)/(n1+n2)
+alpha = 0.01
+
+Zcritical  =  scipy.stats.norm.ppf(1-alpha)
+
+Z  =  (p1-p2)/numpy.sqrt(p0*(1-p0)*(1/n1+1/n2))
+
+test  =  numpy.abs(Z)&gt;Zcritical
+
+def test_fun(x):
+  if(x == False):
+    ans = &quot;Fail to Reject&quot;
+  else:
+    ans = &quot;Reject&quot;
+  return ans  
+
+test_fun(test)
+
+#&gt; &#39;Reject&#39;</code></pre>
+</div>
+</div>
+</div>
+<div id="additional-considerations" class="section level2">
+<h2>Additional Considerations</h2>
+<p>Beyond the mechanics of performing hypothesis testing, there are
+additional considerations that should be borne in mind. Hypothesis
+testing is one of the first of techniques that make up the statistical
+“toolbox”, and coincidentally is one of the first where we see that
+there is some measure of subjective interpretation needed to use and
+understand the results of a hypothesis test fully.</p>
+<div id="power-and-sample-size-selection"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Power and Sample Size Selection</h3>
+<div class="sidenote">
+<p><strong>Example (cont’d): Ore Refining Operations</strong><br />
+An ore processing facility has a record of producing an average of <span
+class="math inline">\(880\)</span> tons of refined ore per day. Process
+engineers would like to see if this has changed over time. The records
+from <span class="math inline">\(n=50\)</span> days randomly selected
+over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. Assuming a
+Type I error rate of <span class="math inline">\(\alpha = 0.05\)</span>,
+find the Type II error rate and power for the statistical test for a
+true value of <span class="math inline">\(\theta^*=875\)</span>.</p>
+</div>
+<p>Recall that we noted that the Type II error rate <span
+class="math inline">\(\beta\)</span> is the probability that we fail to
+reject the null hypothesis given that it is false. Power is <span
+class="math inline">\(1-\beta\)</span>, or the probability that we
+reject the null hypothesis given that it is false. Computing the Type II
+error rate depends on the difference between the null hypothesis and the
+true state of reality, and the Type I error rate.</p>
+<p>In terms of the test and rejection region, assume that we want to
+calculate the Type II error rate for a true value of <span
+class="math inline">\(\theta=\theta^*\)</span>, and a Type I error rate
+of <span class="math inline">\(\alpha\)</span>. If <span
+class="math display">\[\beta = Pr(|Z|\leq
+Z_{\alpha/2}|\theta=\theta^*)\]</span> where the test statistic <span
+class="math inline">\(Z\)</span> is computed under the assumptions of
+the null hypothesis <span class="math display">\[Z =
+\frac{\hat{\theta}-\theta_0}{SE_{\hat{\theta}}}.\]</span> Thus power can
+be defined as <span class="math display">\[\begin{aligned}
+\mbox{Power}&amp; = &amp;1-Pr(|Z|\leq Z_{\alpha/2}|\theta=\theta^*)\\
+&amp;=&amp;Pr(|Z|\geq
+Z_{\alpha/2}|\theta=\theta^*)\end{aligned}\]</span></p>
+</div>
+<div id="example-contd-ore-refining-operations"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example (cont’d): Ore Refining
+Operations</h3>
+<p>An ore processing facility has a record of producing an average of
+<span class="math inline">\(880\)</span> tons of refined ore per day.
+Process engineers would like to see if this has changed over time. The
+records from <span class="math inline">\(n=50\)</span> days randomly
+selected over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. Assuming a
+Type I error rate of <span class="math inline">\(\alpha = 0.05\)</span>,
+find the Type II error rate and power for the statistical test for a
+true value of <span class="math inline">\(\theta^*=875\)</span>.</p>
+<div id="solution-8" class="section level4">
+<h4>Solution</h4>
+<p>Note that the power is defined as: <span class="math display">\[
+\begin{aligned}
+\mbox{Power}&amp; = 1-Pr(|Z|\leq Z_{\alpha/2}|\theta=\theta^*)\\
+&amp;=Pr(|Z|\geq Z_{\alpha/2}|\theta=\theta^*).
+\end{aligned}
+\]</span> We are given: <span class="math display">\[
+\begin{align}
+\bar{x} &amp; = 871\\
+s &amp; = 21\\
+n &amp; = 50\\
+\alpha &amp; = 0.05\\
+\theta^* &amp; = 875
+\end{align}
+\]</span> The Type II error rate is <span class="math display">\[
+\beta = Pr(|Z|&lt;Z_{\alpha/2}|\theta = \theta^*).
+\]</span> The first thing to note is that <span
+class="math inline">\(\bar{x} = 871\)</span> is superfluous to the power
+calculation. The Type II error rate is simply the probability that <span
+class="math inline">\(\bar{x}\)</span> is <em>not</em> in the rejection
+region give that the true value of <span
+class="math inline">\(\theta=\theta^*\)</span>,</p>
+<p>The rejection region is <span class="math display">\[
+\mbox{Rejection
+Region}=\left\{\bar{x}:\bar{x}&gt;\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}\:\cap\:\bar{x}&lt;\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}\right\}
+\]</span> the Type II error rate is then <span class="math display">\[
+\beta=Pr\left(\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}&lt;\bar{x}&lt;\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}
+\right).
+\]</span> Note that <span class="math display">\[
+\bar{x}\sim N\left(\theta^*,\frac{s^2}{n}\right)
+\]</span> hence <span class="math display">\[
+Z=\frac{\bar{x}-\theta^*}{s/\sqrt{n}}
+\]</span> so the expression for the Type II error rate becomes</p>
+<p><span class="math display">\[
+\begin{align}
+\beta&amp;=Pr\left(\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}&lt;\bar{x}&lt;\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}
+\right)\\
+&amp;=Pr\left(\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}&lt;\bar{x}&lt;\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}\Biggr|\theta=\theta^*
+\right)\\
+&amp;=Pr\left(\frac{\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}-\theta^*}{s/\sqrt{n}}&lt;
+\frac{\bar{x}-\theta^*}{s/\sqrt{n}}&lt;
+\frac{\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}-\theta^*}{s/\sqrt{n}}
+\right)\\
+&amp;=Pr\left(\frac{\theta_0-Z_{\alpha/2}\frac{s}{\sqrt{n}}-\theta^*}{s/\sqrt{n}}&lt;
+Z&lt;
+\frac{\theta_0+Z_{\alpha/2}\frac{s}{\sqrt{n}}-\theta^*}{s/\sqrt{n}}
+\right)\\
+&amp;=Pr\left(\frac{880-1.96\frac{21}{\sqrt{50}}-875}{21/\sqrt{50}}&lt;Z&lt;
+\frac{880+1.96\frac{21}{\sqrt{50}}-875}{21/\sqrt{50}}
+\right)\\
+&amp;=Pr\left(-0.28 &lt;Z&lt; 3.64
+\right)\\
+&amp;=0.61
+\end{align}
+\]</span> and the power is <span class="math display">\[
+\begin{align}
+\mbox{Power}&amp;=1-\beta\\
+&amp;=1-0.61\\
+&amp;=0.39
+\end{align}
+\]</span></p>
+</div>
+<div id="code-8" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>mu0 = 880
+mu_star = 875
+s = 21
+n = 50
+alpha = 0.05
+
+Z = scipy.stats.norm.ppf(1-alpha/2)
+delta = mu0-mu_star
+
+beta = scipy.stats.norm.cdf((delta+Z*s/numpy.sqrt(n))/(s/numpy.sqrt(n)))-scipy.stats.norm.cdf((delta-Z*s/numpy.sqrt(n))/(s/numpy.sqrt(n)))
+
+power = 1-beta
+</code></pre>
+</div>
+<div id="plot" class="section level4">
+<h4>Plot</h4>
+<pre><code>#&gt; &lt;ggplot: (309129192)&gt;</code></pre>
+<p><img src="chap4_files/figure-html/unnamed-chunk-13-1.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video" class="section level4">
+<h4>Video</h4>
+</div>
+</div>
+<div id="computing-sample-size-from-power"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Computing Sample Size from Power</h3>
+<div class="sidenote">
+<p><strong>Example (cont’d): Ore Refining Operations</strong><br />
+An ore processing facility has a record of producing an average of <span
+class="math inline">\(880\)</span> tons of refined ore per day. Process
+engineers would like to see if this has changed over time. The records
+from <span class="math inline">\(n=50\)</span> days randomly selected
+over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. For a Type II
+error rate of <span class="math inline">\(\beta =0.2\)</span> and a Type
+I error rate of <span class="math inline">\(\alpha=0.05\)</span> find
+the minimum sample size <span class="math inline">\(n\)</span> for a
+true value of <span class="math inline">\(\theta^*=875\)</span>.</p>
+</div>
+<p>As we can see from the equations for computing power, as <span
+class="math inline">\(n\)</span> increases, for a given difference
+between the truth and the null hypothesis, the Type II error rate
+decreases, hence the power increases. So we can see that sample size is
+a crucial design consideration when collecting data, or designing an
+experiment.</p>
+<p>By choosing a minimum detectable difference between the null
+hypothesis and the truth and Type I and Type II error rates, the
+equations for computing the Type II error rate can be modified to solve
+for <span class="math inline">\(n\)</span>.</p>
+</div>
+<div id="example" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example</h3>
+<p>An ore processing facility has a record of producing an average of
+<span class="math inline">\(880\)</span> tons of refined ore per day.
+Process engineers would like to see if this has changed over time. The
+records from <span class="math inline">\(n=50\)</span> days randomly
+selected over the last year indicate that the sample average is <span
+class="math inline">\(\bar{x}=871\)</span> tons with a standard
+deviation of <span class="math inline">\(21\)</span> tons. For a Type II
+error rate of <span class="math inline">\(\beta =0.2\)</span> and a Type
+I error rate of <span class="math inline">\(\alpha=0.05\)</span> find
+the minimum sample size <span class="math inline">\(n\)</span> for a
+true value of <span class="math inline">\(\theta^*=875\)</span>.</p>
+<div id="solution-9" class="section level4">
+<h4>Solution</h4>
+<p>From the power computations we can see that <span
+class="math display">\[
+\begin{align}
+\beta&amp;=Pr\left(\frac{880-1.96\frac{21}{\sqrt{n}}-875}{21/\sqrt{n}}&lt;Z&lt;
+\frac{880+1.96\frac{21}{\sqrt{n}}-875}{21/\sqrt{n}}
+\right)\\
+&amp;=Pr\left(\frac{5-1.96\frac{21}{\sqrt(n)}}{21/\sqrt{n}}&lt;Z&lt;\frac{5+1.96\frac{21}{\sqrt(n)}}{21/\sqrt{n}}
+\right)\\
+&amp;=Pr\left(5\sqrt{n}/21-1.96&lt;Z&lt;5\sqrt{n}/21+1.96
+\right)
+\end{align}
+\]</span> we can write our objective in terms of solving the equation
+<span class="math display">\[
+0.2\geq Pr\left(5\sqrt{n}/21-1.96&lt;Z&lt;5\sqrt{n}/21+1.96
+\right)
+\]</span> for <span class="math inline">\(n\)</span>. There is no
+analytic solution possible, so we have to rely on numerical methods.</p>
+</div>
+<div id="code-9" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>##  Define the function of n
+
+def beta(n):
+  ul = 5*numpy.sqrt(n)/21+1.96
+  ll = 5*numpy.sqrt(n)/21-1.96
+  ans = scipy.stats.norm.cdf(ul)-scipy.stats.norm.cdf(ll)
+  return ans
+
+##  we can simply compute values for beta for values on n
+
+n = numpy.array(range(500))+1
+
+beta(n)
+
+##  We can see that the smallest value for Beta&lt;=0.2 is n = 139
+#&gt; array([9.43485454e-01, 9.36918039e-01, 9.30304882e-01, 9.23648837e-01,
+#&gt;        9.16952697e-01, 9.10219193e-01, 9.03450996e-01, 8.96650720e-01,
+#&gt;        8.89820916e-01, 8.82964078e-01, 8.76082644e-01, 8.69178995e-01,
+#&gt;        8.62255452e-01, 8.55314287e-01, 8.48357711e-01, 8.41387885e-01,
+#&gt;        8.34406915e-01, 8.27416856e-01, 8.20419709e-01, 8.13417426e-01,
+#&gt;        8.06411907e-01, 7.99405004e-01, 7.92398518e-01, 7.85394205e-01,
+#&gt;        7.78393769e-01, 7.71398873e-01, 7.64411129e-01, 7.57432107e-01,
+#&gt;        7.50463330e-01, 7.43506279e-01, 7.36562393e-01, 7.29633065e-01,
+#&gt;        7.22719649e-01, 7.15823457e-01, 7.08945763e-01, 7.02087798e-01,
+#&gt;        6.95250756e-01, 6.88435794e-01, 6.81644028e-01, 6.74876541e-01,
+#&gt;        6.68134378e-01, 6.61418549e-01, 6.54730028e-01, 6.48069756e-01,
+#&gt;        6.41438641e-01, 6.34837558e-01, 6.28267347e-01, 6.21728822e-01,
+#&gt;        6.15222760e-01, 6.08749911e-01, 6.02310995e-01, 5.95906703e-01,
+#&gt;        5.89537697e-01, 5.83204610e-01, 5.76908050e-01, 5.70648597e-01,
+#&gt;        5.64426803e-01, 5.58243198e-01, 5.52098285e-01, 5.45992541e-01,
+#&gt;        5.39926423e-01, 5.33900360e-01, 5.27914761e-01, 5.21970011e-01,
+#&gt;        5.16066476e-01, 5.10204496e-01, 5.04384395e-01, 4.98606472e-01,
+#&gt;        4.92871010e-01, 4.87178270e-01, 4.81528496e-01, 4.75921911e-01,
+#&gt;        4.70358723e-01, 4.64839119e-01, 4.59363273e-01, 4.53931338e-01,
+#&gt;        4.48543454e-01, 4.43199743e-01, 4.37900314e-01, 4.32645257e-01,
+#&gt;        4.27434651e-01, 4.22268561e-01, 4.17147034e-01, 4.12070107e-01,
+#&gt;        4.07037805e-01, 4.02050136e-01, 3.97107099e-01, 3.92208680e-01,
+#&gt;        3.87354853e-01, 3.82545582e-01, 3.77780818e-01, 3.73060503e-01,
+#&gt;        3.68384567e-01, 3.63752932e-01, 3.59165510e-01, 3.54622201e-01,
+#&gt;        3.50122899e-01, 3.45667489e-01, 3.41255844e-01, 3.36887834e-01,
+#&gt;        3.32563317e-01, 3.28282144e-01, 3.24044160e-01, 3.19849203e-01,
+#&gt;        3.15697101e-01, 3.11587680e-01, 3.07520755e-01, 3.03496138e-01,
+#&gt;        2.99513634e-01, 2.95573042e-01, 2.91674155e-01, 2.87816763e-01,
+#&gt;        2.84000650e-01, 2.80225592e-01, 2.76491366e-01, 2.72797739e-01,
+#&gt;        2.69144478e-01, 2.65531344e-01, 2.61958094e-01, 2.58424483e-01,
+#&gt;        2.54930260e-01, 2.51475172e-01, 2.48058963e-01, 2.44681375e-01,
+#&gt;        2.41342144e-01, 2.38041007e-01, 2.34777696e-01, 2.31551941e-01,
+#&gt;        2.28363472e-01, 2.25212013e-01, 2.22097290e-01, 2.19019024e-01,
+#&gt;        2.15976937e-01, 2.12970748e-01, 2.10000175e-01, 2.07064934e-01,
+#&gt;        2.04164740e-01, 2.01299308e-01, 1.98468352e-01, 1.95671583e-01,
+#&gt;        1.92908715e-01, 1.90179457e-01, 1.87483522e-01, 1.84820618e-01,
+#&gt;        1.82190456e-01, 1.79592747e-01, 1.77027198e-01, 1.74493521e-01,
+#&gt;        1.71991424e-01, 1.69520618e-01, 1.67080811e-01, 1.64671715e-01,
+#&gt;        1.62293039e-01, 1.59944496e-01, 1.57625795e-01, 1.55336649e-01,
+#&gt;        1.53076771e-01, 1.50845874e-01, 1.48643671e-01, 1.46469878e-01,
+#&gt;        1.44324210e-01, 1.42206383e-01, 1.40116116e-01, 1.38053127e-01,
+#&gt;        1.36017135e-01, 1.34007861e-01, 1.32025026e-01, 1.30068355e-01,
+#&gt;        1.28137571e-01, 1.26232400e-01, 1.24352568e-01, 1.22497805e-01,
+#&gt;        1.20667839e-01, 1.18862402e-01, 1.17081226e-01, 1.15324046e-01,
+#&gt;        1.13590597e-01, 1.11880616e-01, 1.10193842e-01, 1.08530016e-01,
+#&gt;        1.06888878e-01, 1.05270174e-01, 1.03673647e-01, 1.02099046e-01,
+#&gt;        1.00546119e-01, 9.90146164e-02, 9.75042903e-02, 9.60148949e-02,
+#&gt;        9.45461859e-02, 9.30979210e-02, 9.16698595e-02, 9.02617627e-02,
+#&gt;        8.88733937e-02, 8.75045175e-02, 8.61549007e-02, 8.48243122e-02,
+#&gt;        8.35125224e-02, 8.22193039e-02, 8.09444308e-02, 7.96876796e-02,
+#&gt;        7.84488282e-02, 7.72276568e-02, 7.60239473e-02, 7.48374836e-02,
+#&gt;        7.36680514e-02, 7.25154386e-02, 7.13794348e-02, 7.02598314e-02,
+#&gt;        6.91564221e-02, 6.80690021e-02, 6.69973689e-02, 6.59413216e-02,
+#&gt;        6.49006614e-02, 6.38751915e-02, 6.28647167e-02, 6.18690440e-02,
+#&gt;        6.08879821e-02, 5.99213417e-02, 5.89689355e-02, 5.80305779e-02,
+#&gt;        5.71060852e-02, 5.61952756e-02, 5.52979693e-02, 5.44139882e-02,
+#&gt;        5.35431561e-02, 5.26852987e-02, 5.18402435e-02, 5.10078197e-02,
+#&gt;        5.01878586e-02, 4.93801930e-02, 4.85846579e-02, 4.78010897e-02,
+#&gt;        4.70293267e-02, 4.62692092e-02, 4.55205789e-02, 4.47832796e-02,
+#&gt;        4.40571567e-02, 4.33420572e-02, 4.26378300e-02, 4.19443257e-02,
+#&gt;        4.12613967e-02, 4.05888967e-02, 3.99266815e-02, 3.92746084e-02,
+#&gt;        3.86325364e-02, 3.80003260e-02, 3.73778396e-02, 3.67649409e-02,
+#&gt;        3.61614956e-02, 3.55673706e-02, 3.49824346e-02, 3.44065579e-02,
+#&gt;        3.38396122e-02, 3.32814709e-02, 3.27320089e-02, 3.21911025e-02,
+#&gt;        3.16586298e-02, 3.11344701e-02, 3.06185042e-02, 3.01106146e-02,
+#&gt;        2.96106851e-02, 2.91186010e-02, 2.86342489e-02, 2.81575170e-02,
+#&gt;        2.76882948e-02, 2.72264733e-02, 2.67719447e-02, 2.63246028e-02,
+#&gt;        2.58843425e-02, 2.54510603e-02, 2.50246539e-02, 2.46050222e-02,
+#&gt;        2.41920657e-02, 2.37856859e-02, 2.33857857e-02, 2.29922693e-02,
+#&gt;        2.26050422e-02, 2.22240109e-02, 2.18490835e-02, 2.14801689e-02,
+#&gt;        2.11171775e-02, 2.07600207e-02, 2.04086114e-02, 2.00628633e-02,
+#&gt;        1.97226913e-02, 1.93880117e-02, 1.90587418e-02, 1.87347998e-02,
+#&gt;        1.84161053e-02, 1.81025788e-02, 1.77941421e-02, 1.74907178e-02,
+#&gt;        1.71922297e-02, 1.68986026e-02, 1.66097625e-02, 1.63256362e-02,
+#&gt;        1.60461515e-02, 1.57712375e-02, 1.55008238e-02, 1.52348415e-02,
+#&gt;        1.49732223e-02, 1.47158989e-02, 1.44628052e-02, 1.42138757e-02,
+#&gt;        1.39690459e-02, 1.37282524e-02, 1.34914326e-02, 1.32585246e-02,
+#&gt;        1.30294676e-02, 1.28042015e-02, 1.25826673e-02, 1.23648067e-02,
+#&gt;        1.21505621e-02, 1.19398769e-02, 1.17326952e-02, 1.15289621e-02,
+#&gt;        1.13286234e-02, 1.11316254e-02, 1.09379157e-02, 1.07474422e-02,
+#&gt;        1.05601538e-02, 1.03760001e-02, 1.01949314e-02, 1.00168987e-02,
+#&gt;        9.84185392e-03, 9.66974941e-03, 9.50053838e-03, 9.33417469e-03,
+#&gt;        9.17061288e-03, 9.00980817e-03, 8.85171644e-03, 8.69629423e-03,
+#&gt;        8.54349871e-03, 8.39328771e-03, 8.24561968e-03, 8.10045368e-03,
+#&gt;        7.95774939e-03, 7.81746711e-03, 7.67956771e-03, 7.54401266e-03,
+#&gt;        7.41076402e-03, 7.27978442e-03, 7.15103703e-03, 7.02448562e-03,
+#&gt;        6.90009447e-03, 6.77782843e-03, 6.65765287e-03, 6.53953369e-03,
+#&gt;        6.42343732e-03, 6.30933068e-03, 6.19718123e-03, 6.08695690e-03,
+#&gt;        5.97862613e-03, 5.87215784e-03, 5.76752142e-03, 5.66468674e-03,
+#&gt;        5.56362414e-03, 5.46430441e-03, 5.36669879e-03, 5.27077899e-03,
+#&gt;        5.17651713e-03, 5.08388578e-03, 4.99285792e-03, 4.90340698e-03,
+#&gt;        4.81550679e-03, 4.72913157e-03, 4.64425599e-03, 4.56085507e-03,
+#&gt;        4.47890424e-03, 4.39837934e-03, 4.31925655e-03, 4.24151245e-03,
+#&gt;        4.16512398e-03, 4.09006846e-03, 4.01632355e-03, 3.94386728e-03,
+#&gt;        3.87267801e-03, 3.80273447e-03, 3.73401570e-03, 3.66650109e-03,
+#&gt;        3.60017035e-03, 3.53500354e-03, 3.47098100e-03, 3.40808341e-03,
+#&gt;        3.34629175e-03, 3.28558732e-03, 3.22595169e-03, 3.16736676e-03,
+#&gt;        3.10981471e-03, 3.05327799e-03, 2.99773935e-03, 2.94318182e-03,
+#&gt;        2.88958870e-03, 2.83694357e-03, 2.78523025e-03, 2.73443285e-03,
+#&gt;        2.68453573e-03, 2.63552350e-03, 2.58738103e-03, 2.54009341e-03,
+#&gt;        2.49364602e-03, 2.44802443e-03, 2.40321449e-03, 2.35920224e-03,
+#&gt;        2.31597398e-03, 2.27351622e-03, 2.23181570e-03, 2.19085937e-03,
+#&gt;        2.15063440e-03, 2.11112817e-03, 2.07232827e-03, 2.03422249e-03,
+#&gt;        1.99679882e-03, 1.96004546e-03, 1.92395081e-03, 1.88850343e-03,
+#&gt;        1.85369210e-03, 1.81950578e-03, 1.78593361e-03, 1.75296492e-03,
+#&gt;        1.72058919e-03, 1.68879611e-03, 1.65757553e-03, 1.62691746e-03,
+#&gt;        1.59681209e-03, 1.56724976e-03, 1.53822098e-03, 1.50971643e-03,
+#&gt;        1.48172693e-03, 1.45424346e-03, 1.42725715e-03, 1.40075928e-03,
+#&gt;        1.37474129e-03, 1.34919474e-03, 1.32411135e-03, 1.29948297e-03,
+#&gt;        1.27530160e-03, 1.25155937e-03, 1.22824853e-03, 1.20536148e-03,
+#&gt;        1.18289074e-03, 1.16082896e-03, 1.13916892e-03, 1.11790351e-03,
+#&gt;        1.09702574e-03, 1.07652876e-03, 1.05640583e-03, 1.03665030e-03,
+#&gt;        1.01725566e-03, 9.98215501e-04, 9.79523535e-04, 9.61173568e-04,
+#&gt;        9.43159519e-04, 9.25475408e-04, 9.08115360e-04, 8.91073602e-04,
+#&gt;        8.74344457e-04, 8.57922348e-04, 8.41801793e-04, 8.25977406e-04,
+#&gt;        8.10443893e-04, 7.95196051e-04, 7.80228767e-04, 7.65537018e-04,
+#&gt;        7.51115865e-04, 7.36960457e-04, 7.23066027e-04, 7.09427889e-04,
+#&gt;        6.96041439e-04, 6.82902155e-04, 6.70005592e-04, 6.57347381e-04,
+#&gt;        6.44923231e-04, 6.32728925e-04, 6.20760320e-04, 6.09013345e-04,
+#&gt;        5.97484001e-04, 5.86168357e-04, 5.75062552e-04, 5.64162792e-04,
+#&gt;        5.53465351e-04, 5.42966567e-04, 5.32662841e-04, 5.22550641e-04,
+#&gt;        5.12626492e-04, 5.02886984e-04, 4.93328766e-04, 4.83948544e-04,
+#&gt;        4.74743086e-04, 4.65709213e-04, 4.56843805e-04, 4.48143795e-04,
+#&gt;        4.39606171e-04, 4.31227974e-04, 4.23006298e-04, 4.14938288e-04,
+#&gt;        4.07021139e-04, 3.99252097e-04, 3.91628455e-04, 3.84147557e-04])
+n = numpy.array(range(11))+135
+
+df = pandas.DataFrame({&quot;n&quot;:n,&quot;beta&quot;:beta(n)})
+print(df)
+
+#kable(tibble(n=135:145,beta(135:145)))
+#&gt;       n      beta
+#&gt; 0   135  0.210000
+#&gt; 1   136  0.207065
+#&gt; 2   137  0.204165
+#&gt; 3   138  0.201299
+#&gt; 4   139  0.198468
+#&gt; 5   140  0.195672
+#&gt; 6   141  0.192909
+#&gt; 7   142  0.190179
+#&gt; 8   143  0.187484
+#&gt; 9   144  0.184821
+#&gt; 10  145  0.182190</code></pre>
+</div>
+<div id="plot-1" class="section level4">
+<h4>Plot</h4>
+<pre><code>#&gt; &lt;ggplot: (309036378)&gt;</code></pre>
+<p><img src="chap4_files/figure-html/unnamed-chunk-15-3.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="hypothesis-testing-as-the-inverse-of-a-confidence-interval"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Hypothesis Testing as the Inverse of a Confidence
+Interval</h3>
+<div class="sidenote">
+<p><strong>Example (cont’d): Protein Intake</strong><br />
+A sample of <span class="math inline">\(n=50\)</span> adult men reveals
+that their average daily intake of protein is <span
+class="math inline">\(\bar{x}=75.6\)</span> grams per day with a
+standard deviation of <span class="math inline">\(s=3.5\)</span> grams.
+Construct a (<span class="math inline">\(1-\alpha = 95\%\)</span>)
+confidence interval for the average daily intake of protein for men and
+use it to test the hypotheses: <span class="math display">\[H_0: \mu =
+74\qquad H_A:\mu\neq 74\]</span> (note that the (<span
+class="math inline">\(1-\alpha\)</span>) confidence level corresponds to
+a Type I error rate of <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<p>There is a fundamental connection between confidence intervals and
+hypothesis tests. Both are based on probabilistic statements based on
+the sampling distribution for a statistic. The hypothesis test can be
+viewed as the complement of a confidence interval, as the rejection
+region defined by the hypothesis test is the compliment of the
+confidence interval for a two sided-test. The decision to reject the
+null hypothesis because it falls within the rejection region is
+equivalent to computing the test statistic and rejecting the null
+hypothesis if the value <span class="math inline">\(\theta_0\)</span>
+falls outside the confidence interval.</p>
+</div>
+<div id="example-contd-protein-intake"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example (cont’d): Protein Intake</h3>
+<p>A sample of <span class="math inline">\(n=50\)</span> adult men
+reveals that their average daily intake of protein is <span
+class="math inline">\(\bar{x}=75.6\)</span> grams per day with a
+standard deviation of <span class="math inline">\(s=3.5\)</span> grams.
+Construct a (<span class="math inline">\(1-\alpha = 95\%\)</span>)
+confidence interval for the average daily intake of protein for men and
+use it to test the hypotheses: <span class="math display">\[H_0: \mu =
+74\qquad H_A:\mu\neq 74\]</span> (note that the (<span
+class="math inline">\(1-\alpha\)</span>) confidence level corresponds to
+a Type I error rate of <span class="math inline">\(\alpha\)</span>.</p>
+<div id="solution-10" class="section level4">
+<h4>Solution</h4>
+<p>The confidence interval is <span class="math display">\[
+\bar{x}\pm Z_{\alpha/2}\frac{s}{\sqrt{n}}
+\]</span> And we reject <span class="math inline">\(H_0\)</span> if the
+confidence interval does <em>not</em> contain <span
+class="math inline">\(H_0\)</span>.</p>
+<p>Inserting the numbers <span class="math display">\[
+\begin{align}
+\bar{x}&amp;= 75.6\\
+n &amp;= 50\\
+s &amp;= 3.5\\
+\alpha &amp;=0.05
+\end{align}
+\]</span> we get the confidence interval <span class="math display">\[
+\begin{align}
+\bar{x}\pm Z_{\alpha/2}\frac{s}{\sqrt{n}}&amp;=\\
+&amp;=75.6\pm 1.96\frac{3.5}{\sqrt{50}}\\
+&amp;=( 74.63, 76.57 )
+\end{align}
+\]</span> Note that <span class="math display">\[
+74\notin ( 74.63, 76.57 )
+\]</span> so we would reject the null hypothesis.</p>
+</div>
+<div id="code-10" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>xbar = 75.6
+s = 3.5
+n = 50
+alpha = 0.05
+
+Z_alpha = scipy.stats.norm.ppf(1-(alpha/2))
+
+upper_ci = xbar+Z_alpha*s/numpy.sqrt(n)
+lower_ci = xbar-Z_alpha*s/numpy.sqrt(n)
+
+upper_ci
+#&gt; 76.57013267704477
+lower_ci
+
+#&gt; 74.62986732295522</code></pre>
+</div>
+<div id="plot-2" class="section level4">
+<h4>Plot</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-17-5.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-17-6.png" width="614" style="display: block; margin: auto;" />
+It can be clearly seen that 74 is not in the grey shaded confidence
+interval, and we therefore reject the null hypothesis <span
+class="math inline">\(H_0:\:\: \mu=74\)</span>&gt;</p>
+</div>
+</div>
+<div id="p-values" class="section level3 unnumbered">
+<h3 class="unnumbered"><span
+class="math inline">\(p\)</span>-values</h3>
+<div class="sidenote">
+<p><strong>Example (cont’d): Driverless Cars</strong><br />
+A research study showed that out of 500 individuals surveys, 276
+reported that they would be willing to ride in a driverless vehicle. How
+strong is the evidence that over <span
+class="math inline">\(50\%\)</span> of the population would be willing
+to ride in a driverless vehicle. Compute the resulting <span
+class="math inline">\(p\)</span>-value</p>
+</div>
+<p>Performing a hypothesis test based on computing a rejection region
+and making a straightforward reject or fail to reject decision has some
+drawbacks. For one the choice of Type I error rate is somewhat
+arbitrary, and for marginal values (i.e. test statistic values close to,
+but not in the rejection region) decisions may not be as confident as
+desired. To address these issues a more subjective alternative to
+testing is sometimes desirable, that is to instead of constructing
+rejection regions <em>a priori</em>, test statistics are computed and
+evaluated as to the strength of the evidence in favour of rejecting the
+null hypothesis. This measure is referred to as a <span
+class="math inline">\(p\)</span>-value. Quite simply put, the <span
+class="math inline">\(p\)</span>-value is equal to the Type I error rate
+calculated for rejection region described by the observed test
+statistic.</p>
+</div>
+<div id="example-contd-driverless-cars"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example (cont’d): Driverless Cars</h3>
+<p>A research study showed that out of 500 individuals surveys, 276
+reported that they would be willing to ride in a driverless vehicle. How
+strong is the evidence that over <span
+class="math inline">\(50\%\)</span> of the population would be willing
+to ride in a driverless vehicle. Compute the resulting <span
+class="math inline">\(p\)</span>-value</p>
+<div id="solution-11" class="section level4">
+<h4>Solution</h4>
+<p>In order to compute the <span class="math inline">\(p\)</span>-value
+we will calculate the test statistic <span class="math display">\[
+\begin{align}
+Z_{\mbox{test}}&amp;=\frac{\sqrt{n}(\hat{p}-p_0)}{\sqrt{p_0(1-p_0)}}\\
+&amp;=\frac{\sqrt{500}\left(\frac{276}{500}-0.5\right)}{\sqrt{0.5(1-0.5)}}\\
+2.33
+\end{align}
+\]</span> Our original hypotheses are <span class="math display">\[
+H_0:\:p\leq 0.50\qquad H_A:\: p&gt;0.50
+\]</span> So the <span class="math inline">\(p\)</span>-value is <span
+class="math display">\[
+\begin{align}
+\mbox{$p$-value}&amp;=Pr\left(Z\geq Z_{\mbox{test}}\right)\\
+&amp;=Pr(Z\geq 2.33)\\
+&amp;= 0.01
+\end{align}
+\]</span></p>
+</div>
+<div id="code-11" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x = 276
+n  =  500
+p_hat  =  x/n
+p_0  =  0.5
+Z_test  =  (numpy.sqrt(n)*(p_hat-p_0))/numpy.sqrt(p_0*(1-p_0))
+Z_test
+
+##  p-value
+#&gt; 2.3255106965997836
+1-scipy.stats.norm.cdf(Z_test)
+#&gt; 0.010022334311313719</code></pre>
+</div>
+<div id="plot-3" class="section level4">
+<h4>Plot</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-19-9.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-19-10.png" width="614" style="display: block; margin: auto;" />
+The <span class="math inline">\(p\)</span>-value corresponds to the
+shaded area of ther plot.</p>
+</div>
+</div>
+</div>
+<div id="caveats-and-food-for-thought" class="section level2">
+<h2>Caveats and Food for Thought</h2>
+<div id="accept-or-fail-to-reject" class="section level3 unnumbered">
+<h3 class="unnumbered">Accept or Fail to Reject?</h3>
+<p>There is some debate about whether or not to fail to reject the null
+hypothesis constitutes tacit acceptance of the null hypothesis or if it
+implies that evidence concerning the null hypothesis is inconclusive.
+Some textbooks state that failure to reject is acceptance of the null
+hypothesis. The argument I present here is that if the parameter <span
+class="math inline">\(\theta\)</span> can take on infinite possible
+values, then accepting a hypothesis that <span
+class="math inline">\(\theta\)</span> equals a hypothesised value is
+equivalent to assuming that there is a non-zero probability that a
+continuous random variable will take on a given value. This is hardly a
+rigorous argument, but it represents a conservative approach to
+interpreting hypothesis tests.</p>
+</div>
+<div id="statistical-significance-and-practical-importance"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Statistical Significance and Practical
+Importance</h3>
+<p>Statistical significance is not always an indicator of practical
+importance. Powerful tests can reject null hypotheses when the parameter
+estimator is not that different from the hypothesised value. It is
+important to consider what is meaningful in terms of the actual
+application being analysed to determine what a significant difference
+is. This can be an important consideration when designing tests and
+choosing sample sizes.</p>
+</div>
+</div>
+<div id="videos" class="section level2">
+<h2>Videos</h2>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/3d92e88c-29f0-4ba3-8a5e-715764f237fc?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+<div
+id="small-sample-sampling-statistic-distribution-students-t-distribution"
+class="section level2">
+<h2>Small Sample Sampling Statistic Distribution: Student’s <span
+class="math inline">\(t\)</span>-distribution</h2>
+<p>We’ve looked at methods for estimating intervals and testing
+hypotheses based on the sampling distribution for <a
+href="chap8.html">estimates based on large samples</a>. The definition
+of large, is somewhat subjective, but the general assumption is that
+<span class="math inline">\(n\geq 30\)</span> is large enough in most
+cases to assume that the sampling distribution of <span
+class="math inline">\(\bar{x}\sim N(\mu,\sigma^2/n)\)</span>, even when
+we had to substitute the estimate <span
+class="math inline">\(s^2\)</span> for <span
+class="math inline">\(\sigma^2\)</span>.</p>
+<div class="sidenote">
+<strong>William Sealy Gossett</strong><br />
+
+<center>
+<div class="figure">
+<img src="William_Sealy_Gosset.jpg" style="width:90.0%" alt="" />
+<p class="caption">alt text</p>
+</div>
+</center>
+<p><br> <a
+href="https://en.wikipedia.org/wiki/William_Sealy_Gosset">William Sealy
+Gosset</a> was and English statistician and scientist who worked for the
+Guiness Brewing Company in the early twentieth century. Gosset
+discovered that when working with small samples estimating the variance
+resulted in higher Type I error rates than thought. He developed the
+<span class="math inline">\(t\)</span> distribution to account for this
+but his employer considered it a trade secret and Gosset was forced to
+publish his findings under the name “Student” in order to avoid
+detection. Today this distribution is known as Student’s <span
+class="math inline">\(t\)</span> distribution.</p>
+</div>
+<p>But this assumption of Gaussian behaviour poses two problems, first
+often times collecting <span class="math inline">\(30\)</span> or more
+samples in impractical, and second the assumption of the Gaussian
+sampling distribution doesn’t take into account the extra variability
+due to the estimation of <span class="math inline">\(\sigma^2\)</span>.
+In short, when <span class="math inline">\(n\)</span> is small, then the
+Gaussian assumption can fail as <span class="math display">\[
+\frac{\sqrt{n}(\bar{x}-\mu)}{s}\neq
+\frac{\sqrt{n}(\bar{x}-\mu)}{\sigma}.
+\]</span> Instead we need a new probability distribution that takes into
+account the extra variability caused by using the estimate <span
+class="math inline">\(s\)</span> in lieu of <span
+class="math inline">\(\sigma\)</span>. When <span
+class="math inline">\(n\)</span> is small (<span
+class="math inline">\(&lt;30\)</span>), then it can be shown that <span
+class="math display">\[
+\frac{\sqrt{n}(\bar{x}-\mu)}{s}\stackrel{d}{\rightarrow} t_{\nu}
+\]</span> where the degrees of freedom <span
+class="math inline">\(\nu\)</span> is equal to <span
+class="math inline">\(n-1\)</span>. Student’s <span
+class="math inline">\(t\)</span> distribution in a symmetric
+distribution that is superficially similar to the Gaussian distribution,
+but has heavier tails, but as <span class="math inline">\(\nu\)</span>
+increases Student’s <span class="math inline">\(t\)</span> distribution
+looks more and more Gaussian. Note that for <span
+class="math inline">\(X\sim t_{\nu}\)</span> <span
+class="math display">\[
+E(X) = 0,\mbox{ and } Var(X)=\frac{\nu}{\nu-2},\:\nu&gt;2
+\]</span> where the variance is greater than <span
+class="math inline">\(1\)</span>, thus the heavier tails compared with
+the standard Gaussian distribution <span
+class="math inline">\(N(0,1)\)</span>, but that as <span
+class="math inline">\(\nu\)</span> (or <span
+class="math inline">\(n\)</span>) increases then the variance approaches
+<span class="math inline">\(1\)</span> implying that the two densities
+converge as <span class="math inline">\(n\)</span> approaches
+infinity.</p>
+<p><img src="chap4_files/figure-html/unnamed-chunk-20-1.gif" style="display: block; margin: auto;" /></p>
+</div>
+<div id="inference-about-the-population-mean-for-small-samples"
+class="section level2">
+<h2>Inference About the Population Mean for Small Samples</h2>
+<div class="sidenote">
+<p><strong>Paint Coverage</strong><br />
+House paint is sold in containers labelling the coverage and drying time
+for a single coat of paint. One manufacturer’s packaging claims that a
+four-litre can of paint will cover 37 square metres. To test this, ten
+cans of paint are drawn at random and ten identical surfaces are
+prepared and painted using the cans of paint and the same methods. The
+resulting coverage is measured for each can of paint:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center">28.9</td>
+<td align="center">28.9</td>
+<td align="center">38.3</td>
+<td align="center">34.2</td>
+<td align="center">41.5</td>
+</tr>
+<tr class="even">
+<td align="center">34.9</td>
+<td align="center">28.2</td>
+<td align="center">38.1</td>
+<td align="center">33.9</td>
+<td align="center">32.5</td>
+</tr>
+</tbody>
+</table>
+<p>Compute the <span class="math inline">\(95\%\)</span> confidence
+interval for the mean coverage for a can of paint. Test the hypotheses
+<span class="math display">\[H_0:\mu = 37\qquad\mbox{and}\qquad
+H_A:\mu\neq 37\]</span> assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<p>Student’s <span class="math inline">\(t\)</span> distribution is more
+reasonable (and conservative) to use when computing confidence intervals
+or performing hypothesis testing on small samples. To do this we note
+that the sampling density of the quantity <span
+class="math display">\[t=\frac{\sqrt{n}(\bar{x}-\mu)}{s}\sim
+t_{\nu}\]</span> Thus for the hypotheses <span
+class="math display">\[H_0: \mu=\mu_0\qquad\mbox{and}\qquad H_A:\mu\neq
+\mu_0\]</span> we would reject the null hypothesis if the test statistic
+<span
+class="math display">\[t=\left|\frac{\sqrt{n}(\bar{x}-\mu_0)}{s}\right|
+&gt;t_{\nu,\alpha/2}\]</span> where <span
+class="math inline">\(t_{\nu,\alpha/2}\)</span> is a critical value
+computed using statistical software or tables such that <span
+class="math display">\[Pr(t&gt;t_{\nu,\alpha/2}&gt;\alpha/2).\]</span>
+Similarly, a small-sample confidence interval can be computed as <span
+class="math display">\[
+\bar{x}\pm t_{\nu,\alpha/2}\frac{s}{\sqrt{n}}.
+\]</span></p>
+<p>See the <a href="chap9.html#students-t-distribution-table">table</a>
+attached for values of <span
+class="math inline">\(t_{\nu,\alpha/2}\)</span> or use the
+<code>R</code> command <code>qt()</code>. These can be used to find
+critical values of <span class="math inline">\(t\)</span> for hypothesis
+testing and confidence intervals. To use this table find critical values
+by finding the row corresponding to <span
+class="math inline">\(\nu\)</span>, the degrees of freedom required, and
+then read across to the column corresponding to the critical value based
+on the confidence level or the Type I Error Rate. Note that in the case
+of single-sided hypotheses, the critical value for the test statistic is
+<span class="math inline">\(t_{\nu,\alpha}\)</span>.</p>
+<div class="sidenote">
+<p><strong>Example: Synthetic Diamonds</strong><br />
+A new process for producing synthetic diamonds is only profitable if the
+average weight of the diamonds produced is greater than 0.5 carat. Six
+samples from the new process are created weighing: <span
+class="math inline">\((0.46,0.61,0.52,0.48,0.57, 0.54)\)</span> carats.
+Perform a hypothesis test of the hypotheses <span
+class="math display">\[H_0:\mu\leq 0.5\qquad\mbox{and}\qquad
+H_A:\mu&gt;0.5\]</span> assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<p>Assume that we are performing a hypothesis test of <span
+class="math display">\[
+H_0:\mu =\mu_0\qquad\mbox{and}\qquad H_A:\mu\neq\mu_0
+\]</span> at a Type I error Rate of <span class="math inline">\(\alpha =
+0.05\)</span> and based on a sample size of <span
+class="math inline">\(12\)</span>, resulting in <span
+class="math inline">\(\nu=11\)</span> degrees of freedom. This is a
+two-sided test. So, looking at the row corresponding to <span
+class="math inline">\(\nu=11\)</span>, read over to the column
+corresponding to the column for <span
+class="math inline">\(t_{0.975}\)</span> and we find the entry <span
+class="math inline">\(2.201\)</span>.</p>
+<div class="boxed">
+<p><strong>Using the <span
+class="math inline">\(t\)</span>-table</strong><br />
+Assume that we want to compute a <span
+class="math inline">\(90\%\)</span> confidence interval based on a
+sample size of <span class="math inline">\(17\)</span>, or <span
+class="math inline">\(\nu=16\)</span> degrees of freedom. Find the row
+corresponding to <span class="math inline">\(\nu=16\)</span> and read
+across to the column corresponding to the <span
+class="math inline">\(90\%\)</span> Confidence Level, and find the entry
+<span class="math inline">\(1.746\)</span>.</p>
+<p>Or using <code>Python</code></p>
+<pre class="python"><code>scipy.stats.t.ppf(0.95,16)
+#&gt; 1.74588367627624</code></pre>
+<p>Why did we put <span class="math inline">\(0.95\)</span> in
+<code>scipy.stats.t.ppf()</code>? Because the table and
+<code>scipy.stats.t.ppf()</code> give us <span
+class="math inline">\(Pr(Z\leq Z_{\alpha})\)</span> Since we want a
+confidence interval which is defined in terms of <span
+class="math inline">\(Z_{\alpha/2}\)</span> we have make the adjustment.
+For a <span class="math inline">\(90\%\)</span> confidence interval we
+look at the <span class="math inline">\(0.95\)</span> column, and for a
+<span class="math inline">\(95\%\)</span> confidence interval we look at
+the <span class="math inline">\(0.975\)</span> column etc.</p>
+</div>
+<p>The evaluation and interpretation of the small sample test statistics
+and confidence intervals is identical to that of the large sample
+versions. The only added difficulty in computation is the added step of
+computing the value <span class="math inline">\(\nu\)</span> and finding
+the corresponding critical value. Like the case of assuming a Gaussian
+distribution as the sampling distribution for large samples, the use of
+Student’s <span class="math inline">\(t\)</span> distribution for small
+samples relies on the assumption that the samples were drawn at random.
+In the case of <em>exact</em> inference, the <span
+class="math inline">\(t\)</span> distribution depends on the data being
+generated from a Gaussian distribution. This may seem overly
+restrictive, but note that this is only required for an exact match. In
+general the <span class="math inline">\(t\)</span> statistic is very
+<strong>robust</strong> meaning that while not exact in all cases, as
+long as the data are generated from a uni-modal and roughly symmetric
+distribution inferences based on the approximation is reliable and
+relatively accurate. In general, it is safe to assume that except in the
+extreme cases, the use of Student’s <span
+class="math inline">\(t\)</span> distribution is accurate and reliable,
+making it one of the most widely used tool for statistical
+inference.</p>
+<div id="example-synthetic-diamonds"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Synthetic Diamonds</h3>
+<p>A new process for producing synthetic diamonds is only profitable if
+the average weight of the diamonds produced is greater than 0.5 carat.
+Six samples from the new process are created weighing: <span
+class="math inline">\((0.46,0.61,0.52,0.48,0.57, 0.54)\)</span> carats.
+Perform a hypothesis test of the hypotheses <span
+class="math display">\[
+H_0:\mu\leq 0.5\qquad\mbox{and}\qquad H_A:\mu&gt;0.5
+\]</span> assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div id="solution-12" class="section level4">
+<h4>Solution</h4>
+<p>We are given the following information:</p>
+<p><span class="math display">\[
+\begin{align}
+x &amp; = 0.46, 0.61, 0.52, 0.48, 0.57, 0.54 \\
+n &amp; = 6 \\
+\bar{x} &amp; = 0.53 \\
+s &amp; = 0.05
+\end{align}
+\]</span> and the hypotheses are <span class="math display">\[
+H_0:\mu\leq 0.5\qquad\mbox{and}\qquad H_A:\mu&gt;0.5
+\]</span> thus we would reject if our test statistic <span
+class="math display">\[
+T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span> is greater than <span
+class="math inline">\(t_{\nu,1-\alpha}\)</span> where <span
+class="math inline">\(\alpha = 0.05\)</span>. From the <a
+href="chap9.html#students-t-distribution-table">table</a> we see that
+this critical value is <span class="math inline">\(t_{5,0.95}
+=2.015\)</span>. <span class="math display">\[
+T = 1.441 &lt; 2.015
+\]</span> so we fail to reject the null hypothesis.</p>
+</div>
+<div id="code-12" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x  =  numpy.array([0.46,0.61,0.52,0.48,0.57, 0.54])
+n  =  x.size
+xbar  =  numpy.mean(x)
+s  =  numpy.std(x)
+nu  =  n-1
+T_test  =  (xbar - 0.5)/(s/numpy.sqrt(n))
+
+h_test  =  T_test&gt;scipy.stats.t.ppf(0.95,df = 5)
+
+h_test
+#&gt; False</code></pre>
+<p>Because <code>h_test</code> is <code>False</code> we fail to reject
+the null hypothesis that the average weight of synthetic diamonds
+produced by this process is less than or equal to <span
+class="math inline">\(0.5\)</span> carats.</p>
+</div>
+<div id="plots" class="section level4">
+<h4>Plots</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-24-1.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-24-2.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video-1" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 640px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/bc903b21-f8ed-47d9-8af2-01fd7ec5a733?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="example-paint-coverage"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Paint Coverage</h3>
+<p>House paint is sold in containers labelling the coverage and drying
+time for a single coat of paint. One manufacturer’s packaging claims
+that a four-litre can of paint will cover 37 square metres. To test
+this, ten cans of paint are drawn at random and ten identical surfaces
+are prepared and painted using the cans of paint and the same methods.
+The resulting coverage is measured for each can of paint:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center">28.9</td>
+<td align="center">28.9</td>
+<td align="center">38.3</td>
+<td align="center">34.2</td>
+<td align="center">41.5</td>
+</tr>
+<tr class="even">
+<td align="center">34.9</td>
+<td align="center">28.2</td>
+<td align="center">38.1</td>
+<td align="center">33.9</td>
+<td align="center">32.5</td>
+</tr>
+</tbody>
+</table>
+<p>Compute the <span class="math inline">\(95\%\)</span> confidence
+interval for the mean coverage for a can of paint. Test the hypotheses
+<span class="math display">\[
+H_0:\mu = 37\qquad\mbox{and}\qquad H_A:\mu\neq 37
+\]</span> assume a Type I error rate of <span
+class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div id="solution-13" class="section level4">
+<h4>Solution</h4>
+<p>We are given the following information:</p>
+<p><span class="math display">\[
+\begin{align}
+x &amp; = 28.9, 28.9, 38.3, 34.2, 41.5, 34.9, 28.2, 38.1, 33.9, 32.5 \\
+n &amp; = 10 \\
+\bar{x} &amp; = 33.94 \\
+s &amp; = 4.25
+\end{align}
+\]</span> and the hypotheses are <span class="math display">\[
+H_0:\mu = 37\qquad\mbox{and}\qquad H_A:\mu\neq 37
+\]</span> thus we would reject if our test statistic <span
+class="math display">\[
+T = \frac{\bar{x}-\mu_0}{s/\sqrt{n}}
+\]</span> is greater than <span
+class="math inline">\(t_{\nu,1-\alpha/2}\)</span> where <span
+class="math inline">\(\alpha = 0.05\)</span>. From the <a
+href="chap9.html#students-t-distribution-table">table</a> we see that
+this critical value is <span class="math inline">\(t_{9,0.975}
+=2.262\)</span>. <span class="math display">\[
+T = | -2.279 | &lt; 2.262
+\]</span> so we fail to reject the null hypothesis.</p>
+</div>
+<div id="code-13" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x  =  numpy.array([28.9, 28.9, 38.3, 34.2, 41.5, 34.9, 28.2, 38.1, 33.9, 32.5])
+n  =  x.size
+xbar  =  numpy.mean(x)
+s  =  numpy.std(x)
+nu  =  n-1
+m0  =  37
+T_test  =  (xbar - mu0)/(s/numpy.sqrt(n))
+
+h_test  =  T_test&gt;scipy.stats.t.ppf(0.975,df = 5)
+
+h_test
+#&gt; False</code></pre>
+<p>Because <code>h_test</code> is <code>FALSE</code> we fail to reject
+the null hypothesis that the average weight of synthetic diamonds
+produced by this process is less than or equal to <span
+class="math inline">\(0.5\)</span> carats.</p>
+</div>
+<div id="plots-1" class="section level4">
+<h4>Plots</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-27-5.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-27-6.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video-2" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/bc903b21-f8ed-47d9-8af2-01fd7ec5a733?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div
+id="inference-about-the-difference-in-population-means-for-small-samples"
+class="section level2">
+<h2>Inference About the Difference in Population Means for Small
+Samples</h2>
+<div class="sidenote">
+<p><strong>Example: On-line versus In-person Classes</strong> A unit can
+be taken either attending lecture in-person or by participating in
+on-line sessions. In order to test the difference between academic
+outcomes for students attending on-line lectures versus in-person
+lectures students in each group take the same exam. Scores out of 45 are
+recorded for <span class="math inline">\(n_1=n_2=9\)</span>
+students.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">On-line</th>
+<th align="center">In-person</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">32</td>
+<td align="center">35</td>
+</tr>
+<tr class="even">
+<td align="left">37</td>
+<td align="center">31</td>
+</tr>
+<tr class="odd">
+<td align="left">35</td>
+<td align="center">29</td>
+</tr>
+<tr class="even">
+<td align="left">28</td>
+<td align="center">25</td>
+</tr>
+<tr class="odd">
+<td align="left">41</td>
+<td align="center">34</td>
+</tr>
+<tr class="even">
+<td align="left">44</td>
+<td align="center">40</td>
+</tr>
+<tr class="odd">
+<td align="left">35</td>
+<td align="center">27</td>
+</tr>
+<tr class="even">
+<td align="left">31</td>
+<td align="center">32</td>
+</tr>
+<tr class="odd">
+<td align="left">34</td>
+<td align="center">31</td>
+</tr>
+</tbody>
+</table>
+<p>Let <span class="math inline">\(\mu_1\)</span> and <span
+class="math inline">\(\mu_2\)</span> be the mean scores for the on-line
+group and the in-person group respectively, to examine the difference
+between outcomes for the two teaching approaches test the hypotheses
+<span class="math display">\[H_0: \mu_1=\mu_2\qquad\mbox{and}\qquad
+H_A:\mu_1\neq\mu_2\]</span> or <span class="math display">\[H_0:
+\mu_1-\mu_2=0\qquad\mbox{and}\qquad H_A:\mu_1-\mu_2\neq 0.\]</span></p>
+<p>Compute the <span class="math inline">\(90\%\)</span> confidence
+interval for the difference between the mean scores for the on-line and
+in-person classes.</p>
+</div>
+<p>In many cases the differences in population means are also of
+interest, and we have to make adjustments to the test procedure based on
+small sample sizes. Under the assumptions for the Gaussian distribution
+of sample statistics based on large samples we could show that the
+statistic for testing the difference between population means <span
+class="math display">\[\frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{\sigma^2_1}{n_1}+\frac{\sigma^2_2}{n_2}}}\approx
+\frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}}\]</span>
+follows a Gaussian distribution. Unfortunately, when the sample sizes
+are small, this property holds only when <span
+class="math inline">\(\sigma^2_1=\sigma_2^2\)</span> or <span
+class="math display">\[\sqrt{\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}}=\sqrt{\sigma^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}.\]</span>
+This means that by extension the two sample variances should be equal,
+yielding our test statistic <span
+class="math display">\[t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}.\]</span>
+In this case it can be shown that the resulting test statistic does
+follow Student’s <span class="math inline">\(t\)</span> distribution. In
+most cases the two sample variances are not equal and we want to use the
+both of them to estimate the common or <em>pooled</em> variance <span
+class="math inline">\(s_p^2\)</span>, the weighted average</p>
+<div class="boxed">
+<p><strong>Note: for the two-sample <span
+class="math inline">\(t\)</span>-test the degrees of freedom</strong>
+<span class="math display">\[\nu=n_1+n_2-2\]</span>.</p>
+</div>
+<p><span
+class="math display">\[s^2_{p}=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}\]</span>
+resulting in the test statistic <span
+class="math display">\[t=\frac{\bar{x}_1-\bar{x}_2}{\sqrt{s_{p}^2\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}.\]</span></p>
+<div id="example-on-line-versus-in-person-classes"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: On-line versus In-person
+Classes</h3>
+<p>A unit can be taken either attending lecture in-person or by
+participating in on-line sessions. In order to test the difference
+between academic outcomes for students attending on-line lectures versus
+in-person lectures students in each group take the same exam. Scores out
+of 45 are recorded for <span class="math inline">\(n_1=n_2=9\)</span>
+students.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">On-line</th>
+<th align="center">In-person</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">32</td>
+<td align="center">35</td>
+</tr>
+<tr class="even">
+<td align="left">37</td>
+<td align="center">31</td>
+</tr>
+<tr class="odd">
+<td align="left">35</td>
+<td align="center">29</td>
+</tr>
+<tr class="even">
+<td align="left">28</td>
+<td align="center">25</td>
+</tr>
+<tr class="odd">
+<td align="left">41</td>
+<td align="center">34</td>
+</tr>
+<tr class="even">
+<td align="left">44</td>
+<td align="center">40</td>
+</tr>
+<tr class="odd">
+<td align="left">35</td>
+<td align="center">27</td>
+</tr>
+<tr class="even">
+<td align="left">31</td>
+<td align="center">32</td>
+</tr>
+<tr class="odd">
+<td align="left">34</td>
+<td align="center">31</td>
+</tr>
+</tbody>
+</table>
+<p>Let <span class="math inline">\(\mu_1\)</span> and <span
+class="math inline">\(\mu_2\)</span> be the mean scores for the on-line
+group and the in-person group respectively, to examine the difference
+between outcomes for the two teaching approaches test the hypotheses
+<span class="math display">\[H_0: \mu_1=\mu_2\qquad\mbox{and}\qquad
+H_A:\mu_1\neq\mu_2\]</span> or <span class="math display">\[H_0:
+\mu_1-\mu_2=0\qquad\mbox{and}\qquad H_A:\mu_1-\mu_2\neq 0.\]</span></p>
+<p>Compute the <span class="math inline">\(90\%\)</span> confidence
+interval for the difference between the mean scores for the on-line and
+in-person classes.</p>
+<div id="solution-14" class="section level4">
+<h4>Solution</h4>
+<p>We are given the following information:</p>
+<p><span class="math display">\[
+\begin{align}
+x &amp; = 32, 37, 35, 28, 41, 44, 35, 31, 34 \\
+y &amp; = 35, 31, 29, 25, 34, 40, 27, 32, 31 \\
+n_x &amp; = 9 \\
+n_y &amp; = 9 \\
+\bar{x} &amp; = 35.22 \\
+\bar{y} &amp; = 31.56 \\
+s^2_x &amp; = 24.44\\
+s^2_y &amp; = 20.03
+\end{align}
+\]</span> and the hypotheses are <span class="math display">\[
+H_0:\mu_x-\mu_y = 0\qquad\mbox{and}\qquad H_A:\mu_x-\mu_y\neq 0
+\]</span> thus the <span class="math inline">\(90\%\)</span> <span
+class="math display">\[
+T =
+\frac{\bar{x}-\bar{y}}{\sqrt{s^2_p\left(\frac{1}{n_x}+\frac{1}{n_y}\right)}}
+\]</span> is greater than <span
+class="math inline">\(t_{\nu,1-\alpha/2}\)</span> where <span
+class="math inline">\(\alpha = 0.05\)</span>. From the <a
+href="chap9.html#students-t-distribution-table">table</a> we see that
+this critical value is <span class="math inline">\(t_{16,0.975}
+=2.12\)</span>. <span class="math display">\[
+T = | 1.649 | &lt; 2.12
+\]</span> so we fail to reject the null hypothesis.</p>
+</div>
+<div id="code-14" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x  =  numpy.array([32,37,35,28,41,44,35,31,34])
+y  =  numpy.array([35,31,29,25,34,40,27,32,31])
+
+xbar  =  numpy.mean(x)
+ybar  =  numpy.mean(y)
+
+nx  =  x.size
+ny  =  y.size
+
+varx  =  numpy.var(x)
+vary  =  numpy.var(y)
+
+varp  =  ((nx-1)*varx + (ny-1)*vary)/(nx+ny-2)
+
+T_test  =  (xbar-ybar)/numpy.sqrt(varp*(1/nx+1/ny))
+T_critical  = scipy.stats.t.ppf(1-(alpha/2),df = 16)
+
+numpy.abs(T_test) &gt; scipy.stats.t.ppf(0.975,df = 16) 
+  
+#&gt; False</code></pre>
+</div>
+<div id="plot-4" class="section level4">
+<h4>Plot</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-30-1.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-30-2.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video-3" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/4d924969-750f-45e2-8901-0c460c806e60?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="unequal-variances-and-correction-to-the-degrees-of-freedom"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Unequal Variances and Correction to the Degrees
+of Freedom</h3>
+<div class="sidenote">
+<p><strong>Example: Unequal Variances</strong><br />
+Data are collected to measure the impact strength of two different
+packaging materials</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">A</th>
+<th align="center">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.25</td>
+<td align="center">0.89</td>
+</tr>
+<tr class="even">
+<td align="center">1.16</td>
+<td align="center">1.01</td>
+</tr>
+<tr class="odd">
+<td align="center">1.33</td>
+<td align="center">0.97</td>
+</tr>
+<tr class="even">
+<td align="center">1.15</td>
+<td align="center">0.95</td>
+</tr>
+<tr class="odd">
+<td align="center">1.23</td>
+<td align="center">0.94</td>
+</tr>
+<tr class="even">
+<td align="center">1.20</td>
+<td align="center">1.02</td>
+</tr>
+<tr class="odd">
+<td align="center">1.32</td>
+<td align="center">0.98</td>
+</tr>
+<tr class="even">
+<td align="center">1.28</td>
+<td align="center">1.06</td>
+</tr>
+<tr class="odd">
+<td align="center">1.21</td>
+<td align="center">0.98</td>
+</tr>
+</tbody>
+</table>
+<p>Is there a difference between the strengths of the two packing
+materials? Test this using the appropriate hypotheses at the Type I
+Error Rate of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+</div>
+<p>Note that the use of the pooled variance is predicated on the idea
+that the two population variances are equal (despite differences in the
+sample variances). If the population variances differ greatly, there is
+an alternative procedure for estimation and testing using an
+<em>approximate</em> <span
+class="math inline">\(t\)</span>-distribution. As a rule of thumb, this
+procedure is used when <span class="math display">\[\frac{\mbox{Large
+}s^2}{\mbox{Smaller }s^2}&gt;3.\]</span> In this case the use of the
+pooled variance is inappropriate and each population variance is
+estimated by its sample variance, resulting in the familiar test
+statistic <span class="math display">\[t =
+\frac{(\bar{x}_1-\bar{x}_2)-\Delta_0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}\]</span>
+(note that <span class="math inline">\(\Delta_0\)</span> is typically
+<span class="math inline">\(0\)</span>). This sample statistic is
+familiar but, when the sample sizes are small, the degree of freedom is
+adjusted to account for the unequal variances. <span
+class="math display">\[\nu\approx\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1}+\frac{(s_2^2/n_2)^2}{n_2-1}}\]</span>
+because this is typically an non-integer number, the result is truncated
+(not rounded) and used as the degree of freedom <span
+class="math inline">\(\nu\)</span> for finding the critical value of
+<span class="math inline">\(t\)</span> for the hypothesis test or
+confidence interval.</p>
+</div>
+<div id="example-unequal-variances"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Unequal Variances</h3>
+<p>Data are collected to measure the impact strength of two different
+packaging materials</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">A</th>
+<th align="center">B</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1.25</td>
+<td align="center">0.89</td>
+</tr>
+<tr class="even">
+<td align="center">1.16</td>
+<td align="center">1.01</td>
+</tr>
+<tr class="odd">
+<td align="center">1.33</td>
+<td align="center">0.97</td>
+</tr>
+<tr class="even">
+<td align="center">1.15</td>
+<td align="center">0.95</td>
+</tr>
+<tr class="odd">
+<td align="center">1.23</td>
+<td align="center">0.94</td>
+</tr>
+<tr class="even">
+<td align="center">1.20</td>
+<td align="center">1.02</td>
+</tr>
+<tr class="odd">
+<td align="center">1.32</td>
+<td align="center">0.98</td>
+</tr>
+<tr class="even">
+<td align="center">1.28</td>
+<td align="center">1.06</td>
+</tr>
+<tr class="odd">
+<td align="center">1.21</td>
+<td align="center">0.98</td>
+</tr>
+</tbody>
+</table>
+<p>Is there a difference between the strengths of the two packing
+materials? Test this using the appropriate hypotheses at the Type I
+Error Rate of <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<div id="solution-15" class="section level4">
+<h4>Solution</h4>
+<p>The hypotheses are <span class="math display">\[
+H_0: \mu_1=\mu_2\quad vs\quad H_A: \mu_1\neq \mu_2
+\]</span> so the test statistics will be <span class="math display">\[
+T =
+\frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}.
+\]</span> given <span class="math display">\[
+\begin{align}
+x_1&amp;=1.25, 1.16, 1.33, 1.15, 1.23, 1.2, 1.32, 1.28, 1.21\\
+x_2&amp;=0.89, 1.01, 0.97, 0.95, 0.94, 1.02, 0.98, 1.06, 0.98\\
+s_1^2&amp;=0\\
+s_2^2&amp;=0\\
+\nu&amp;=14.997\approx 15
+\end{align}
+\]</span> <span class="math display">\[
+\begin{align}
+T &amp;=
+\frac{\bar{x}_1-\bar{x}_2}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}\\
+&amp;= \frac{1.24 - 0.98}
+{\sqrt{\frac{0.0037}{9}+\frac{0.0022}{9}}}\\
+&amp;=\frac{0.26}{\sqrt{4.0987654\times 10^{-4}+2.4142661\times
+10^{-4}}}\\
+&amp; =\frac{0.26}{\sqrt{6.5130316\times 10^{-4}}}\\
+&amp;=\frac{0.26}{0.0255206}\\
+&amp; = 10.14
+\end{align}
+\]</span> and the critical value for <span
+class="math inline">\(t\)</span> is <span
+class="math inline">\(2.13\)</span>. Thus we would reject the null
+hypothesis and conclude that there is a difference between the two
+materials.</p>
+</div>
+<div id="code-15" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>x1  =  numpy.array([1.25,1.16,1.33,1.15,1.23,1.20,1.32,1.28,1.21])
+x2  =  numpy.array([0.89,1.01,0.97,0.95,0.94,1.02,0.98,1.06,0.98])
+xbar1  =  numpy.mean(x1)
+xbar2  =  numpy.mean(x2)
+
+s1  =  numpy.var(x1)
+s2  =  numpy.var(x2)
+
+n1  =  x1.size
+n2  =  x2.size
+
+num  =  (s1/n1+s2/n2)**2
+den  =  (s1/n1)**2/(n1-1)+(s2/n2)**2/(n2-1)
+nu  =  numpy.ceil(num/den)
+
+test_statistic  =  (xbar1-xbar2)/numpy.sqrt(s1/n1+s2/n2)
+
+t_crit  =  scipy.stats.t.ppf(0.975,nu)
+
+test_statistic&gt;t_crit
+
+##  Or use the function ttest_ind() that utomatically performs the t.test and can account for
+##  unequal variances.
+#&gt; True
+scipy.stats.ttest_ind(x1,x2,equal_var=False)
+
+#&gt; Ttest_indResult(statistic=9.564131954889966, pvalue=8.968639218907196e-08)</code></pre>
+</div>
+<div id="plot-5" class="section level4">
+<h4>Plot</h4>
+<p><img src="chap4_files/figure-html/unnamed-chunk-33-5.png" width="614" style="display: block; margin: auto;" /><img src="chap4_files/figure-html/unnamed-chunk-33-6.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video-4" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/5873d689-26cc-4d1b-959f-587f8f17b09a?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div
+id="inference-about-the-difference-in-population-means-for-small-samples-paired-differences"
+class="section level2">
+<h2>Inference About the Difference in Population Means for Small
+Samples: Paired Differences</h2>
+<p>The procedures outlined are appropriate when samples are
+<em>independent</em>, but in many cases we want to compare two
+<em>dependent</em> samples. To illustrate the difference in these
+approaches consider the following example.</p>
+<div class="boxed">
+<p><strong>Example: Tyre Wear</strong><br />
+To test the difference between two types of tyre (Type A and Type B),
+one tyre of each type is selected at random and then fitted to the rear
+wheels of one of five cars. Each car is driven for a specified number of
+kilometres and the observed wear is measured.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Car</th>
+<th align="left">Tyre A Wear</th>
+<th align="left">Tyre B Wear</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="left">10.6</td>
+<td align="left">10.2</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="left">9.8</td>
+<td align="left">9.4</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="left">12.3</td>
+<td align="left">11.8</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="left">9.7</td>
+<td align="left">9.1</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="left">8.8</td>
+<td align="left">8.3</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="left"><span class="math inline">\(\bar{x}_1 =
+10.24\)</span></td>
+<td align="left"><span class="math inline">\(\bar{x}_2 =
+9.76\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"></td>
+<td align="left"><span class="math inline">\(s_1 = 1.316\)</span></td>
+<td align="left"><span class="math inline">\(s_2 = 1.328\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>If we treat these samples as independent and perform a two-sample
+<span class="math inline">\(t\)</span> test of the hypotheses <span
+class="math display">\[H_0: \mu_1-\mu_2 = 0\qquad\mbox{and}\qquad
+H_A:\mu_1-\mu_2\neq 0\]</span> the resulting test statistic is <span
+class="math display">\[t =
+\frac{(\bar{x}_1-\bar{x}_2)-0}{\sqrt{s^2_p\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}}\]</span>
+where <span
+class="math display">\[s_p^2=\frac{(4)(1.316)^2+(4)(1.328)^2}{8}=1.748\]</span>
+<span class="math display">\[t =
+\frac{(10.24-9.76)}{\sqrt{1.748\left(\frac{1}{5}+\frac{1}{5}\right)}}=0.57\]</span>
+Assuming a Type I Error Rate of <span class="math inline">\(\alpha =
+0.05\)</span>, the critical value for testing our hypothesis is <span
+class="math inline">\(t_{8, 0.975}\)</span> which we can find from the
+table (or from <code>qt(0.975,8)</code>) as <span
+class="math inline">\(2.306\)</span>. As <span
+class="math inline">\(|0.57|&lt;2.306\)</span> we would fail to reject
+the hypothesis and conclude that there is insufficient evidence of a
+difference between the two types of tyre.</p>
+<p>However we notice that every measurement for Tyre A is greater than
+the corresponding measurement for Tyre B. And recall that each
+measurement is for the same car, so for each car, Tyre A shows greater
+wear than for Type B. This cast some suspicion on the results of our
+independent two-sample <span class="math inline">\(t\)</span> test, and
+seems to indicate that there is a difference between the two types of
+tyre.</p>
+<p>It turns out that there is an “error” in the experimental design. If
+the experimenter had treated each wheel as a unit for random allocation,
+that is allocated tyres to each of the ten wheels (five cars, two wheels
+each) randomly (so that for instance a car might have two of the same
+type of tyres), then the two samples would be independent. As it stands,
+because the experimenter allocated one type of tyre to each car the
+results are <em>paired</em> or <em>matched</em>. In this case the data
+that should be considered is the <em>difference</em> in wear patterns
+between the tyres on each car. This is referred to a paired-difference
+or matched difference design. In this case the data of interest are:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Car</th>
+<th align="center">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">1</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="even">
+<td align="center">2</td>
+<td align="center">0.4</td>
+</tr>
+<tr class="odd">
+<td align="center">3</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="even">
+<td align="center">4</td>
+<td align="center">0.6</td>
+</tr>
+<tr class="odd">
+<td align="center">5</td>
+<td align="center">0.5</td>
+</tr>
+<tr class="even">
+<td align="center"></td>
+<td align="center"><span class="math inline">\(\bar{d} =
+0.48\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>and <span class="math inline">\(s^2_d = 0.007\)</span> If <span
+class="math inline">\(\mu_d\)</span> is the population difference in
+tyre wear, the hypotheses for testing are: <span
+class="math display">\[H_0:\mu_d = 0\qquad\mbox{and}\qquad H_A:\mu_d\neq
+0\]</span> with the resulting test statistic <span
+class="math display">\[t =
+\frac{\bar{d}-0}{s_d/\sqrt{n}}=\frac{0.48}{0.837/\sqrt{5}}=12.8\]</span>
+assuming a Type I Error Rate of <span class="math inline">\(\alpha =
+0.05\)</span> the critical value for <span
+class="math inline">\(\nu=4\)</span> is <span
+class="math inline">\(2.776\)</span>, therefore because <span
+class="math inline">\(12.8&gt;2.776\)</span> we would reject the null
+hypothesis and conclude that there is a difference in the wear for the
+two types of tyres.</p>
+</div>
+<p>Note that a similar procedure can be used for computing a confidence
+interval <span class="math display">\[\bar{d}\pm
+t_{\nu,\alpha/2}\frac{s_d}{\sqrt{n}}.\]</span></p>
+<p>This is an important example of how simple changes to an experiment
+and violating assumptions can lead to very misleading results.</p>
+</div>
+<div id="students-t-distribution-table" class="section level2 boxed">
+<h2>Student’s <em>t</em> distribution table</h2>
+<div class="table-narrow">
+<table class=" lightable-paper table table-striped" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;">
+<caption>
+Student’s t-distribution
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;" colspan="1">
+</th>
+<th style="padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4">
+<div style="border-bottom: 1px solid #00000020; padding-bottom: 5px; ">
+<span class="math inline">\(Pr(Z \leq Z_{\alpha})\)</span>
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:right;">
+df
+</th>
+<th style="text-align:right;">
+0.95
+</th>
+<th style="text-align:right;">
+0.975
+</th>
+<th style="text-align:right;">
+0.99
+</th>
+<th style="text-align:right;">
+0.995
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2.920
+</td>
+<td style="text-align:right;">
+4.303
+</td>
+<td style="text-align:right;">
+6.965
+</td>
+<td style="text-align:right;">
+9.925
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2.353
+</td>
+<td style="text-align:right;">
+3.182
+</td>
+<td style="text-align:right;">
+4.541
+</td>
+<td style="text-align:right;">
+5.841
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2.132
+</td>
+<td style="text-align:right;">
+2.776
+</td>
+<td style="text-align:right;">
+3.747
+</td>
+<td style="text-align:right;">
+4.604
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2.015
+</td>
+<td style="text-align:right;">
+2.571
+</td>
+<td style="text-align:right;">
+3.365
+</td>
+<td style="text-align:right;">
+4.032
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1.943
+</td>
+<td style="text-align:right;">
+2.447
+</td>
+<td style="text-align:right;">
+3.143
+</td>
+<td style="text-align:right;">
+3.707
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1.895
+</td>
+<td style="text-align:right;">
+2.365
+</td>
+<td style="text-align:right;">
+2.998
+</td>
+<td style="text-align:right;">
+3.499
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+1.860
+</td>
+<td style="text-align:right;">
+2.306
+</td>
+<td style="text-align:right;">
+2.896
+</td>
+<td style="text-align:right;">
+3.355
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1.833
+</td>
+<td style="text-align:right;">
+2.262
+</td>
+<td style="text-align:right;">
+2.821
+</td>
+<td style="text-align:right;">
+3.250
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1.812
+</td>
+<td style="text-align:right;">
+2.228
+</td>
+<td style="text-align:right;">
+2.764
+</td>
+<td style="text-align:right;">
+3.169
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1.796
+</td>
+<td style="text-align:right;">
+2.201
+</td>
+<td style="text-align:right;">
+2.718
+</td>
+<td style="text-align:right;">
+3.106
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+1.782
+</td>
+<td style="text-align:right;">
+2.179
+</td>
+<td style="text-align:right;">
+2.681
+</td>
+<td style="text-align:right;">
+3.055
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+1.771
+</td>
+<td style="text-align:right;">
+2.160
+</td>
+<td style="text-align:right;">
+2.650
+</td>
+<td style="text-align:right;">
+3.012
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+1.761
+</td>
+<td style="text-align:right;">
+2.145
+</td>
+<td style="text-align:right;">
+2.624
+</td>
+<td style="text-align:right;">
+2.977
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+1.753
+</td>
+<td style="text-align:right;">
+2.131
+</td>
+<td style="text-align:right;">
+2.602
+</td>
+<td style="text-align:right;">
+2.947
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+1.746
+</td>
+<td style="text-align:right;">
+2.120
+</td>
+<td style="text-align:right;">
+2.583
+</td>
+<td style="text-align:right;">
+2.921
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+1.740
+</td>
+<td style="text-align:right;">
+2.110
+</td>
+<td style="text-align:right;">
+2.567
+</td>
+<td style="text-align:right;">
+2.898
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+1.734
+</td>
+<td style="text-align:right;">
+2.101
+</td>
+<td style="text-align:right;">
+2.552
+</td>
+<td style="text-align:right;">
+2.878
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+1.729
+</td>
+<td style="text-align:right;">
+2.093
+</td>
+<td style="text-align:right;">
+2.539
+</td>
+<td style="text-align:right;">
+2.861
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+1.725
+</td>
+<td style="text-align:right;">
+2.086
+</td>
+<td style="text-align:right;">
+2.528
+</td>
+<td style="text-align:right;">
+2.845
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+1.721
+</td>
+<td style="text-align:right;">
+2.080
+</td>
+<td style="text-align:right;">
+2.518
+</td>
+<td style="text-align:right;">
+2.831
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+1.717
+</td>
+<td style="text-align:right;">
+2.074
+</td>
+<td style="text-align:right;">
+2.508
+</td>
+<td style="text-align:right;">
+2.819
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+1.714
+</td>
+<td style="text-align:right;">
+2.069
+</td>
+<td style="text-align:right;">
+2.500
+</td>
+<td style="text-align:right;">
+2.807
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+1.711
+</td>
+<td style="text-align:right;">
+2.064
+</td>
+<td style="text-align:right;">
+2.492
+</td>
+<td style="text-align:right;">
+2.797
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+1.708
+</td>
+<td style="text-align:right;">
+2.060
+</td>
+<td style="text-align:right;">
+2.485
+</td>
+<td style="text-align:right;">
+2.787
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+1.706
+</td>
+<td style="text-align:right;">
+2.056
+</td>
+<td style="text-align:right;">
+2.479
+</td>
+<td style="text-align:right;">
+2.779
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+1.703
+</td>
+<td style="text-align:right;">
+2.052
+</td>
+<td style="text-align:right;">
+2.473
+</td>
+<td style="text-align:right;">
+2.771
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+1.701
+</td>
+<td style="text-align:right;">
+2.048
+</td>
+<td style="text-align:right;">
+2.467
+</td>
+<td style="text-align:right;">
+2.763
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+1.699
+</td>
+<td style="text-align:right;">
+2.045
+</td>
+<td style="text-align:right;">
+2.462
+</td>
+<td style="text-align:right;">
+2.756
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+1.697
+</td>
+<td style="text-align:right;">
+2.042
+</td>
+<td style="text-align:right;">
+2.457
+</td>
+<td style="text-align:right;">
+2.750
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+1.696
+</td>
+<td style="text-align:right;">
+2.040
+</td>
+<td style="text-align:right;">
+2.453
+</td>
+<td style="text-align:right;">
+2.744
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+1.694
+</td>
+<td style="text-align:right;">
+2.037
+</td>
+<td style="text-align:right;">
+2.449
+</td>
+<td style="text-align:right;">
+2.738
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+1.692
+</td>
+<td style="text-align:right;">
+2.035
+</td>
+<td style="text-align:right;">
+2.445
+</td>
+<td style="text-align:right;">
+2.733
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+1.691
+</td>
+<td style="text-align:right;">
+2.032
+</td>
+<td style="text-align:right;">
+2.441
+</td>
+<td style="text-align:right;">
+2.728
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+1.690
+</td>
+<td style="text-align:right;">
+2.030
+</td>
+<td style="text-align:right;">
+2.438
+</td>
+<td style="text-align:right;">
+2.724
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+1.688
+</td>
+<td style="text-align:right;">
+2.028
+</td>
+<td style="text-align:right;">
+2.434
+</td>
+<td style="text-align:right;">
+2.719
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+1.687
+</td>
+<td style="text-align:right;">
+2.026
+</td>
+<td style="text-align:right;">
+2.431
+</td>
+<td style="text-align:right;">
+2.715
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+1.686
+</td>
+<td style="text-align:right;">
+2.024
+</td>
+<td style="text-align:right;">
+2.429
+</td>
+<td style="text-align:right;">
+2.712
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+1.685
+</td>
+<td style="text-align:right;">
+2.023
+</td>
+<td style="text-align:right;">
+2.426
+</td>
+<td style="text-align:right;">
+2.708
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+1.684
+</td>
+<td style="text-align:right;">
+2.021
+</td>
+<td style="text-align:right;">
+2.423
+</td>
+<td style="text-align:right;">
+2.704
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+1.683
+</td>
+<td style="text-align:right;">
+2.020
+</td>
+<td style="text-align:right;">
+2.421
+</td>
+<td style="text-align:right;">
+2.701
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+1.682
+</td>
+<td style="text-align:right;">
+2.018
+</td>
+<td style="text-align:right;">
+2.418
+</td>
+<td style="text-align:right;">
+2.698
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+1.681
+</td>
+<td style="text-align:right;">
+2.017
+</td>
+<td style="text-align:right;">
+2.416
+</td>
+<td style="text-align:right;">
+2.695
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+1.680
+</td>
+<td style="text-align:right;">
+2.015
+</td>
+<td style="text-align:right;">
+2.414
+</td>
+<td style="text-align:right;">
+2.692
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+1.679
+</td>
+<td style="text-align:right;">
+2.014
+</td>
+<td style="text-align:right;">
+2.412
+</td>
+<td style="text-align:right;">
+2.690
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+1.679
+</td>
+<td style="text-align:right;">
+2.013
+</td>
+<td style="text-align:right;">
+2.410
+</td>
+<td style="text-align:right;">
+2.687
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+1.678
+</td>
+<td style="text-align:right;">
+2.012
+</td>
+<td style="text-align:right;">
+2.408
+</td>
+<td style="text-align:right;">
+2.685
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+1.677
+</td>
+<td style="text-align:right;">
+2.011
+</td>
+<td style="text-align:right;">
+2.407
+</td>
+<td style="text-align:right;">
+2.682
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+1.677
+</td>
+<td style="text-align:right;">
+2.010
+</td>
+<td style="text-align:right;">
+2.405
+</td>
+<td style="text-align:right;">
+2.680
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+1.676
+</td>
+<td style="text-align:right;">
+2.009
+</td>
+<td style="text-align:right;">
+2.403
+</td>
+<td style="text-align:right;">
+2.678
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+1.675
+</td>
+<td style="text-align:right;">
+2.008
+</td>
+<td style="text-align:right;">
+2.402
+</td>
+<td style="text-align:right;">
+2.676
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+1.675
+</td>
+<td style="text-align:right;">
+2.007
+</td>
+<td style="text-align:right;">
+2.400
+</td>
+<td style="text-align:right;">
+2.674
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+1.674
+</td>
+<td style="text-align:right;">
+2.006
+</td>
+<td style="text-align:right;">
+2.399
+</td>
+<td style="text-align:right;">
+2.672
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+1.674
+</td>
+<td style="text-align:right;">
+2.005
+</td>
+<td style="text-align:right;">
+2.397
+</td>
+<td style="text-align:right;">
+2.670
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+1.673
+</td>
+<td style="text-align:right;">
+2.004
+</td>
+<td style="text-align:right;">
+2.396
+</td>
+<td style="text-align:right;">
+2.668
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+1.673
+</td>
+<td style="text-align:right;">
+2.003
+</td>
+<td style="text-align:right;">
+2.395
+</td>
+<td style="text-align:right;">
+2.667
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+1.672
+</td>
+<td style="text-align:right;">
+2.002
+</td>
+<td style="text-align:right;">
+2.394
+</td>
+<td style="text-align:right;">
+2.665
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+1.672
+</td>
+<td style="text-align:right;">
+2.002
+</td>
+<td style="text-align:right;">
+2.392
+</td>
+<td style="text-align:right;">
+2.663
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+1.671
+</td>
+<td style="text-align:right;">
+2.001
+</td>
+<td style="text-align:right;">
+2.391
+</td>
+<td style="text-align:right;">
+2.662
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+1.671
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+2.390
+</td>
+<td style="text-align:right;">
+2.660
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+1.670
+</td>
+<td style="text-align:right;">
+2.000
+</td>
+<td style="text-align:right;">
+2.389
+</td>
+<td style="text-align:right;">
+2.659
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+1.670
+</td>
+<td style="text-align:right;">
+1.999
+</td>
+<td style="text-align:right;">
+2.388
+</td>
+<td style="text-align:right;">
+2.657
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+1.669
+</td>
+<td style="text-align:right;">
+1.998
+</td>
+<td style="text-align:right;">
+2.387
+</td>
+<td style="text-align:right;">
+2.656
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+64
+</td>
+<td style="text-align:right;">
+1.669
+</td>
+<td style="text-align:right;">
+1.998
+</td>
+<td style="text-align:right;">
+2.386
+</td>
+<td style="text-align:right;">
+2.655
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+1.669
+</td>
+<td style="text-align:right;">
+1.997
+</td>
+<td style="text-align:right;">
+2.385
+</td>
+<td style="text-align:right;">
+2.654
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+1.668
+</td>
+<td style="text-align:right;">
+1.997
+</td>
+<td style="text-align:right;">
+2.384
+</td>
+<td style="text-align:right;">
+2.652
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+1.668
+</td>
+<td style="text-align:right;">
+1.996
+</td>
+<td style="text-align:right;">
+2.383
+</td>
+<td style="text-align:right;">
+2.651
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+1.668
+</td>
+<td style="text-align:right;">
+1.995
+</td>
+<td style="text-align:right;">
+2.382
+</td>
+<td style="text-align:right;">
+2.650
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+1.667
+</td>
+<td style="text-align:right;">
+1.995
+</td>
+<td style="text-align:right;">
+2.382
+</td>
+<td style="text-align:right;">
+2.649
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+1.667
+</td>
+<td style="text-align:right;">
+1.994
+</td>
+<td style="text-align:right;">
+2.381
+</td>
+<td style="text-align:right;">
+2.648
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+1.667
+</td>
+<td style="text-align:right;">
+1.994
+</td>
+<td style="text-align:right;">
+2.380
+</td>
+<td style="text-align:right;">
+2.647
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+72
+</td>
+<td style="text-align:right;">
+1.666
+</td>
+<td style="text-align:right;">
+1.993
+</td>
+<td style="text-align:right;">
+2.379
+</td>
+<td style="text-align:right;">
+2.646
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+73
+</td>
+<td style="text-align:right;">
+1.666
+</td>
+<td style="text-align:right;">
+1.993
+</td>
+<td style="text-align:right;">
+2.379
+</td>
+<td style="text-align:right;">
+2.645
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+1.666
+</td>
+<td style="text-align:right;">
+1.993
+</td>
+<td style="text-align:right;">
+2.378
+</td>
+<td style="text-align:right;">
+2.644
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+1.665
+</td>
+<td style="text-align:right;">
+1.992
+</td>
+<td style="text-align:right;">
+2.377
+</td>
+<td style="text-align:right;">
+2.643
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+1.665
+</td>
+<td style="text-align:right;">
+1.992
+</td>
+<td style="text-align:right;">
+2.376
+</td>
+<td style="text-align:right;">
+2.642
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+1.665
+</td>
+<td style="text-align:right;">
+1.991
+</td>
+<td style="text-align:right;">
+2.376
+</td>
+<td style="text-align:right;">
+2.641
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:right;">
+1.665
+</td>
+<td style="text-align:right;">
+1.991
+</td>
+<td style="text-align:right;">
+2.375
+</td>
+<td style="text-align:right;">
+2.640
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+1.664
+</td>
+<td style="text-align:right;">
+1.990
+</td>
+<td style="text-align:right;">
+2.374
+</td>
+<td style="text-align:right;">
+2.640
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+1.664
+</td>
+<td style="text-align:right;">
+1.990
+</td>
+<td style="text-align:right;">
+2.374
+</td>
+<td style="text-align:right;">
+2.639
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+1.664
+</td>
+<td style="text-align:right;">
+1.990
+</td>
+<td style="text-align:right;">
+2.373
+</td>
+<td style="text-align:right;">
+2.638
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+1.664
+</td>
+<td style="text-align:right;">
+1.989
+</td>
+<td style="text-align:right;">
+2.373
+</td>
+<td style="text-align:right;">
+2.637
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+1.663
+</td>
+<td style="text-align:right;">
+1.989
+</td>
+<td style="text-align:right;">
+2.372
+</td>
+<td style="text-align:right;">
+2.636
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+1.663
+</td>
+<td style="text-align:right;">
+1.989
+</td>
+<td style="text-align:right;">
+2.372
+</td>
+<td style="text-align:right;">
+2.636
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+85
+</td>
+<td style="text-align:right;">
+1.663
+</td>
+<td style="text-align:right;">
+1.988
+</td>
+<td style="text-align:right;">
+2.371
+</td>
+<td style="text-align:right;">
+2.635
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+1.663
+</td>
+<td style="text-align:right;">
+1.988
+</td>
+<td style="text-align:right;">
+2.370
+</td>
+<td style="text-align:right;">
+2.634
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+1.663
+</td>
+<td style="text-align:right;">
+1.988
+</td>
+<td style="text-align:right;">
+2.370
+</td>
+<td style="text-align:right;">
+2.634
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+1.662
+</td>
+<td style="text-align:right;">
+1.987
+</td>
+<td style="text-align:right;">
+2.369
+</td>
+<td style="text-align:right;">
+2.633
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+1.662
+</td>
+<td style="text-align:right;">
+1.987
+</td>
+<td style="text-align:right;">
+2.369
+</td>
+<td style="text-align:right;">
+2.632
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:right;">
+1.662
+</td>
+<td style="text-align:right;">
+1.987
+</td>
+<td style="text-align:right;">
+2.368
+</td>
+<td style="text-align:right;">
+2.632
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+91
+</td>
+<td style="text-align:right;">
+1.662
+</td>
+<td style="text-align:right;">
+1.986
+</td>
+<td style="text-align:right;">
+2.368
+</td>
+<td style="text-align:right;">
+2.631
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+1.662
+</td>
+<td style="text-align:right;">
+1.986
+</td>
+<td style="text-align:right;">
+2.368
+</td>
+<td style="text-align:right;">
+2.630
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.986
+</td>
+<td style="text-align:right;">
+2.367
+</td>
+<td style="text-align:right;">
+2.630
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.986
+</td>
+<td style="text-align:right;">
+2.367
+</td>
+<td style="text-align:right;">
+2.629
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.985
+</td>
+<td style="text-align:right;">
+2.366
+</td>
+<td style="text-align:right;">
+2.629
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.985
+</td>
+<td style="text-align:right;">
+2.366
+</td>
+<td style="text-align:right;">
+2.628
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.985
+</td>
+<td style="text-align:right;">
+2.365
+</td>
+<td style="text-align:right;">
+2.627
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+1.661
+</td>
+<td style="text-align:right;">
+1.984
+</td>
+<td style="text-align:right;">
+2.365
+</td>
+<td style="text-align:right;">
+2.627
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+99
+</td>
+<td style="text-align:right;">
+1.660
+</td>
+<td style="text-align:right;">
+1.984
+</td>
+<td style="text-align:right;">
+2.365
+</td>
+<td style="text-align:right;">
+2.626
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+1.660
+</td>
+<td style="text-align:right;">
+1.984
+</td>
+<td style="text-align:right;">
+2.364
+</td>
+<td style="text-align:right;">
+2.626
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Module 2</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Module 2</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#a-review-of-probability"
+id="toc-a-review-of-probability">A Review of Probability</a>
+<ul>
+<li><a href="#experiments-events-and-sample-space"
+id="toc-experiments-events-and-sample-space">Experiments, Events and
+Sample Space</a></li>
+<li><a href="#calculating-probabilities-for-simple-events"
+id="toc-calculating-probabilities-for-simple-events">Calculating
+Probabilities for Simple Events</a></li>
+</ul></li>
+<li><a href="#bayes-rule" id="toc-bayes-rule">Bayes’ Rule</a>
+<ul>
+<li><a href="#random-variables" id="toc-random-variables">Random
+Variables</a></li>
+<li><a href="#discrete-random-variables"
+id="toc-discrete-random-variables">Discrete Random Variables</a></li>
+<li><a href="#continuous-random-variables"
+id="toc-continuous-random-variables">Continuous Random
+Variables</a></li>
+<li><a href="#continuous-probability-distribution-functions"
+id="toc-continuous-probability-distribution-functions">Continuous
+Probability Distribution Functions</a></li>
+<li><a href="#the-exponential-probability-distribution"
+id="toc-the-exponential-probability-distribution">The Exponential
+Probability Distribution</a></li>
+<li><a href="#the-gaussian-probability-distribution"
+id="toc-the-gaussian-probability-distribution">The Gaussian Probability
+Distribution</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="a-review-of-probability" class="section level1">
+<h1>A Review of Probability</h1>
+<p>In the first three weeks, we focused mainly on data. Primarily on
+ways of summarising and describing data to interpret or understand the
+underlying message of the data. Now we shift our focus to some more
+mathematically rigorous material surrounding probability. Probability is
+the mathematics of uncertainty, which gives us a coherent framework for
+interpreting and understanding the unexpected, and as applied in
+statistics, probability provides us with a way of measuring or assessing
+the reliability of the conclusions that we draw from our data.</p>
+<div id="experiments-events-and-sample-space" class="section level2">
+<h2>Experiments, Events and Sample Space</h2>
+<div class="sidenote">
+<p><strong>Experiment</strong><br />
+An <strong>Experiment</strong> is a situation where the outcome is
+impossible to predict with certainty that produces some observable
+phenomena.</p>
+<p>Experiments and events are some of the fundamental building blocks of
+probability. We should carefully consider these concepts.</p>
+</div>
+<p>Things happen. This statement is rather obvious, so to extend this:
+things happen that we can’t predict. The world is a very uncertain
+place, but if we want to limit our uncertainty, we can consider that the
+possible outcomes or events that might occur can be defined in given
+situations. The collection of all these possible events is called the
+sample space. We describe events and the sample space to provide us with
+our first mathematical tool for understanding probability and
+uncertainty.</p>
+<p>An experiment (in probability) is a generic term for the process of
+observing or collecting data; sometimes, they are also called
+trials.</p>
+<div class="boxed">
+<p><strong>Experiments and Events</strong></p>
+<ul>
+<li><p>A single coin toss is an <strong>experiment</strong> and the
+outcome is (heads or tails).</p></li>
+<li><p>A single survey question is an <strong>experiment</strong>; the
+outcome is the individual’s response.</p></li>
+<li><p>Measuring plant species characteristics is an
+<strong>experiment</strong>, and the outcome is a recorded measurement
+is an <strong>event</strong>.</p></li>
+</ul>
+</div>
+<div class="sidenote">
+<p><strong>Outcomes of coin tossing</strong><br />
+If we toss a coin twice, then we can record three possible outcomes that
+are the combination of the two coin tosses <span
+class="math display">\[A=(H,H),\quad B= (H,T),\mbox{ or }(T,H)\quad
+C=(T,T)\]</span> The events <span class="math inline">\(A\)</span>,
+<span class="math inline">\(B\)</span>, and <span
+class="math inline">\(C\)</span> are all comprised of the outcome of two
+single repetitions of an experiment, the coin toss. Thus events <span
+class="math inline">\(A\)</span>, <span
+class="math inline">\(B\)</span>, and <span
+class="math inline">\(C\)</span> are combinations of simple events.</p>
+</div>
+<p>The examples of outcomes given above are all examples <strong>simple
+events</strong>.</p>
+<div class="boxed">
+<p><strong>Simple Event</strong><br />
+A <strong>simple event</strong> is the outcome of a single repetition of
+an experiment</p>
+<p>Collections of simple events can constitute an
+<strong>event</strong>, or the outcome of multiple repetitions of an
+experiment, often denoted by a capital letter.</p>
+<p><strong>Event</strong><br />
+An <strong>event</strong> is a collection of simple events.</p>
+</div>
+<p>We can also characterise events in relationship to each other; most
+importantly, we can identify events that cannot occur together. These
+“either-or” pairs of events are called <em>mutually exclusive</em>
+events.</p>
+<div class="boxed">
+<p><strong>Mutually Exclusive</strong><br />
+Events are <strong>mutually exclusive</strong> if the occurrence of one
+event precludes the occurrence of another.</p>
+</div>
+<p><strong>Mutual Exclusivity</strong><br />
+All three events in Example 4.1.2 are mutually exclusive. If I define
+events for the outcome a single roll for a six-sided die as <span
+class="math display">\[A=\mbox{The face value of the die is greater than
+3}\qquad B=\mbox{The face value of the die is odd}\]</span> <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are not mutually exclusive because the
+number five satisfies both definitions of events. Thus both <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> can be true.</p>
+<p><strong>Sample Space</strong><br />
+The collection of all possible simple events is called the
+<strong>sample space</strong>. Note that we can think of events as
+sub-spaces of the sample space.</p>
+<p>With that, we have the basic building blocks of probability,
+experiments, simple events, events, and sample spaces. It is worth
+noting that sample spaces can be discrete or continuous; simple events
+need not be discrete, e.g. measurements of the length of plant leaves.
+Thus sample spaces may be defined as subspaces of <span
+class="math inline">\(\mathbb{R}\)</span>.</p>
+</div>
+<div id="calculating-probabilities-for-simple-events"
+class="section level2">
+<h2>Calculating Probabilities for Simple Events</h2>
+<p>We can define probability in many ways and with varying degrees of
+mathematical rigour, initially, we are going to define probability in
+terms of a finite discrete sample space using the classical definition
+of a probability as a relative frequency.</p>
+<div class="boxed">
+<p><strong>Probability of an Event</strong><br />
+For a discrete finite sample space, the probability of a simple event is
+defined as the relative frequency of an outcome, e.g. for the simple
+event <span class="math inline">\(A\)</span> <span
+class="math display">\[Pr(A)=\lim_{n\rightarrow\infty}\frac{I_{A}}{n}\]</span>
+where <span class="math inline">\(I_{A}\)</span> is a function that
+takes on the value of <span class="math inline">\(1\)</span> when <span
+class="math inline">\(A\)</span> occurs and <span
+class="math inline">\(0\)</span> otherwise.</p>
+</div>
+<p>Note that all probabilities satisfy two conditions.</p>
+<div class="boxed">
+<p><strong>Probability Rules</strong><br />
+</p>
+<ul>
+<li><p>Probabilities are bounded on the interval <span
+class="math inline">\((0,1)\)</span>.</p></li>
+<li><p>The sum of the probabilities over the sample space is <span
+class="math inline">\(1\)</span>.</p></li>
+</ul>
+<p>Considering the ubiquitous single coin toss, in this instance, the
+sample space consists of two simple events <span
+class="math display">\[H, T\]</span> for a “fair” coin, the
+probabilities are <span
+class="math display">\[Pr(H)=Pr(T)=\frac{1}{2}\]</span> note the sum of
+the probabilities over the sample space is <span
+class="math inline">\(1\)</span>.</p>
+</div>
+<p>The probabilities for events can be defined conditioned on knowing
+the probabilities for their simple events. If an event <span
+class="math inline">\(A\)</span> consists of a collection of simple
+events and each outcome is equally likely, then we can calculate the
+probability of an event as</p>
+<div class="boxed">
+<p><span class="math display">\[Pr(A)=\frac{\mbox{Number of ways that
+$A$ can occur}}{\mbox{Total number of outcomes}}\]</span></p>
+</div>
+<div class="boxed">
+<p><strong>Example: Multiple coin tosses</strong><br />
+If we toss a coin twice, then we can record three possible outcomes that
+are the combination of the two coin tosses <span
+class="math display">\[A=(H,H),\quad B= (H,T),\mbox{ or }(T,H)\quad
+C=(T,T)\]</span> The events <span class="math inline">\(A\)</span>,
+<span class="math inline">\(B\)</span>, and <span
+class="math inline">\(C\)</span> are all comprised of the outcome of two
+single repetitions of an experiment, the coin toss. Thus events <span
+class="math inline">\(A\)</span>, <span
+class="math inline">\(B\)</span>, and <span
+class="math inline">\(C\)</span> are combinations of simple events.</p>
+<p>If we look at the simple event of the outcome of two coin tosses.
+There were four possible outcomes <span
+class="math display">\[\begin{array}{c}
+H,H\\
+H,T\\
+T,H\\
+T,T
+\end{array}\]</span> and three events defined in the sample space <span
+class="math display">\[A=(H,H)\qquad B= (H,T)\mbox{~or~}(T,H)\qquad
+C=(T,T)\]</span> There is only one possible outcome for <span
+class="math inline">\(A\)</span> and <span
+class="math inline">\(C\)</span>, so <span
+class="math display">\[Pr(A)=Pr(C)=\frac{1}{4}\]</span> but there are
+two possible outcomes for <span class="math inline">\(B\)</span> <span
+class="math display">\[Pr(B)=\frac{2}{4}=\frac{1}{2}\]</span></p>
+</div>
+<p>We can also use some visual techniques to explore the properties of
+probability and derive some of the rules and principles. Given the
+continuous sample space <span class="math inline">\(S\)</span>, the
+event <span class="math inline">\(A\)</span> can be defined as a subset
+of <span class="math inline">\(S\)</span>, <span
+class="math inline">\(A\subseteq S\)</span>.</p>
+<div class="boxed">
+<p><strong><span class="math inline">\(\mathbf{Pr(A)}\)</span> for a
+continuous sample space <span
+class="math inline">\(\mathbf{S}\)</span></strong><br />
+The definition of the probability of event <span
+class="math inline">\(A\)</span> as <span
+class="math display">\[Pr(A)=\frac{\mbox{The Area of
+region~}A}{\mbox{The Area~}S}\]</span> since this is a ratio, it can
+easily be standardised so that the Area of <span
+class="math inline">\(S\)</span> is 1, thus <span
+class="math inline">\(Pr(A)=\)</span> the Area of region <span
+class="math inline">\(A\)</span>.</p>
+<p><img src="chap2_files/figure-html/unnamed-chunk-2-1.png" width="614" style="display: block; margin: auto;" /></p>
+<p><strong>The probability of the complement <span
+class="math inline">\(\mathbf{A^c}\)</span>.</strong><br />
+The complement of event <span class="math inline">\(A\)</span> is every
+event not in <span class="math inline">\(A\)</span> and is denoted as
+<span class="math inline">\(A^c\)</span>. Since the total probability
+for the sample space <span class="math inline">\(S\)</span> is one, then
+the probability of <span class="math inline">\(A^c\)</span> is <span
+class="math display">\[Pr(A^c)=1-Pr(A)\]</span> This is true because
+<span class="math inline">\(A\cup A^c=S\)</span> and <span
+class="math inline">\(Pr(S)=1\)</span>.</p>
+<p><img src="chap2_files/figure-html/unnamed-chunk-3-3.png" width="614" style="display: block; margin: auto;" /></p>
+<p><strong>The probability of subsets</strong><br />
+If <span class="math inline">\(B\subset A\)</span> then <span
+class="math inline">\(Pr(B)\leq Pr(A)\)</span></p>
+<p><img src="chap2_files/figure-html/unnamed-chunk-4-5.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-addition-law" class="section level3">
+<h3>The Addition Law</h3>
+<p><span class="math inline">\(Pr(A\cup B)=Pr(A)+Pr(B)-Pr(A\cap
+B)\)</span>.</p>
+<p>The Addition Law is well-illustrated using a Venn diagram. For
+disjoint events <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> <span class="math inline">\(Pr(A\cap
+B)=Pr(A)+Pr(B)\)</span>:</p>
+<p><img src="chap2_files/figure-html/unnamed-chunk-5-7.png" width="614" style="display: block; margin: auto;" /></p>
+<p>For Non-Disjoint Events <span class="math inline">\(A\)</span> and
+<span class="math inline">\(B\)</span>: <span
+class="math inline">\(Pr(A\cap B)\)</span> is the shaded region and
+<span class="math inline">\(Pr(A\cup B)=Pr(A)+Pr(B)-Pr(A\cap
+B)\)</span>.
+<img src="chap2_files/figure-html/unnamed-chunk-6-9.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="conditional-probability" class="section level3">
+<h3>Conditional Probability</h3>
+<p>We have previously defined the concepts of both mutual exclusivity
+and of joint probability. Note that the definition of disjoint events
+implies that there is information to be gained about the probability of
+one event occurring based on knowledge of whether or not another event
+has occurred.</p>
+<p><br />
+If <span class="math inline">\(A\cap B=\emptyset\)</span> then <span
+class="math inline">\(Pr(A\cap B)=0\)</span>. Thus if we know that <span
+class="math inline">\(B\)</span> has occurred then we know that <span
+class="math inline">\(A\)</span> cannot occur. <span
+class="math display">\[Pr(A|B)=0.\]</span></p>
+<p>This is a trivial example but, if <span class="math inline">\(A\cap
+B\neq\emptyset\)</span> then <span class="math inline">\(Pr(A\cap B)\neq
+0\)</span>. If <span class="math inline">\(B\neq\emptyset\)</span> the
+the conditional probability of <span class="math inline">\(A\)</span>
+given <span class="math inline">\(B\)</span> is:</p>
+<div class="boxed">
+<p><strong>Conditional Probability</strong><br />
+The conditional probability can be formulated as a function of the joint
+probability and the probability of the condition. <span
+class="math display">\[Pr(A|B)=\frac{Pr(A\cap B)}{Pr(B)}\]</span></p>
+<p>Intuitively we can see that this is just the ratio of the area where
+<span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> intersect to the ratio of <span
+class="math inline">\(B\)</span></p>
+<p><img src="chap2_files/figure-html/unnamed-chunk-7-11.png" width="614" style="display: block; margin: auto;" /></p>
+<p>Note that it is also evident that because <span
+class="math inline">\(Pr(A)&gt;Pr(B)\)</span> that <span
+class="math inline">\(Pr(A|B)&gt;Pr(B|A)\)</span>.</p>
+</div>
+<p><strong>Independence</strong><br />
+Independence can be defined in terms of conditional probability.</p>
+<div class="boxed">
+<p><span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are independent events if <span
+class="math display">\[Pr(A|B)=Pr(A)\]</span> From this then we can note
+that is <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span> are independent then <span
+class="math display">\[Pr(A\cap B)=Pr(A)\times Pr(B)\]</span></p>
+</div>
+<p>From the definitions of sample spaces, events, and probability, we
+can construct random variables to use as models for observed data.</p>
+</div>
+</div>
+</div>
+<div id="bayes-rule" class="section level1">
+<h1>Bayes’ Rule</h1>
+<div class="sidenote">
+<p><strong>Upward Mobility Data</strong><br />
+In 1954 two sociologists, Glass and Hall, published the book <em>Social
+Mobility in Britain</em>. In it, they showed some data they had
+collected data on the social mobility of sons compared to their fathers.
+Glass and Hall classified occupations as belonging to one of three
+categories upper-class (<span class="math inline">\(U\)</span>),
+middle-class (<span class="math inline">\(M\)</span>), and lower-class
+(<span class="math inline">\(L\)</span>). Let, for example, <span
+class="math inline">\(U_1\)</span> denote that the father was in an
+upper-class occupation and <span class="math inline">\(M_2\)</span>
+denote that the son was in a middle-class occupation, then the data
+arranged as proportions (or probabilities) in tabular form is</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(U_2\)</span></th>
+<th align="center"><span class="math inline">\(M_2\)</span></th>
+<th align="center"><span class="math inline">\(L_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(U_1\)</span></td>
+<td align="center">0.45</td>
+<td align="center">0.48</td>
+<td align="center">0.07</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M_1\)</span></td>
+<td align="center">0.05</td>
+<td align="center">0.70</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L_1\)</span></td>
+<td align="center">0.01</td>
+<td align="center">0.50</td>
+<td align="center">0.49</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose that the marginal probabilities for <span
+class="math inline">\(U_1\)</span>, <span
+class="math inline">\(M_1\)</span> and <span
+class="math inline">\(L_1\)</span> are: <span
+class="math inline">\(Pr(U_1) = 0.10\)</span>, <span
+class="math inline">\(Pr(M_1)=0.40\)</span> and <span
+class="math inline">\(Pr(L_1)=0.50\)</span>. What is <span
+class="math inline">\(Pr(U_2)\)</span>?</p>
+</div>
+<p>Bayes’ Theorem was first published in 1763 and is arguably one of the
+most powerful and influential theorems in the history of mathematics. It
+is the primary Theorem that underpins artificial intelligence and
+learning. It gives a simple, elegant mathematical representation of how
+we learn and provides a tool for understanding biases and previously
+unknown probabilities. So to start with, we will learn the Law of Total
+Probability, which defines what we call the marginal probability.</p>
+<div class="boxed">
+<p><strong>Law of Total Probability (Marginal
+Probability)</strong><br />
+The probability of event <span class="math inline">\(A\)</span> can be
+written as <span
+class="math display">\[Pr(A)=\sum_{j=1}^mPr(A|B_j)Pr(B_j)\]</span> Note
+that <span class="math inline">\(Pr(A|B_j)Pr(B_j)=Pr(A\cap
+B_j)\)</span>. What this says is that the probability of event <span
+class="math inline">\(A\)</span> is the some of all the probabilities of
+the intersections of <span class="math inline">\(A\)</span> and every
+other event <span class="math inline">\(B_j\)</span>.</p>
+</div>
+<div id="example-upward-mobility-data"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Upward Mobility Data</h3>
+<p>In 1954 two sociologists, Glass and Hall, published the book
+<em>Social Mobility in Britain</em>. In it, they showed some data they
+had collected data on the social mobility of sons compared to their
+fathers. Glass and Hall classified occupations as belonging to one of
+three categories upper-class (<span class="math inline">\(U\)</span>),
+middle-class (<span class="math inline">\(M\)</span>), and lower-class
+(<span class="math inline">\(L\)</span>). Let, for example, <span
+class="math inline">\(U_1\)</span> denote that the father was in an
+upper-class occupation and <span class="math inline">\(M_2\)</span>
+denote that the son was in a middle-class occupation, then the data
+arranged as proportions (or probabilities) in tabular form is</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center"><span class="math inline">\(U_2\)</span></th>
+<th align="center"><span class="math inline">\(M_2\)</span></th>
+<th align="center"><span class="math inline">\(L_2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(U_1\)</span></td>
+<td align="center">0.45</td>
+<td align="center">0.48</td>
+<td align="center">0.07</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(M_1\)</span></td>
+<td align="center">0.05</td>
+<td align="center">0.70</td>
+<td align="center">0.25</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(L_1\)</span></td>
+<td align="center">0.01</td>
+<td align="center">0.50</td>
+<td align="center">0.49</td>
+</tr>
+</tbody>
+</table>
+<p>Suppose that the marginal probabilities for <span
+class="math inline">\(U_1\)</span>, <span
+class="math inline">\(M_1\)</span> and <span
+class="math inline">\(L_1\)</span> are: <span
+class="math inline">\(Pr(U_1) = 0.10\)</span>, <span
+class="math inline">\(Pr(M_1)=0.40\)</span> and <span
+class="math inline">\(Pr(L_1)=0.50\)</span>. What is <span
+class="math inline">\(Pr(U_2)\)</span>?</p>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<p>We can apply the Law of Total Probability in this instance to define
+<span class="math display">\[
+\begin{align}
+Pr(U_2) &amp;=
+Pr(U_2|U_1)Pr(U_1)+Pr(U_2|M_1)Pr(M_1)+Pr(U_2|L_1)Pr(L_1)\\
+&amp;=(0.45)(0.10)+(0.05)(0.40)+(0.01)(0.50)\\
+&amp;=(0.045)+(0.02)+(0.005)\\
+&amp;=0.07
+\end{align}
+\]</span></p>
+</div>
+<div id="video" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/3f2a0df0-1a19-40a9-8578-c8bd525c6a2f?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sidenote">
+<p><strong>Polygraph Results</strong><br />
+Employers often use polygraph or “lie-detector” tests to screen current
+or potential employees in sensitive positions. Let <span
+class="math inline">\(+\)</span> indicate a positive test result,
+i.e. the subject is lying, and let <span
+class="math inline">\(-\)</span> indicate a negative test result. Let
+<span class="math inline">\(T\)</span> denote that the subject is
+telling the truth and let <span class="math inline">\(L\)</span>
+indicate that they are lying. According to a study in Gastwirth
+(1987)</p>
+<p><span class="math display">\[Pr(+|L)=0.88\mbox{ and
+}Pr(-|L)=0.12\]</span> and <span
+class="math display">\[Pr(-|T)=0.86\mbox{ and } Pr(+|T)=0.14.\]</span>
+if <span class="math inline">\(Pr(T) = 0.99\)</span> and <span
+class="math inline">\(Pr(L=0.01)\)</span> what is <span
+class="math inline">\(Pr(T|+)\)</span> or the probability that a person
+is telling the truth given that they test positive (i.e. the test says
+they are lying)?</p>
+</div>
+<p>Bayes’ Theorem uses this definition of marginal probabilities and the
+definition of conditional probability to find <span
+class="math inline">\(Pr(B|A)\)</span> given <span
+class="math inline">\(Pr(A|B)\)</span> and the marginal probabilities
+for <span class="math inline">\(A\)</span> and <span
+class="math inline">\(B\)</span>.</p>
+<div class="boxed">
+<p><strong>Bayes’ Theorem</strong><br />
+Bayes’ theorem is <span
+class="math display">\[Pr(B|A)=\frac{Pr(A|B)Pr(B)}{Pr(A)}\]</span> Note,
+that this can easily be derived from the definition of conditional
+probability and that <span
+class="math inline">\(Pr(A|B)=Pr(B|A)\)</span> only if <span
+class="math inline">\(Pr(A)=Pr(B)\)</span>.</p>
+</div>
+<div id="example-polygraph-results"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Polygraph Results</h3>
+<p>Employers often use polygraph or “lie-detector” tests to screen
+current or potential employees in sensitive positions. Let <span
+class="math inline">\(+\)</span> indicate a positive test result,
+i.e. the subject is lying, and let <span
+class="math inline">\(-\)</span> indicate a negative test result. Let
+<span class="math inline">\(T\)</span> denote that the subject is
+telling the truth and let <span class="math inline">\(L\)</span>
+indicate that they are lying. According to a study in Gastwirth
+(1987)</p>
+<p><span class="math display">\[Pr(+|L)=0.88\mbox{ and
+}Pr(-|L)=0.12\]</span> and <span
+class="math display">\[Pr(-|T)=0.86\mbox{ and } Pr(+|T)=0.14.\]</span>
+if <span class="math inline">\(Pr(T) = 0.99\)</span> and <span
+class="math inline">\(Pr(L=0.01)\)</span> what is <span
+class="math inline">\(Pr(T|+)\)</span> or the probability that a person
+is telling the truth given that they test positive (i.e. the test says
+they are lying)?</p>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>We can use Bayes’ Theorem to find</p>
+<p><span class="math display">\[
+\begin{align}
+Pr(T|+)&amp;=\frac{Pr(+|T)Pr(T)}{Pr(+|T)Pr(T)+Pr(+|L)Pr(L)}\\
+&amp;=\frac{(0.14)(0.99)}{(0.14)(0.99)+(0.88)(0.01)}\\
+&amp;=\frac{0.14}{0.15}\\
+&amp;=0.94
+\end{align}
+\]</span></p>
+</div>
+<div id="video-1" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/ee0a9a06-a929-4b49-b48a-b7b78d5a9a1e?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="random-variables" class="section level2">
+<h2>Random Variables</h2>
+<p>A random variable is a variable whose value is the result of an
+experiment or random trial; its value cannot be known ahead of time with
+certainty, but the distribution of possible values via probability.</p>
+<p><strong>Random Variables</strong><br />
+Example of random variables include:</p>
+<ul>
+<li><p><span class="math inline">\(X\)</span> as the result of a coin
+toss where <span class="math display">\[X = \left\{
+\begin{array}{cc}
+1,&amp; \mbox{if Heads}\\
+0, &amp; \mbox{if Tails}
+\end{array}\right.\]</span></p></li>
+<li><p><span class="math inline">\(X\)</span> as the number of phone
+calls per hour received by a call centre.</p></li>
+<li><p><span class="math inline">\(X\)</span> as the diameter of holes
+produced in a punch-press operation.</p></li>
+</ul>
+<p>Random variables can be either discrete or continuous. Discrete
+random variables take on discrete values typically from the domain <span
+class="math inline">\(\mathbb{N}\)</span>, i.e. <span
+class="math inline">\(X=0,1,\ldots\)</span> For discrete random values
+events and their probabilities are assigned to specific values,
+e.g. <span class="math inline">\(X= 2\)</span> Continuous random
+variables take on values over a continuum, which, as in the case of
+discrete variables may or may not be bounded. For continuous random
+variables events are defined as a subset of the sample space, i.e. <span
+class="math inline">\(2&lt;X&lt;4\)</span>. The probability that a
+continuous random variable takes on a specific value is <span
+class="math inline">\(0\)</span>. The behaviour of random variables is
+described via a probability distribution. This distribution can take the
+form of a simple table associating values with their probabilities, or
+it could be a function that describes the relationship between a value
+and its probability.</p>
+<p>Random variables form the basis of statistical and probabilistic
+modelling, as many real-world phenomena can be modelled as random
+variables whose properties are well understood. These models are then
+used as the basis for statistical inference.</p>
+</div>
+<div id="discrete-random-variables" class="section level2">
+<h2>Discrete Random Variables</h2>
+<p>Discrete random variables are that take on values in <span
+class="math inline">\(\mathbb{N}_0\)</span> i.e. non-negative integer
+values. These kinds of random variables arise from counting processes
+for different situations. There are some connections between certain
+discrete and continuous random variables, and they often form the basis
+for modelling real-world data that consist of discrete counts rather
+than measures.</p>
+<div id="probability-mass-functions" class="section level3 unnumbered">
+<h3 class="unnumbered">Probability Mass Functions</h3>
+<p>The distribution of discrete variables that take on a finite number
+of discrete values using a simple table but in some cases, for discrete
+variables, their behaviour is described by a <strong>probability mass
+function (pmf)</strong></p>
+<div class="boxed">
+<p>The <strong>probability mass function (pmf)</strong> is written:
+<span class="math display">\[p(x)= Pr(X=x)\]</span> and is a functions
+that maps values from the sample space of the random variable to the
+interval <span class="math inline">\((0,1)\)</span>. <span
+class="math display">\[p:X\rightarrow (0,1)\]</span> subject to the
+constraints that <span class="math display">\[\begin{aligned}
+p(x|x\in X)&amp;\in&amp; (0,1)\\
+p(x|x\notin X) &amp;=&amp; 0\\
+\sum_{\forall x\in X} p(x) &amp;=&amp; 1.\end{aligned}\]</span></p>
+</div>
+<p>Just as all samples of data can be summarised in terms of measures of
+centrality and dispersion, measures of centrality and dispersion can be
+defined formally for random variables as functions of the probability
+distribution.</p>
+<div class="boxed">
+<p><strong>The Expected Value</strong><br />
+The expected value or mean of a random variable with a probability mass
+function is defined as <span class="math display">\[
+E(X)=\sum_{\forall x\in X} xp(x)
+\]</span> and is commonly assigned the Greek letter <span
+class="math inline">\(\mu\)</span>. The expectation is just the weighted
+average of all possible values of <span class="math inline">\(X\)</span>
+weighted by their probabilities. We can extend the idea of expectation
+to any function of <span class="math inline">\(X\)</span>, e.g.  <span
+class="math display">\[
+E(h(X))=\sum_{\forall x\in X}h(x)p(x).
+\]</span></p>
+</div>
+<div class="boxed">
+<p><strong>The Median</strong><br />
+Additionally, the median and mode be defined for a random variable with
+a probability mass function as <span class="math display">\[
+\mbox{median of $X$}=\left\{x\in X\mid Pr(X\leq x)\geq \frac{1}{2},\,
+Pr(X\geq x)\geq \frac{1}{2} \right\}
+\]</span> note that <span class="math inline">\(Pr(X\leq
+x)=\sum_{-\infty}^xp(x)\)</span> and that <span
+class="math inline">\(Pr(X\geq x)=\sum_x^{\infty}p(x)\)</span>. The mode
+is defined as <span class="math display">\[
+\mbox{mode of $X$}=\max_{x\in X} p(x)
+\]</span></p>
+</div>
+<p>We can similarly calculate quantiles to the median.</p>
+<div class="boxed">
+<p><strong>Variance</strong><br />
+The variance is defined in terms of the expected squared distance of
+observations from the expected value <span
+class="math display">\[\operatorname{Var}(X)=E[(X-\mu)^2]
+=\sum_S(x-\mu)^2p(x).\]</span></p>
+</div>
+<p>Probability distributions are parametrised with terms that can be
+written as functions of the mean and variance, which can make
+interpreting the parameters and the random variable easier.</p>
+</div>
+<div id="the-binomial-probability-distribution"
+class="section level3 unnumbered">
+<h3 class="unnumbered">The Binomial Probability Distribution</h3>
+<p>The binomial distribution is one of the most basic (and common)
+probability distributions, and from it, other probability distributions
+can be derived. The binomial probability distribution is defined based
+on a simple concept known as a Bernoulli random trial.</p>
+<div class="boxed">
+<p><strong>The Bernoulli Random Variable</strong><br />
+</p>
+<p>A Bernoulli random trial is an experiment with a dichotomous outcome
+and a single probability assigned to a positive outcome. The simplest
+example of a Bernoulli trial is a coin toss. In general terms, the
+probability mass function is written as <span
+class="math display">\[p(x) =\left\{
+\begin{array}{rc}
+p,&amp; x = 1\\
+1-p, &amp; x = 0.
+\end{array}
+\right.\]</span> The expected value of a Bernoulli random variable is
+<span class="math inline">\(p\)</span>, and the variance is <span
+class="math inline">\(p(1-p)\)</span>.</p>
+</div>
+<p>Bernoulli random trials are the simplest non-trivial model for a
+random variable and serve as the foundation for the derivation of other
+probability mass distributions.</p>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+For <span class="math inline">\(X\sim Binom(10,0.3)\)</span> find: <span
+class="math display">\[Pr(X=4)\]</span> and <span
+class="math display">\[Pr(X&lt;8)\]</span></p>
+</div>
+<div class="boxed">
+<p><strong>The Binomial Probability Distribution</strong><br />
+</p>
+<p>Defining <span class="math inline">\(X\)</span> as the sum on <span
+class="math inline">\(n\)</span> independent Bernoulli trials each with
+the probability of success <span class="math inline">\(p\)</span>,
+i.e. <span class="math inline">\(X\)</span> is the number of “successes”
+in <span class="math inline">\(n\)</span> attempts, the binomial
+probability distribution is defined as <span class="math display">\[p(x)
+= {n\choose x}p^x(1-p)^{n-x}.\]</span> This is called the binomial
+distribution because it includes the binomial coefficient to compute the
+number of possible combinations of successes and failures. The mean and
+variance of the binomial distribution are <span
+class="math display">\[E(X) = np\mbox{ and }\operatorname{Var}(X) =
+np(1-p).\]</span></p>
+</div>
+</div>
+<div id="example" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example:</h3>
+<p>For <span class="math inline">\(X\sim Binom(10,0.3)\)</span> find:
+<span class="math display">\[Pr(X=4)\]</span> and <span
+class="math display">\[Pr(X&lt;8)\]</span></p>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
+<p>We can use the binomial pmf directly to find <span
+class="math inline">\(Pr(X=4)\)</span>: <span class="math display">\[
+\begin{align}
+Pr(X=4)&amp;={10 \choose 4 }(0.3)^4(1-0.3)^{10-4}\\
+&amp;=(210)(0.3^4)(0.7^6)\\
+&amp;=(210)( 0.0081 )( 0.117649 )\\
+&amp;= 0.2001209
+\end{align}
+\]</span></p>
+<p>We exploit the property that <span
+class="math inline">\(\sum_{\forall x\in X}p(x)=1\)</span> and the
+binomail pmf to find <span
+class="math inline">\(Pr(X&lt;8)\)</span><br />
+Note that <span class="math inline">\(Pr(X&lt;8) = 1-Pr(X\geq
+8)\)</span> so: <span class="math display">\[
+\begin{align}
+Pr(X&lt;8)&amp;=1-Pr(X\geq 8)\\
+&amp;=1-\left\{Pr(X=8)+Pr(X=9)+Pr(X=10)\right\}\\
+&amp;=1-\left\{{10\choose 8}(0.3^8)(0.7^2)+{10\choose
+9}(0.3^9)(0.7^1)+{10\choose 10}(0.3^{10})(0.7^0)\right\}\\
+&amp;=1-\left\{(45)(0.3^8)(0.7^2)+(10)(0.3^9)(0.7^9)+(1)(0.3^10)(0.7^0)\right\}\\
+&amp;=1-0.0014467 + 1.37781\times 10^{-4} + 5.9049\times 10^{-6}\\
+&amp;=0.9984096\\
+\end{align}
+\]</span></p>
+</div>
+<div id="video-2" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/6bbdedf0-1f57-4e28-8f92-5c4f9f632780?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="the-poisson-probability-distribution"
+class="section level3 unnumbered">
+<h3 class="unnumbered">The Poisson Probability Distribution</h3>
+<p>The Poisson probability distribution is perhaps one of the most
+common and useful probability distributions. It can be shown to be
+easily derived as the solution to a common first-order differential
+equation, and it serves as the basis for both the exponential
+probability distribution and many statistical models.</p>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+For <span class="math inline">\(X\sim Pois(4.5)\)</span> find <span
+class="math display">\[Pr(X=3)\]</span> and <span
+class="math display">\[Pr(X&gt;3)\]</span></p>
+</div>
+<div class="boxed">
+<p><strong>The Poisson pmf</strong><br />
+A Poisson random variable takes on discrete values from <span
+class="math inline">\(0\)</span> to <span
+class="math inline">\(\infty\)</span> with some rate or expected value
+<span class="math inline">\(\lambda\)</span>. The Poisson pmf arises as
+limiting case of the binomial pmf as <span
+class="math inline">\(n\rightarrow \infty\)</span> and <span
+class="math inline">\(p\rightarrow 0\)</span>.</p>
+<p><strong>The Limiting Case of the Binomial Random
+Variable</strong><br />
+</p>
+<p>Consider a random variable <span class="math inline">\(X\)</span>
+that follows a binomial probability distribution, then if we define
+<span class="math inline">\(\lambda = np\)</span> then the limit as
+<span class="math inline">\(n\rightarrow\infty\)</span> and <span
+class="math inline">\(p\rightarrow 0\)</span> is the Poisson probability
+distribution with rate <span class="math inline">\(\lambda\)</span>. The
+derivation is as follows: <span class="math display">\[
+\begin{aligned}
+p(x)&amp;=&amp;\frac{n!}{(n-x)!x!}\left(\frac{\lambda}{n}\right)^x\left(1-\frac{\lambda}{n}\right)^{n-x}\\
+&amp;=&amp;\frac{\lambda^x}{x!}\frac{n!}{(n-x)!}\frac{1}{n^x}\left(1-\frac{\lambda}{n}\right)^n\left(1-\frac{\lambda}{n}\right)^{-x}.\end{aligned}\]</span>
+As <span class="math inline">\(n\rightarrow \infty\)</span> <span
+class="math display">\[\begin{aligned}
+\left(1-\frac{\lambda}{n}\right)^n&amp;\rightarrow&amp;e^{-\lambda}\end{aligned}\]</span>
+the term <span class="math display">\[\frac{\lambda^x}{x!}\]</span>
+remains constant, and the remaining terms go to <span
+class="math inline">\(1\)</span>, leaving <span
+class="math display">\[\begin{aligned}
+p(x)=\frac{\lambda^xe^{-\lambda}}{x!},
+\end{aligned}
+\]</span> and the mean and the variance of <span
+class="math inline">\(X\)</span> are <span class="math display">\[
+\begin{align}
+E(X)&amp;=\lambda\\
+\operatorname{Var}(X)&amp;=\lambda.
+\end{align}
+\]</span></p>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/6e4011e8-a6bc-479b-a980-b20a4e77a315?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+<div class="boxed">
+<p><strong>Example:</strong><br />
+For <span class="math inline">\(X\sim Pois(4.5)\)</span> find <span
+class="math display">\[
+Pr(X=3)
+\]</span> and <span class="math display">\[
+Pr(X&gt;3).
+\]</span></p>
+<p>We can find <span class="math inline">\(Pr(X=3)\)</span> using the
+definition of the Poisson pmf <span class="math display">\[
+\begin{align}
+Pr(X=3)&amp;=\frac{(4.5)^3e^{-4.5}}{3!}\\
+&amp;=\frac{ 91.125 e^{-4.5}}{3!}\\
+&amp;=\frac{( 91.125 )( 0.011109 )}{ 6 }\\
+&amp;=\frac{ 1.0123073 }{ 6 }\\
+&amp;=0.1687179
+\end{align}
+\]</span> Similarly, we can use the pmf to solve <span
+class="math inline">\(Pr(X&lt;3)\)</span> <span class="math display">\[
+\begin{align}
+Pr(X&lt;3)&amp;=Pr(X=0)+Pr(X=1)+Pr(X=2)+Pr(X=3)\\
+&amp;=\frac{4.5^0
+e^{-4.5}}{0!}+\frac{4.5^1e^-{4.5}}{1!}+\frac{4.5^2e^{-4.5}}{2!}+\frac{4.5^3e^{-4.5}}{3!}\\
+&amp;=e^{-4.5}\left\{\frac{4.5^0}{0!}+\frac{4.5^1}{1!}+\frac{4.5^2}{2!}+\frac{4.5^3}{3!}\right\}\\
+&amp;=e^{-4.5}\left\{\frac{1}{1}+\frac{4.5}{1}+\frac{ 20.25 }{2}+\frac{
+91.125 }{6}\right\}\\
+&amp;=e^{-4.5}\left\{1+4.5+ 10.125 + 15.1875 \right\}\\
+&amp;=0.011109 \left\{1+4.5+ 10.125 + 15.1875 \right\}\\
+&amp;=0.342296
+\end{align}
+\]</span></p>
+</div>
+</div>
+</div>
+<div id="continuous-random-variables" class="section level2">
+<h2>Continuous Random Variables</h2>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+Are the following functions valid pdfs? <span class="math display">\[
+f(y) = y/2,\,0&lt;y&lt;2
+\]</span> and <span class="math display">\[
+f(y) = \sin y,\,0&lt;y&lt;\pi.
+\]</span></p>
+</div>
+<p>Continuous random variables are random variables that take on values
+in <span class="math inline">\(\mathbb{R}\)</span> (or a continuous
+subset of <span class="math inline">\(\mathbb{R}\)</span>),
+i.e. real-valued measures that can be used to represent a distance along
+a line. Continuous random variables arise from measuring processes for
+different situations and form an important basis for statistical
+inference.</p>
+<div id="probbaility-density-functions" class="section level3">
+<h3>Probbaility Density Functions</h3>
+<p>A <strong>probability density function (pdf)</strong> describes
+continuous random variable. The pdf describes the density of possible
+values for a continuous random variable, and does not define the
+probability of any specific value.</p>
+<div class="boxed">
+<p><strong>Properties of the probability density
+function:</strong><br />
+For a continuous random variable <span class="math inline">\(Y\)</span>
+with sample space <span class="math inline">\(S\)</span>, <span
+class="math inline">\(Pr(Y=y)=0,\forall y\in Y\)</span> the probability
+density function <span class="math inline">\(f\)</span> is a
+non-negative function subject to the constraints <span
+class="math display">\[
+\begin{aligned}
+f(y)&amp;\neq Pr(Y=y)\\
+f(y)&amp;\geq 0\, \forall\,  y\in Y\\
+\int_{-\infty}^{\infty}f(u)du &amp;= 1.\end{aligned}
+\]</span> Because <span class="math inline">\(Pr(Y=y)=0\)</span>, or is
+undefined then for continuous random variables, then probability can
+only be defined for events <span class="math display">\[Pr(a\leq y \leq
+b)=\int_a^bf(y)dy.\]</span></p>
+</div>
+</div>
+<div id="example-1" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example:</h3>
+<p>Are the following functions valid pdfs? <span class="math display">\[
+f(y) = y/2,\,0&lt;y&lt;2
+\]</span> and <span class="math display">\[
+f(y) = \sin y,\,0&lt;y&lt;\pi.
+\]</span></p>
+<div id="solution-3" class="section level4">
+<h4>Solution</h4>
+<p>The function <span class="math inline">\(0&lt;y/2&lt;\infty\)</span>
+for <span class="math inline">\(0&lt;y&lt;2\)</span>, and <span
+class="math display">\[
+\begin{align}
+\int_0^2\frac{y}{2}dy&amp;=\frac{y^2}{4}\bigg|_0^2\\
+&amp;=\frac{4}{4}-\frac{0}{2}\\
+&amp;=1.
+\end{align}
+\]</span> This satisfies the conditions necessary for <span
+class="math inline">\(f(y)=y/2,\:0&lt;y&lt;2\)</span> to be a valid
+pdf.</p>
+<p>The function <span class="math inline">\(0&lt;\sin y&lt;\infty,\:
+0&lt;y&lt;\pi\)</span>, but <span class="math display">\[
+\begin{align}
+\int_0^\pi \sin y\, dy&amp;=\\
+&amp;=-\cos y\bigg|_0^\pi\\
+&amp;=-\cos \pi +\cos 0\\
+&amp;=1+1\\
+&amp;=2\neq 1
+\end{align}
+\]</span> thus <span class="math inline">\(f(y)=\sin y,\:
+0&lt;y&lt;\pi\)</span> is not a valid pdf.</p>
+</div>
+<div id="video-3" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/b9000ce9-ad63-4946-97df-4663247212bf?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="cumulative-mass-and-density-functions"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Cumulative Mass and Density Functions</h3>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+Find the cdf for the pdf <span class="math display">\[
+f(y) = e^{-y},\ y&gt;0.
+\]</span></p>
+</div>
+<p>We can define the cumulative mass or density function for both
+discrete and continuous random variables. In the discrete case, the
+cumulative mass function (cmf) is defined as <span
+class="math display">\[
+F(x) =Pr(X\leq x) =  \sum_{-\infty}^xp(x).
+\]</span> and the probabilities for events can be defined using the cmf,
+e.g. <span class="math display">\[
+\begin{align}
+Pr(a&lt;X\leq b)&amp;=\sum_{x=a+1}^bp(x)\\
+&amp;=F(b)-F(a)
+\end{align}
+\]</span></p>
+<div class="boxed">
+<p><strong>The Cummulative Density Function:</strong><br />
+In the continuous case, the cumulative density function (CDF) is <span
+class="math display">\[
+F(y) = Pr(Y\leq y) = \int_{-\infty}^yf(u)du
+\]</span> the probability for any subset can be defined using the CDF
+<span class="math display">\[
+Pr(a\leq x \leq b) = F(b)-F(a).
+\]</span> Note that the connection between the pdf and CDF can be
+written as the differential equation <span class="math display">\[
+\frac{dF}{dy}=f(y).
+\]</span></p>
+</div>
+<div class="boxed">
+<p><strong>Example:</strong><br />
+Find the cdf for the pdf <span class="math display">\[
+f(y) = e^{-y},\ y&gt;0.
+\]</span> The code is <span class="math display">\[
+F(y)=\int_{-\infty}^yf(u)\,du
+\]</span> which is <span class="math display">\[
+\begin{align}
+F(y)&amp;=\int_0^ye^{-u}\,du\\
+&amp;=-e^{-u}\bigg|_0^y\\
+&amp;=-e^{-y}+1\\
+&amp;=1-e^{-y}.
+\end{align}
+\]</span></p>
+</div>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+Find the expected value and variance of <span
+class="math inline">\(Y\)</span> where <span class="math display">\[
+f(y) = \frac{3y^2}{8},\,0&lt;y&lt;2
+\]</span></p>
+</div>
+<p>The definitions of expected value and variance for continuous random
+variables are analogous to the expected value and variance definitions
+for discrete random variables.</p>
+<div class="boxed">
+<p><strong>Expected Value and Variance:</strong><br />
+The expected value and variance for continuous random variables are
+defined based on the probability density function <span
+class="math display">\[
+E(Y) = \int_{-\infty}^\infty yf(y)dy
+\]</span> and <span class="math display">\[
+\operatorname{Var}(Y) = \int_{-\infty}^\infty(y-E(Y))^2f(y)dy.
+\]</span> The median and mode are more formally defined for continuous
+random variables as <span class="math display">\[
+\mbox{median}=\left\{y:\int_{-\infty}^yf(u)du = \frac{1}{2}\right\}
+\]</span> and <span class="math display">\[
+\mbox{mode}=\max_yf(y)\mbox{~or~}\left\{y:\frac{d}{dy}f(y)=0\right\}
+\]</span></p>
+</div>
+</div>
+<div id="example-2" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example:</h3>
+<p>Find the expected value and variance of <span
+class="math inline">\(Y\)</span> where <span class="math display">\[
+f(y) = \frac{3y^2}{8},\,0&lt;y&lt;2
+\]</span></p>
+<div id="solution-4" class="section level4">
+<h4>Solution</h4>
+<p>The expected value is <span class="math display">\[
+\begin{align}
+E(Y)&amp;=\int_{-\infty}^\infty yf(y)\,dy\\
+&amp;=\int_0^2y\frac{3y^2}{8}\,dy\\
+&amp;=\int_0^2\frac{3y^3}{8}\,dy\\
+&amp;=\frac14\frac{3y^4}{8}\bigg|_0^2\\
+&amp;=\frac{3y^4}{32}\bigg|_0^2\\
+&amp;=\frac{3\times2^4}{32}-\frac{0^4}{32}\\
+&amp;=\frac{3\times16}{32}=1.5.
+\end{align}
+\]</span> The variance of <span class="math inline">\(Y\)</span> is
+<span class="math display">\[
+\begin{align}
+\operatorname{Var}(Y)&amp;=\int_0^2(y-E(Y))^2f(y)\,dy\\
+&amp;=\int_0^2(y^2-2yE(Y)-E(Y)^2)f(y)dy\\
+&amp;=\int_0^2(y^2-2y(1.5)+(1.5)^2)\frac{3y^2}{8}\,dy\\
+&amp;=\int_0^2y^2\frac{3y^2}{8}\,dy-3\int_0^2y\frac{3y^2}{8}\,dy+2.25\int_0^2\frac{3y^2}{8}\,dy\\
+&amp;=\int_0^2\frac{3y^4}{8}\,dy-3E(Y)+2.25\\
+&amp;=\int_0^2\frac{3y^4}{8}\,dy-4.5+2.25\\
+&amp;=\int_0^2\frac{3y^4}{8}\,dy-2.25\\
+&amp;=\frac15\frac{3y^5}{8}\bigg|_0^2\\
+&amp;=\frac{3y^5}{40}\bigg|_0^2\\
+&amp;=\frac{3(32)}{40}-\frac{0}{32}-2.25\\
+&amp;=0.15.
+\end{align}
+\]</span></p>
+</div>
+<div id="video-4" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/da4cd0e8-dd3f-468b-aea3-2468f3805293?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="continuous-probability-distribution-functions"
+class="section level2">
+<h2>Continuous Probability Distribution Functions</h2>
+<p>Continuous probability distributions describe random variables that
+take on values over a continuum. While the probability mass function
+evaluated for specific values is the probability for those discrete
+events, a probability density function only describes the probability of
+an event as a subset of the domain of the variable via integration. As a
+result, the derivation of probability density functions can require more
+rigorous derivation than is appropriate for the scope of this unit. We
+will present several common probability density functions, and where
+appropriate, their derivations.</p>
+<div id="the-uniform-probability-distribution" class="section level3">
+<h3>The Uniform Probability Distribution</h3>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+For <span class="math display">\[f(y) =
+\frac{3y^2}{8},\,0&lt;y&lt;2\]</span> show that the uniform probability
+distribution can be used to generate random values of <span
+class="math inline">\(Y\)</span>.</p>
+</div>
+<p>The simplest continuous probability distribution is the uniform
+probability density function.</p>
+<div class="boxed">
+<p>A uniformly distributed random variable is defined over a fixed
+interval such that for <span class="math inline">\(y\in (a,b)\)</span>,
+where <span class="math inline">\(-\infty\leq a \leq b \infty\)</span>
+the it is written <span class="math inline">\(y\sim U(a,b)\)</span> and
+<span class="math display">\[
+f(y) = \frac{1}{b-a}.
+\]</span> The <strong>expected value</strong> for a uniformly
+distributed random variable (<span class="math inline">\(y\sim
+U(a,b)\)</span>) is <span class="math display">\[
+E(Y)=\frac{a+b}{2}
+\]</span> which is also the <strong>median</strong>, the
+<strong>mode</strong>, however, is defined as any value <span
+class="math inline">\(y\in(a,b)\)</span>.</p>
+<p>The <strong>variance</strong> is <span class="math display">\[
+\operatorname{Var}(Y)=\frac{(b-a)^2}{12}.
+\]</span></p>
+<p><strong>The CDF of the Uniform Distribution</strong><br />
+The cumulative density function of a uniformly distributed random
+variable is <span
+class="math display">\[F(y)=\int_a^yf(u)du=\frac{y-a}{b-a}.\]</span></p>
+</div>
+<p>An important property of the uniform probability distribution is that
+for any continuously distributed random variable <span
+class="math inline">\(Y\)</span> with CDF <span
+class="math inline">\(F\)</span>, <span class="math inline">\(F(y)\sim
+U(0,1)\)</span></p>
+</div>
+<div id="example-3" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example:</h3>
+<p>For <span class="math display">\[
+f(y) = \frac{3y^2}{8},\,0&lt;y&lt;2
+\]</span> show that we can use the uniform probability distribution to
+generate random values of <span class="math inline">\(Y\)</span>.</p>
+<div id="solution-5" class="section level4">
+<h4>Solution</h4>
+<p>We know that <span class="math display">\[
+F(x)=\int_{-\infty}^xf(u)\,du
+\]</span> and that <span class="math inline">\(F(x)=U\sim
+U(0,1)\)</span> hence without proof we note that is <span
+class="math inline">\(u\sim U(0,1)\)</span> then <span
+class="math inline">\(F^{-1}(u)=x \;s.t.\; x\sim f(x)\)</span>.</p>
+<p>So we define <span class="math inline">\(F^{-1}(u)\)</span> <span
+class="math display">\[
+\begin{align}
+F(x)&amp;=\int_{-\infty}^xf(u)\,du\\
+&amp;=\int_0^x\frac{3u^2}{8}\,du\\
+&amp;=\frac{u^3}{8}\bigg|_0^x\\
+&amp;=\frac{x^3}{8}-\frac08\\
+F(x)=\frac{x^3}{8}.
+\end{align}
+\]</span> Then <span class="math display">\[
+\begin{align}
+F(x)&amp;=u\\
+\frac{x^3}{8}&amp;=u\\
+x^3&amp;=8u\\
+3\log(x)&amp;=\log(8u)\\
+\log(x)&amp;=\frac{\log(8u)}{3}\\
+x&amp;=\exp\left(\frac{\log(8u)}{3}\right)\\
+x&amp;=F^{-1}(u).
+\end{align}
+\]</span> Alternatively, <span class="math display">\[
+F^{-1}(u)=2u^{\frac{1}{3}}
+\]</span></p>
+</div>
+<div id="code" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>##  Define F inverse function 
+
+def Finv(x):
+  ans = numpy.log(x)/3+numpy.log(8)/3
+  return numpy.exp(ans)
+
+##  Generate values of u~U(0,1)
+
+u = numpy.random.uniform(size = 1000)
+
+##  Apply F inverse
+
+y = Finv(u)
+</code></pre>
+</div>
+<div id="plot" class="section level4">
+<h4>Plot</h4>
+<p><img src="chap2_files/figure-html/unnamed-chunk-9-13.png" width="614" style="display: block; margin: auto;" /></p>
+</div>
+<div id="video-5" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/9bb9bb38-f0ca-4c8b-8647-11e33544383a?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="the-exponential-probability-distribution"
+class="section level2">
+<h2>The Exponential Probability Distribution</h2>
+<p>The exponential distribution is one case where the derivation is
+relatively straightforward. Suppose the Poisson pmf can describe the
+random occurrence of events in time (e.g. <span
+class="math inline">\(\lambda\)</span> in the Poisson distribution could
+be events per unit time). In that case, the exponential distribution
+arises naturally from considering the time between events for a Poisson
+distributed random variable.</p>
+<div class="boxed">
+<p><strong>The Poisson Distribution and the Time Between
+Events</strong><br />
+</p>
+<p>Consider <span class="math inline">\(X\)</span> a Poisson random
+variable with a rate <span class="math inline">\(\lambda\)</span> in
+events per unit time. The expected number of events in an interval of
+length <span class="math inline">\(T=t\)</span> is <span
+class="math inline">\(\lambda t\)</span> <span
+class="math display">\[Pr(X=x|T=t)=\frac{(\lambda t)^x\exp(-\lambda
+t)}{x!}.\]</span> If we define <span class="math inline">\(T\geq
+0\)</span> as a continuous random variable describing the time between
+events the probability that <span class="math inline">\(T&gt;t\)</span>
+is the probability that there are no events <span
+class="math inline">\((X=0)\)</span> in the period <span
+class="math inline">\(t\)</span> <span
+class="math display">\[Pr(T&gt;t)=\exp(-\lambda t)\]</span> thus the CDF
+of <span class="math inline">\(T\)</span> is <span
+class="math display">\[F(t)=Pr(T&lt;t)=1-\exp(-\lambda t),\]</span> and
+the pdf of <span class="math inline">\(T\)</span> is <span
+class="math display">\[\begin{aligned}
+f(t)&amp;=&amp;\frac{dF}{dt}\\
+&amp;=&amp;\lambda\exp(-\lambda t).\end{aligned}\]</span> The expected
+value and variance of a random variable <span
+class="math inline">\(X\sim Exp(\lambda)\)</span> are <span
+class="math display">\[\begin{aligned}
+E(X)&amp;=&amp;\frac{1}{\lambda}\\
+\mbox{Var}(X)&amp;=&amp;\frac{1}{\lambda^2}.\end{aligned}\]</span> Note
+that <span class="math inline">\(\lambda\)</span> is the rate for the
+Poisson distribution. For this reason, the exponential distribution is
+sometimes parametrised in terms of the <span
+class="math inline">\(\mu=1/\lambda\)</span> <span
+class="math display">\[f(x)=\frac{1}{\mu}\exp(-x/\mu)\]</span> in this
+case <span class="math display">\[\begin{aligned}
+E(X)&amp;=&amp;\mu\\
+\mbox{Var}(X)&amp;=&amp;\mu^2.\end{aligned}\]</span></p>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/0e25895f-2660-4366-a640-e2f96e352fa1?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+<p>Exponential random variables have a unique property called
+“memorylessness”; in other words, for any given value <span
+class="math inline">\(Y\geq y\)</span>, the CDF doesn’t depend on the
+previous history. In other words, if the time you have to wait for a bus
+is an exponential random variable, then the probability that you will
+have to wait longer than <span class="math inline">\(y\)</span> minutes
+is the same if you have only been waiting one minute or ten minutes.</p>
+<div class="boxed">
+<p><strong>“Memoryless Property”</strong><br />
+Random variables that follow an exponential distribution have the
+“memoryless” property, if <span class="math inline">\(Y\sim
+Exp(\mu)\)</span> then <span class="math display">\[Pr(Y\geq t+s|Y\geq
+t)=Pr(Y\geq s).\]</span></p>
+</div>
+</div>
+<div id="the-gaussian-probability-distribution" class="section level2">
+<h2>The Gaussian Probability Distribution</h2>
+<p>The Gaussian or Normal distribution is the most common distribution
+describing phenomena and arises naturally in many cases. The Gaussian
+distribution also has very important properties that describe the
+properties of samples of random variables from other probability
+distributions, making it very important for statistical modelling and
+inference.</p>
+<div class="boxed">
+<p><strong>The Gaussian or Normal Probability Distribution
+Function:</strong><br />
+A Gaussian or Normally distributed random variable <span
+class="math inline">\(Y\sim N(\mu, \sigma^2)\)</span> with expected
+value <span class="math inline">\(E(Y)=\mu\)</span> and variance <span
+class="math inline">\(\operatorname{Var}(Y)=\sigma^2\)</span> has the
+density function <span class="math display">\[
+f(y)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-
+\frac{(y-\mu)^2}{2\sigma^2}\right).
+\]</span> There is no closed form for the CDF for the normal pdf, but we
+can compute values easily in a variety of software packages.</p>
+<p><strong>Mean, Median, and Mode of the Gaussian
+Distribution</strong></p>
+<p>There are no straightforward means of evaluating the integral of the
+Gaussian pdf or its expectation. But because by inspection, it is
+obvious that it is an asymmetric function about the mean, we can see
+that the mean, median, and mode of the Gaussian distribution are the
+same.</p>
+</div>
+<p>The Gaussian or Normal distribution is most commonly used in
+constructing confidence intervals and performing hypothesis tests for
+parameters by exploiting the asymptotic properties of the sampling
+distributions of maximum likelihood estimators.</p>
+<div id="the-standard-normal-random-variable"
+class="section level3 unnumbered boxed">
+<h3 class="unnumbered">The Standard Normal Random Variable</h3>
+<p>The standard normal random variable is a special case of a Gaussian
+random variable with <span class="math inline">\(\mu=0\)</span> and
+<span class="math inline">\(\sigma^2 = 1\)</span>. Any random variable
+can be standardised by noting that for any random variable (continuous
+or discrete, the following properties hold for the expectation and
+variance. <span class="math display">\[E(aY)=aE(Y)\]</span> <span
+class="math display">\[E(b+Y)=b+E(Y)\]</span> <span
+class="math display">\[\operatorname{Var}(aY)=a^2\operatorname{Var}(Y)\]</span>
+<span
+class="math display">\[\operatorname{Var}(b+Y)=\operatorname{Var}(Y),\]</span></p>
+<p>For <span class="math inline">\(Y\sim N(\mu,\sigma^2)\)</span> <span
+class="math display">\[Z=\frac{Y-\mu}{\sigma}\sim N(0,1).\]</span></p>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/63e710e1-0ed5-404b-96ab-db2153eb36ec?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

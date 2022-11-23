@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Module 5</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Module 5</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#the-analysis-of-variance"
+id="toc-the-analysis-of-variance">The Analysis of Variance</a>
+<ul>
+<li><a href="#designing-experiments"
+id="toc-designing-experiments">Designing Experiments</a></li>
+<li><a href="#anova-inference" id="toc-anova-inference">ANOVA
+Inference</a></li>
+<li><a href="#randomised-block-designs-two-way-classification"
+id="toc-randomised-block-designs-two-way-classification">Randomised
+Block Designs: Two-Way Classification</a></li>
+<li><a href="#two-factor-experiments"
+id="toc-two-factor-experiments">Two-Factor Experiments</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="the-analysis-of-variance" class="section level1">
+<h1>The Analysis of Variance</h1>
+<p>When considering hypothesis testing we looked at one-sample and
+two-sample cases, but is many instances,especially in experimental
+settings (e.g. lab experiments or clinical trials) we want to compare
+the effects of various <em>factors</em> that have more than one or two
+possible <em>levels</em>. In this case we need a more generalised
+approach to analysing results and testing hypotheses. The statistical
+technique used to analyse these data and test for the statistical
+significance of effects is called the analysis of variance (ANOVA).</p>
+<div id="designing-experiments" class="section level2">
+<h2>Designing Experiments</h2>
+<p>An experiment is a trial that attempts to isolate the effects of
+factors of interest on specific outcomes while eliminating as much as
+possible extraneous effects on outcomes. Experiments are typically
+designed to focus on a few factors and include some degree of repetition
+and randomisation to make statistical inferences.</p>
+<div class="boxed">
+<p>An <strong>experimental unit</strong> is the object whose outcome or
+response is measured and is of interest in the process of the
+experiment. The outcome or response measured is called the dependent
+variable.</p>
+<p>A <strong>factor</strong> is an independent variable controlled and
+varied by the experimenter. Factors are measured and varied in terms of
+levels or discrete states rather than as continuous or discrete
+numerical measures.</p>
+<p>A <strong>treatment</strong> is a specific combination of factor
+levels.</p>
+<p>A <strong>response</strong> is the variable measured by the
+experimenter, typically a continuous numeric response.</p>
+</div>
+<div class="sidenote">
+<p><strong>Paint Coverage</strong><br />
+House paint is sold in containers labelling the coverage and drying time
+for a single coat of paint. Three manufacturers’ packaging claims that a
+four-litre can of their paint will cover the same area. How can we test
+if all three brands have the same coverage?</p>
+</div>
+<div id="analysis-of-variance-anova-explained"
+class="section level3 unnumbered">
+<h3 class="unnumbered">Analysis of Variance (ANOVA) Explained</h3>
+<p>We can explain the concept of Analysis of Variance (ANOVA) as a
+generalisation of a two-sample <span
+class="math inline">\(t\)</span>-test. Historically, ANOVA predates the
+maximum likelihood principle, and the Neyman-Pearson paradigm for
+hypothesis testing, and can be derived separately, but it is useful to
+think of it in terms of hypothesis testing for the purposes of
+inferencs.</p>
+<div class="boxed">
+<p><strong>Paint Coverage: Deriving the Sum of Squares for
+ANOVA</strong><br />
+</p>
+<p>House paint is sold in containers labelling the coverage and drying
+time for a single coat of paint. If manufacturers’ packaging claims that
+a four-litre can of their paint will cover the same area, how can we
+test if all three brands have the same coverage?</p>
+<p>We can think of this experiment as an example of a simple experiment
+testing a single factor (brand of paint) with multiple levels (brands of
+paint). If we are testing a single factor with two levels (Brand A
+versus Brand B), measuring the response (coverage in <span
+class="math inline">\(m^2\)</span>), results are analysed using a
+two-sample <span class="math inline">\(t\)</span>-test. Assuming that
+<span class="math inline">\(n_1=n_2=n\)</span>, we could write this out
+as a model for our responses as <span class="math display">\[y_{ij} =
+\mu_i+\epsilon_{ij}, i = A,B\mbox{ and } j = 1,\ldots,n\]</span> where
+<span class="math inline">\(\mu_i\)</span> is the mean for Brand A or
+Brand B, and <span class="math inline">\(j\)</span> is sample <span
+class="math inline">\(j\)</span> of the sample for Brand A or Brand
+B.</p>
+<p><br> Now suppose that we wanted to investigate three brands of paint?
+(Brand A, Brand B, and Brand C). The two-sample <span
+class="math inline">\(t\)</span>-test is no longer a valid approach to
+analysing the data. Instead, can extend this statistical model for the
+experiment to analyse the data (assuming that each sample is of equal
+size, i.e. <span class="math inline">\(n_1+n_2+n_3=n\)</span> <span
+class="math display">\[y_{ij} = \mu_i+\epsilon_{ij}, i = A, B, C \mbox{
+and } j = 1,\ldots,n\]</span></p>
+<p>Let’s assume that the outcome of the experiment for replication <span
+class="math inline">\(j\)</span> of treatment <span
+class="math inline">\(i\)</span> that is the result for is <span
+class="math inline">\(y_{ij}\)</span>, then the total outcome of the
+experiment is <span class="math display">\[\mathbf{y} =
+(y_{11},y_{12},\ldots,y_{IJ})\]</span> where there are <span
+class="math inline">\(I\)</span> different treatments each replicated
+<span class="math inline">\(J\)</span> times, and <span
+class="math inline">\(n = IJ\)</span>. We can describe the total
+variation in experimental outcomes as the <strong>total sum of
+squares</strong> (<strong>SST</strong>) is defined as <span
+class="math display">\[SST =
+\sum_{i=1}^I\sum_{j=1}^J(y_{ij}-\bar{y}_{..})^2.\]</span> where <span
+class="math display">\[\bar{y}_{..}=\frac{1}{IJ}\sum_{i=1}^I\sum_{j=1}^Jy_{ij}\]</span>
+is the grand mean, the overall average response over all treatments and
+repetitions. The total sum of squares can be decomposed into two parts.
+First the sum of the squares of the error <strong>SSE</strong> is the
+pooled variation <em>within</em> treatment group <span
+class="math inline">\(i\)</span> <span
+class="math display">\[\begin{aligned}
+SSE &amp;= (n_1-1)s_1^2+\cdots+(n_I-1)s_I^2\\
+&amp;=\sum_{i=1}^I \sum_{j=1}^J
+(y_{ij}-\bar{y}_i)^2\end{aligned}\]</span> where <span
+class="math display">\[\bar{y}_{i}=\frac{1}{J}\sum_{j=1}^Jy_{ij}\]</span>
+or the mean for treatment <span class="math inline">\(i\)</span>.
+Second, the sum of the squares of the treatments <strong>SSTR</strong>
+is <span class="math display">\[SSTR =
+\sum_{i=1}^IJ(\bar{y}_{i}-\bar{y}_{..})^2\]</span> resulting in <span
+class="math display">\[SST = SSTR + SSE\]</span></p>
+<p>We can show that we can decompose the total sum of squares into the
+sum of the squares of the treatments and the sum of the squares of the
+error.</p>
+<p>Each source of variation is computed as a sum of squares, and can be
+divided by their degrees of freedom, as an estimate of their
+contribution to the total variance. These results are presented in an
+ANOVA table.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="center">degrees of freedom</th>
+<th align="center">Sum of Squares</th>
+<th align="center">Mean Squares</th>
+<th align="center"><span class="math inline">\(F\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Treatment</td>
+<td align="center">I-1</td>
+<td align="center">SSTR</td>
+<td align="center">MSTR = SSTR/(I-1)</td>
+<td align="center">MSTR/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="center">n-I</td>
+<td align="center">SSE</td>
+<td align="center">MSE = SSE/(n-I)</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="center">n-1</td>
+<td align="center">SST</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <span class="math inline">\(n = IJ\)</span> and the mean
+squares are just the sum of squares divided by their degrees of freedom.
+The statistic <span class="math inline">\(F\)</span> is the ratio of the
+MSTR and the MSE; or the ratio of the between treatment variation and
+the within treatment variation.</p>
+</div>
+</div>
+</div>
+<div id="anova-inference" class="section level2">
+<h2>ANOVA Inference</h2>
+<div class="sidenote">
+<p><strong>Example: Comparing Measurement Methods</strong><br />
+A study in Kirchhoefer (1979) reviewed the results of an experiment
+evaluating a semi-automated method for measuring chlorpheniramine
+maleate in tablets. The experimenter allocated ten samples to each of
+seven labs, and the results were analysed to determine if there were
+differences between the labs. The results in tabular form are:</p>
+<div class="table-narrow">
+<pre><code>#&gt;        y    lab
+#&gt; 0   4.13  Lab 1
+#&gt; 1   4.07  Lab 1
+#&gt; 2   4.04  Lab 1
+#&gt; 3   4.07  Lab 1
+#&gt; 4   4.05  Lab 1
+#&gt; ..   ...    ...
+#&gt; 65  3.81  Lab 7
+#&gt; 66  3.91  Lab 7
+#&gt; 67  3.96  Lab 7
+#&gt; 68  4.05  Lab 7
+#&gt; 69  4.06  Lab 7
+#&gt; 
+#&gt; [70 rows x 2 columns]</code></pre>
+</div>
+</div>
+<p>We assume that the observations <span
+class="math inline">\(y_{ij}\)</span> are distributed following a
+Gaussian distribution with a common variance <span
+class="math inline">\(\sigma^2\)</span>, but not necessarily the same
+mean. Under these assumeotions, the statistic <span
+class="math inline">\(F\)</span>, the ratio of the mean squares of ther
+treatment and the mean square of the error will follow an <span
+class="math inline">\(F\)</span>-distribution.</p>
+<p>The <span class="math inline">\(F\)</span> distribution is a
+continuous probability distribution that describes the sampling
+distribution of the ratio of two sample variances. The <span
+class="math inline">\(F\)</span> distribution has two parameters, which
+are the degrees of freedom of the numerator and the degrees of freedom
+of the denominator. <span class="math display">\[
+\frac{s_1^2}{s^2_2}\sim F_{\nu_1,\nu_2}
+\]</span> where if <span class="math display">\[
+s_1^2=\frac{1}{n_1-1}\sum_{i=1}^{n_1}(x_i-\bar{x})^2\quad\mbox{and}
+\quad s^2_2=\frac{1}{n_2-1}\sum_{j=1}^{n_2}(y_j-\bar{y})^2
+\]</span> then <span class="math display">\[
+\nu_1 = n_1-1\quad \mbox{and}\quad \nu_2=n_2-1.
+\]</span></p>
+<p>We can think about this in terms of a hypothesis test; if you wanted
+to test whether or not one of your treatments produced a different
+outcome than the others, then you would use the hypotheses <span
+class="math display">\[
+H_0: \mu_1=\mu_2=\cdots=\mu_I\qquad\mbox{and}\qquad H_A: \mbox{ at least
+one treatment mean is different}.
+\]</span> Under these hypotheses, the null assumption means that <span
+class="math display">\[
+SSTR\approx SSE
+\]</span> i.e. that the variance between treatments was approximately
+equal to the variance within treatments, or that all treatment means are
+the same. So, in this case, you would reject the null hypothesis if MSTR
+was larger than MSE, or that basically, the treatment accounted for more
+of the total variance than the error. This decision translates to
+rejecting for large values of <span class="math inline">\(F\)</span>, so
+we can state that our rejection rule would be: <span
+class="math display">\[F&gt;F_{\mbox{critical}}\]</span> and just as in
+previous cases we can choose our critical value based on a Type I Error
+rate so that <span class="math display">\[
+F_{\mbox{critical}} = F_{\nu_1,\nu_2,\alpha}
+\]</span> where <span class="math display">\[
+Pr(F&lt;F_{\mbox{critical}})= 1-\alpha.
+\]</span> Finding the critical value for <span
+class="math inline">\(F\)</span> can be easily done using <code>R</code>
+or other statistical software. In practice, most statistical software
+will produce an ANOVA table with <span class="math inline">\(F\)</span>
+statistics computed and some indication of the results of testing.</p>
+<div id="example" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example:</h3>
+<p>A study in Kirchhoefer (1979) reviewed the results of an experiment
+evaluating a semi-automated method for measuring chlorpheniramine
+maleate in tablets. The experimenter allocated ten samples to each of
+seven labs, and the results were analysed to determine if there were
+differences between the labs. The results in tabular form are:</p>
+<div class="table-narrow">
+<pre><code>#&gt;        y    lab
+#&gt; 0   4.13  Lab 1
+#&gt; 1   4.07  Lab 1
+#&gt; 2   4.04  Lab 1
+#&gt; 3   4.07  Lab 1
+#&gt; 4   4.05  Lab 1
+#&gt; ..   ...    ...
+#&gt; 65  3.81  Lab 7
+#&gt; 66  3.91  Lab 7
+#&gt; 67  3.96  Lab 7
+#&gt; 68  4.05  Lab 7
+#&gt; 69  4.06  Lab 7
+#&gt; 
+#&gt; [70 rows x 2 columns]</code></pre>
+</div>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<p>If we want to test the hypotheses <span class="math display">\[
+H_0: \mbox{There is no difference between labs}\quad\mbox{and}\quad H_A:
+\mbox{At least one lab is different}
+\]</span> Then we can use the <span class="math inline">\(F\)</span>
+statistic and perform a <span class="math inline">\(F\)</span>-test. The
+degrees of freedom for the numerator and denominator can be taken from
+the table as 6 and 63 respectively use <code>R</code> to determine that
+<span class="math display">\[
+F_{\mbox{critical}}=2.25
+\]</span> for <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p>Unfortunately, further analysis requires using <code>R</code> rather
+than the tedious hand calculations involved.</p>
+</div>
+<div id="code" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code># Ordinary Least Squares (OLS) model
+from bioinfokit.analys import stat
+res = stat()
+res.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(lab)&#39;)
+res.anova_summary
+#&gt;             df    sum_sq   mean_sq         F    PR(&gt;F)
+#&gt; C(lab)     6.0  0.124737  0.020790  5.660069  0.000095
+#&gt; Residual  63.0  0.231400  0.003673       NaN       NaN</code></pre>
+<p>We can see from the results that the <em>MSE</em>=0.0207895 and
+<em>MSTR</em>= resulting in <em>F</em>=5.6600691, since the critical
+value of <em>F</em> is 2.25, we can reject the null hypothesis and
+assume that the measuring process in at least one lab is different than
+the others.</p>
+<p>This example describes a single factor experiment where treatments
+are assigned to individuals completely at random or a fully randomised
+trial. The results from rejecting the null hypothesis tell us that at
+least one of the treatments results in different outcomes compared to
+the rest, but beyond that, it doesn’t tell us much, in fact, we need
+some more sophisticated tools.</p>
+</div>
+<div id="video" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/cfe85a89-e249-42c2-80f8-7accfa2f6658?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/5ada6246-bbe3-40f6-a88c-205c2e8a798f?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="randomised-block-designs-two-way-classification"
+class="section level2">
+<h2>Randomised Block Designs: Two-Way Classification</h2>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+A researcher is interested in the differences in price for different
+mobile phone providers. They want to compare prices from 4 different
+companies (A,B,C,D), but to account for differences between plans they
+create blocks based on different plan types: low, medium, and high
+usage. The resulting data are:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="left">Usage Level</td>
+<td align="center">A</td>
+<td align="center">B</td>
+<td align="center">C</td>
+<td align="center">D</td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">Low</td>
+<td align="center">27</td>
+<td align="center">24</td>
+<td align="center">31</td>
+<td align="center">23</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td align="left">Medium</td>
+<td align="center">68</td>
+<td align="center">76</td>
+<td align="center">65</td>
+<td align="center">67</td>
+<td></td>
+</tr>
+<tr class="even">
+<td align="left">High</td>
+<td align="center">308</td>
+<td align="center">326</td>
+<td align="center">312</td>
+<td align="center">300</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The single factor completely randomised designs previously described
+are extensions of two-sample <span
+class="math inline">\(t\)</span>-tests using <span
+class="math inline">\(F\)</span>-tests for inference and adjusting the
+Type I Error Rates to account for multiple comparisons. This model
+assumes that the only sources for observed variation in responses are
+either the treatment effects or random effects or experimental errors.
+Sometimes however it is obvious to the designer of an experiment that
+not all subjects are homogeneous, so the idea of allocating treatments
+completely at random might induce bias or otherwise invalidate our
+results. Often this heterogeneity is not able to be controlled by the
+experimenter, and is not of primary interest, but must be controlled.
+Controlling for this source of variation is done by using a
+<strong>randomised block design</strong>, which is a direct extension of
+the <em>matched pairs</em> or <em>paired difference</em> designs shown
+in Week 9.</p>
+<div id="blocking" class="section level3 unnumbered">
+<h3 class="unnumbered">Blocking</h3>
+<p>In a randomised experimental design, if there are <span
+class="math inline">\(I\)</span> treatments of interest, the
+experimenter chooses <span class="math inline">\(J\)</span> blocks
+(<span class="math inline">\(J&gt;I\)</span>) each with <span
+class="math inline">\(I\)</span> subjects, one for each treatment. This
+scheme is to isolate the block to block variability that might obscure
+the treatment effects.</p>
+<p>A researcher wants to know the average yield for three different
+species of fruit trees, but there is variation in yield depending on the
+field that the trees are planted in. The researcher is not interested in
+the variation due to the fields, so the researcher picks five different
+fields and divides each into three plots, and plants each of the three
+species in one of the plots.</p>
+<p>In this example, two factors account for variation in the responses:
+the treatments and the blocks. Thus our model is now: <span
+class="math display">\[y_{ij} = \alpha_i+\beta_j+\epsilon_{ij}\]</span>
+where <span class="math inline">\(\alpha_i\)</span> is the mean effect
+for treatment <span class="math inline">\(i\)</span> and <span
+class="math inline">\(\beta_j\)</span> is the mean effect for block
+<span class="math inline">\(j\)</span>. We use ANOVA to explore the
+variation of both of these factors and random experimental error.</p>
+</div>
+<div id="the-anova-table-for-randomised-block-designs"
+class="section level3 unnumbered boxed">
+<h3 class="unnumbered">The ANOVA Table for Randomised Block Designs</h3>
+<p>To partition the variance let <span
+class="math inline">\(y_{ij}\)</span> be the response for treatment
+<span class="math inline">\(i\)</span> in block <span
+class="math inline">\(j\)</span>. Then the total variation for <span
+class="math inline">\(n=IJ\)</span> responses can be partitioned into
+three parts: <span class="math display">\[SST = SSB+SSTR+SSE\]</span>
+where SSB is the sum of the squares of the blocks, which measures the
+variability between blocks. <span class="math display">\[SSB =
+I\sum_{j=1}^J(\bar{y}_{j}-\bar{y}_{..})^2\]</span> where <span
+class="math display">\[\bar{y}_j =
+\frac{1}{I}\sum_{i=1}^Iy_{ij}.\]</span> and <span
+class="math display">\[SSE = \sum_{i=1}^I\sum_{j =
+1}^J(y_{ij}-\bar{y}_j-\bar{y}_I-\bar{y}_{..})^2.\]</span> In this case
+the general form of the ANOVA table is</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="center">Sum of Squares</th>
+<th align="center">degrees of freedom</th>
+<th align="center">MS</th>
+<th align="center">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Block</td>
+<td align="center">SSB</td>
+<td align="center">J-1</td>
+<td align="center">SSB/(J-1)</td>
+<td align="center">MSB/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Treatment</td>
+<td align="center">SSTR</td>
+<td align="center">(I-1)</td>
+<td align="center">SSTR/(I-1)</td>
+<td align="center">MSTR/MSE</td>
+</tr>
+<tr class="odd">
+<td align="left">Error</td>
+<td align="center">SSE</td>
+<td align="center">(I-1)(J-1)</td>
+<td align="center">SSE/((I-1)(J-1))</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="center">SST</td>
+<td align="center">n-1</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <span class="math inline">\(F\)</span> statistics can
+be used as in the single-factor design to the test the hypotheses: <span
+class="math display">\[
+H_0:\mbox{All treatment means are the same.}\: \mbox{ vs }\:
+H_A:\mbox{At least one treatment mean is different.}
+\]</span> or <span class="math display">\[
+H_0:\mbox{All block means are the same}\:\mbox{ vs }\: H_A:\mbox{At
+least one block mean is different}.
+\]</span></p>
+</div>
+<div id="example-1" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example</h3>
+<p>A researcher is interested in the differences in price for different
+mobile phone providers. They want to compare prices from 4 different
+companies (A,B,C,D), but to account for differences between plans they
+create blocks based on different plan types: low, medium, and high
+usage. The resulting data are:</p>
+<pre><code>#&gt;       y company usage
+#&gt; 0    27       A   low
+#&gt; 1    68       A   med
+#&gt; 2   308       A  high
+#&gt; 3    24       B   low
+#&gt; 4    76       B   med
+#&gt; 5   326       B  high
+#&gt; 6    31       C   low
+#&gt; 7    65       C   med
+#&gt; 8   312       C  high
+#&gt; 9    23       D   low
+#&gt; 10   67       D   med
+#&gt; 11  300       D  high</code></pre>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>The results for the ANOVA without blocking on the usage level
+are:</p>
+<pre><code>#&gt;              df         sum_sq       mean_sq         F    PR(&gt;F)
+#&gt; C(company)  3.0     222.250000     74.083333  0.003126  0.999738
+#&gt; Residual    8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
+<p><br> The results for the ANOVA blocking by usage label are:</p>
+<pre><code>#&gt;              df         sum_sq       mean_sq            F        PR(&gt;F)
+#&gt; C(company)  3.0     222.250000     74.083333     1.840580  2.403784e-01
+#&gt; C(usage)    2.0  189335.166667  94667.583333  2351.989648  2.067268e-09
+#&gt; Residual    6.0     241.500000     40.250000          NaN           NaN</code></pre>
+<p>Notice that when we block on the usage level, the <span
+class="math inline">\(p\)</span>-value for <code>Company</code>
+decreases, though it is still <em>not</em> statistically significant at
+the Type I error rate of <span class="math inline">\(\alpha =
+0.05\)</span>, it is a substantial change.
+<!-- Source          Df      Sum Sq    Mean Sq   F value   Pr($>$F) -->
+<!-- ------------- ---- ----------- ---------- --------- ---------- -->
+<!-- Usage Level      2   189335.17   94667.58   2351.99     0.0000 -->
+<!-- Company          3      222.25      74.08      1.84     0.2404 -->
+<!-- Residuals        6      241.50      40.25        --></p>
+</div>
+<div id="code-1" class="section level4">
+<h4>Code</h4>
+<p><strong>Without Blocking</strong><br />
+</p>
+<pre class="python"><code>
+y = numpy.array([27,68,308,24,76,326,31,65,312,23,67,300])
+company = numpy.repeat((&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;),3)
+u = (&quot;low&quot;, &quot;med&quot;, &quot;high&quot;)
+usage = numpy.concatenate((u,u,u,u))
+
+df = pandas.DataFrame({&quot;y&quot;:y,&quot;company&quot;:company, &quot;usage&quot;:usage})
+
+res_1 = stat()
+res_1.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(company)&#39;)
+res_1.anova_summary
+#&gt;              df         sum_sq       mean_sq         F    PR(&gt;F)
+#&gt; C(company)  3.0     222.250000     74.083333  0.003126  0.999738
+#&gt; Residual    8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
+<p><br> <!---
+And the results for Tukey's HSD for Company without blocking by usage level are:
+
+```python
+from statsmodels.stats.multicomp import pairwise_tukeyhsd
+
+tukey = pairwise_tukeyhsd(endog=df['y'],
+                          groups=df['company'],
+                          alpha=0.05)
+
+print(tukey)
+#>   Multiple Comparison of Means - Tukey HSD, FWER=0.05  
+#> =======================================================
+#> group1 group2 meandiff p-adj    lower    upper   reject
+#> -------------------------------------------------------
+#>      A      B   7.6667 0.9999  -394.838 410.1713  False
+#>      A      C   1.6667    1.0  -400.838 404.1713  False
+#>      A      D  -4.3333    1.0  -406.838 398.1713  False
+#>      B      C     -6.0    1.0 -408.5046 396.5046  False
+#>      B      D    -12.0 0.9997 -414.5046 390.5046  False
+#>      C      D     -6.0    1.0 -408.5046 396.5046  False
+#> -------------------------------------------------------
+```
+---> <br></p>
+<p><strong>With Blocking</strong><br />
+</p>
+<p>Now we add blocking on <code>Usage_Level</code></p>
+<pre class="python"><code>res_2 = stat()
+res_2.anova_stat(df=df, res_var = &quot;y&quot;, anova_model = &#39;y~C(company)+C(usage)&#39;)</code></pre>
+<p><br></p>
+<p>Note that there appear to be significant differences between costs
+for various usage levels, but not between companies. So while it is
+evident that there is a difference between the costs for usage levels
+(and this is not of interest), it appears that even when accounting for
+usage level, there are still no significant differences in costs between
+service providers.</p>
+</div>
+<div id="video-1" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/bbb5e726-3776-4dda-8f82-631d84914b40?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="two-factor-experiments" class="section level2">
+<h2>Two-Factor Experiments</h2>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+The manager of a manufacturing plant knows that the output of a
+production line depends on two factors:</p>
+<ul>
+<li><p>Which of two supervisors is in charge of the line</p></li>
+<li><p>Which of three shifts (day, night, or swing) is working</p></li>
+</ul>
+<p>The following data are collected</p>
+<div style="padding: 0 50px">
+<pre><code>#&gt;       y Supervisor  Shift
+#&gt; 0   571          1    Day
+#&gt; 1   610          1    Day
+#&gt; 2   625          1    Day
+#&gt; 3   480          2    Day
+#&gt; 4   516          2    Day
+#&gt; 5   465          2    Day
+#&gt; 6   480          1  Swing
+#&gt; 7   474          1  Swing
+#&gt; 8   540          1  Swing
+#&gt; 9   625          2  Swing
+#&gt; 10  600          2  Swing
+#&gt; 11  581          2  Swing
+#&gt; 12  470          1  Night
+#&gt; 13  430          1  Night
+#&gt; 14  450          1  Night
+#&gt; 15  630          2  Night
+#&gt; 16  680          2  Night
+#&gt; 17  661          2  Night</code></pre>
+</div>
+</div>
+<p>A randomised block design provides some structure as to allocating
+treatments to account for between block variation to control for
+extraneous sources of variation that are not of interests. But in many
+cases a researcher may want to explore the effects of two different
+factors (both of interest) as well as their interaction (definitely of
+interest). Experiments of this kind are called Two-Factorial
+Experiments.</p>
+<p>Medical researchers often want to test the effects of various drugs,
+but in many cases, patients may be taking more than one medication. In
+this case, researchers need to test the effects of multiple medications
+and their interactions on patient outcomes using the model <span
+class="math display">\[
+y_{ijk} = \alpha_i+\beta_j+(\alpha\beta)_{ij}+\epsilon_{ijk}
+\]</span> where <span class="math inline">\(\alpha_i\)</span> is the
+mean effect for drug 1, <span class="math inline">\(\beta_j\)</span> is
+the mean effect of drug 2, and <span
+class="math inline">\((\alpha\beta)_{ij}\)</span> is the mean effect of
+the interaction between drug 1 and drug 2.</p>
+<div id="anova-for-two-factor-experiments"
+class="section level3 unnumbered boxed">
+<h3 class="unnumbered">ANOVA for Two-Factor Experiments</h3>
+<p>In a two factor experiment, factor A may have <span
+class="math inline">\(I\)</span> levels, factor B may have <span
+class="math inline">\(J\)</span> levels and each of these replicated
+<span class="math inline">\(K\)</span> times, making <span
+class="math inline">\(y_{ijk}\)</span> observation <span
+class="math inline">\(k\)</span> of the combination of treatments <span
+class="math inline">\(i\)</span> and <span
+class="math inline">\(j\)</span>. We then can partition the total sum of
+squares into four parts <span class="math display">\[
+SST  = SSA + SSB + SSAB + SSE
+\]</span> where:</p>
+<ul>
+<li><p>SSA measures the variation among the means of factor A.</p></li>
+<li><p>SSB measures the variation among the means of factor B.</p></li>
+<li><p>SSAB measures the variation among the different combinations of
+levels for A and B.</p></li>
+<li><p>SSE measures the variation among the observations within each
+combination of levels for A and B.</p></li>
+</ul>
+<p>Given that there are <span class="math inline">\(I\)</span> levels
+for factor A, <span class="math inline">\(J\)</span> levels for factor
+B, and <span class="math inline">\(K\)</span> replicates of each
+combination, the total number of observations is <span
+class="math inline">\(n = IJK\)</span>.</p>
+<p>Setting aside the exact formulae for computing the sums of squares,
+the resulting ANOVA table for analysis is</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Source</th>
+<th align="center">Degrees of Freedom</th>
+<th align="center">Sum of Squares</th>
+<th align="center">Mean Squares</th>
+<th align="center">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">A</td>
+<td align="center">I-1</td>
+<td align="center">SSA</td>
+<td align="center">SSA/(I-1)</td>
+<td align="center">MSA/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">B</td>
+<td align="center">J-1</td>
+<td align="center">SSB</td>
+<td align="center">SSB/(J-1)</td>
+<td align="center">MSB/MSE</td>
+</tr>
+<tr class="odd">
+<td align="left">AB</td>
+<td align="center">(I-1)(J-1)</td>
+<td align="center">SSAB</td>
+<td align="center">SSAB/((I-1)(J-1))</td>
+<td align="center">MSAB/MSE</td>
+</tr>
+<tr class="even">
+<td align="left">Error</td>
+<td align="center">IJ(K-1)</td>
+<td align="center">SSE</td>
+<td align="center">SSE/IJ(K-1)</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Total</td>
+<td align="center">IJK-1</td>
+<td align="center">SST</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+<p>Much of the analyses and inference carries over from the previous
+examples but extended to the two-factor case. The hypotheses of interest
+then become. <span class="math display">\[
+H_0: \mbox{Factor A treatment means are equal}\:\mbox{ vs }\: H_A:
+\mbox{At least one treatment mean is different}
+\]</span> <span class="math display">\[
+H_0: \mbox{Factor B treatment means are equal}\:\mbox{ vs }\: H_A:
+\mbox{At least one treatment mean is different}
+\]</span> <span class="math display">\[
+H_0: \mbox{There is no interaction between A and B}\quad\mbox{vs}\quad
+H_A: \mbox{Factors A and B interact}
+\]</span></p>
+</div>
+<p>We can test these hypotheses using a specified Type I Error Rate
+(typically <span class="math inline">\(\alpha = 0.05\)</span>) and
+identifying the appropriate rejection region for their <span
+class="math inline">\(F\)</span> statistics. Also, Tukey’s HSD can be
+used to assess the individual treatment differences.</p>
+<div id="example-2" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example</h3>
+<p>The manager of a manufacturing plant knows that the output of a
+production line depends on two factors:</p>
+<ul>
+<li><p>Which of two supervisors is in charge of the line</p></li>
+<li><p>Which of three shifts (day, night, or swing) is working</p></li>
+</ul>
+The following data are collected echo
+<div style="padding: 0 50px">
+<pre><code>#&gt;       y Supervisor  Shift
+#&gt; 0   571          1    Day
+#&gt; 1   610          1    Day
+#&gt; 2   625          1    Day
+#&gt; 3   480          2    Day
+#&gt; 4   516          2    Day
+#&gt; 5   465          2    Day
+#&gt; 6   480          1  Swing
+#&gt; 7   474          1  Swing
+#&gt; 8   540          1  Swing
+#&gt; 9   625          2  Swing
+#&gt; 10  600          2  Swing
+#&gt; 11  581          2  Swing
+#&gt; 12  470          1  Night
+#&gt; 13  430          1  Night
+#&gt; 14  450          1  Night
+#&gt; 15  630          2  Night
+#&gt; 16  680          2  Night
+#&gt; 17  661          2  Night</code></pre>
+</div>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
+<p>The results for the ANOVA analysis in tabular form are:</p>
+<pre><code>#&gt;                           df   sum_sq  mean_sq          F        PR(&gt;F)
+#&gt; C(Supervisor)            1.0  19208.0  19208.0  26.677778  2.350642e-04
+#&gt; C(Shift)                 2.0    247.0    123.5   0.171528  8.444061e-01
+#&gt; C(Supervisor):C(Shift)   2.0  81127.0  40563.5  56.338194  7.950276e-07
+#&gt; Residual                12.0   8640.0    720.0        NaN           NaN</code></pre>
+<p>These results indicate that there doesn’t appear to be a significant
+difference between shifts, but that there is a significant difference
+between supervisors.</p>
+</div>
+<div id="code-2" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>y = numpy.array([571,610,625,480,516,465,480,474,540,625,600,581,470,430,450,630,680,661])
+
+Shift = numpy.repeat((&quot;Day&quot;,&quot;Swing&quot;,&quot;Night&quot;),6)
+s = numpy.repeat((&quot;1&quot;,&quot;2&quot;),3)
+Supervisor = numpy.concatenate((s,s,s))
+
+df = pandas.DataFrame({&quot;y&quot;:y,&quot;Supervisor&quot;:Supervisor, &quot;Shift&quot;:Shift})
+
+res_3 = stat()
+res_3.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(Supervisor)+C(Shift)+C(Supervisor)*C(Shift)&#39;)
+
+res_3.anova_summary
+#&gt;                           df   sum_sq  mean_sq          F        PR(&gt;F)
+#&gt; C(Supervisor)            1.0  19208.0  19208.0  26.677778  2.350642e-04
+#&gt; C(Shift)                 2.0    247.0    123.5   0.171528  8.444061e-01
+#&gt; C(Supervisor):C(Shift)   2.0  81127.0  40563.5  56.338194  7.950276e-07
+#&gt; Residual                12.0   8640.0    720.0        NaN           NaN</code></pre>
+</div>
+<div id="video-2" class="section level4">
+<h4>Video</h4>
+<div style="max-width: 590px">
+<div
+style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe width="590" height="332" src="https://web.microsoftstream.com/embed/video/c37d2df7-fac9-4e1c-9fdb-1d8ba2a0d55d?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; height: 100%; max-width: 100%;">
+</iframe>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

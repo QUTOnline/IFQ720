@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Module 7</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Module 7</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#logistic-regression" id="toc-logistic-regression">Logistic
+Regression</a>
+<ul>
+<li><a href="#linear-regression-for-binomial-data"
+id="toc-linear-regression-for-binomial-data">Linear Regression for
+Binomial Data</a></li>
+<li><a href="#computing-results" id="toc-computing-results">Computing
+Results</a></li>
+<li><a href="#interpreting-results"
+id="toc-interpreting-results">Interpreting Results</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="logistic-regression" class="section level1">
+<h1>Logistic Regression</h1>
+<div class="sidenote">
+<p><strong>Example: Understanding Risk Factors</strong></p>
+<p>In medicine, it is often of interest to determine factors that are
+associated with the occurence or non-occurence of an illness. For
+example we might ask ourselves if eating refined sugar is a risk factor
+for diabetes. In order to understand this we would identify variables
+<span class="math display">\[
+y \left\{
+\begin{array}{cl}
+1&amp; \mbox{If a patient has diabetes}\\
+0&amp; \mbox{else}
+\end{array}
+\right.
+\]</span> and <span class="math display">\[
+x = \mbox{amount of sugar consumed in grams/day}.
+\]</span> We might then want to assume that <span
+class="math display">\[
+p(x)=\Pr(\mbox{patient has diabetes})=f(x)
+\]</span> where <span class="math inline">\(y\)</span> is a Bernoulli
+random with probability <span class="math inline">\(p(x)\)</span>, <span
+class="math display">\[
+y\sim Bern\left(p(x)\right).
+\]</span></p>
+<p>We will see in this module how to estimate the function <span
+class="math inline">\(f(x)\)</span> using logistic regression.</p>
+</div>
+<p>So far we have seen how to use linear regression to identify
+relationships between two continuous quantities. In many cases we are
+actually interested in the probability of an event occurring and how it
+is affected by other factors. In order to study this we use logistic
+regression.</p>
+<div id="linear-regression-for-binomial-data" class="section level2">
+<h2>Linear Regression for Binomial Data</h2>
+<p>We have seen linear regression as a straightforward method of
+``fitting” a line to data in order to understand the linear relationship
+between to variables <span class="math inline">\(y\)</span> and <span
+class="math inline">\(x\)</span>, i.e. we assume that <span
+class="math display">\[
+y\propto x.
+\]</span> In the case where we are interested the relationship between
+<span class="math inline">\(x\)</span> and <span
+class="math inline">\(\Pr(y=1)\)</span>, we typically have a a set of
+observations of <span class="math inline">\(y\in [0,1]\)</span> where
+<span class="math display">\[
+\Pr(y=1;x)=p(x)
+\]</span> and the resulting probability mass function is <span
+class="math display">\[
+Pr(y;x)=p(x)^y(1-p(x))^{1-y}.
+\]</span> The resulting likelihood function the data <span
+class="math inline">\(\mathbf{y}=(y_1,\ldots,y_n)\)</span> and <span
+class="math inline">\(\mathbf{x}=(x_1,\ldots,x_n)\)</span> <span
+class="math display">\[
+L(p(x)|\mathbf{y})=\prod_{i=1}^np(x_i)^{y_i}(1-p(x_i))^{1-y_i}.
+\]</span> Notice that we assume that <span
+class="math inline">\(x_i\in\mathcal{R}\)</span> but that <span
+class="math inline">\(p(x_i)\in (0,1)\)</span>, so we can’t simply write
+<span class="math display">\[
+p(x_i)=x_i\beta
+\]</span> without having some complicated restrictions on <span
+class="math inline">\(\beta\)</span>. Instead we assume that</p>
+<div class="sidenote">
+<p>Alternatively we can write <span class="math display">\[
+p(x_i) = \frac{1}{1+\exp(-x_i\beta)}.
+\]</span> The function <span class="math display">\[
+\log\left(\frac{p}{1-p}\right)
+\]</span> is referred to as the <em>logit</em> function, hence we call
+the regression problem <span class="math display">\[
+\log\left(\frac{p}{1-p}\right)=x\beta
+\]</span> of estimating <span class="math inline">\(\beta\)</span>
+<em>logistic regression</em>.</p>
+</div>
+<p><span class="math display">\[
+p(x_i) = \frac{\exp(x_i\beta)}{1+\exp(x_i\beta)}
+\]</span> solving for <span class="math inline">\(p_i=p(x_i)\)</span> we
+get <span class="math display">\[
+\log\left(\frac{p_i}{1-p_i}\right)=x_i\beta.
+\]</span> Note that it is possible to include an intercept and
+additional parameters in that case then we would write <span
+class="math display">\[
+\log\left(\frac{p_i}{1-p_i}\right)=\beta_0+\sum_{j=1}^p\beta_jx_{ij}
+\]</span></p>
+</div>
+<div id="computing-results" class="section level2">
+<h2>Computing Results</h2>
+<div class="sidenote">
+<p><strong>Example: Diabetes Risk Factor Modelling</strong></p>
+<p>Diabetes is a chronic disease affecting millions of people around the
+world. Diabetes occurs when the body either can’t produce or properly
+use insulin, a hormone that regulates blood sugar. Hyperglycemia, or
+elevated blood sugar can damage many vital organs and systems in the
+human body, increasing risks of heart attacks and strokes, blindness,
+poor circulation and potential loss of limbs, and kidney failure.</p>
+<p>The Pima Indian Diabetes Data Set consists of 768 observations of 9
+variables:</p>
+<p><code>pregnant</code> Number of times pregnant</p>
+<p><code>glucose</code> Plasma glucose concentration (glucose tolerance
+test)</p>
+<p><code>pressure</code> Diastolic blood pressure (mm Hg)</p>
+<p><code>triceps</code> Triceps skin fold thickness (mm)</p>
+<p><code>insulin</code> 2-Hour serum insulin (mu U/ml)</p>
+<p><code>mass</code> Body mass index (weight in kg/(height in m)^2)</p>
+<p><code>pedigree</code> Diabetes pedigree function</p>
+<p><code>age</code> Age (years)</p>
+<p><code>diabetes</code> Class variable (test for diabetes)</p>
+<p>Fit a logistic regression model to determine the influence of these
+various factors on the likelihood of an individual in the data set
+having diabetes.</p>
+</div>
+<p>If we make the substitution of <span class="math display">\[
+p(x_i) = \frac{\exp(x_i\beta)}{1+\exp(x_i\beta)}
+\]</span> into the likelihood function we can see that the result is
+quite cumbersome and an analytic solution is not available <span
+class="math display">\[
+L(\beta|\mathbf{y})=\prod_{i=1}^n\left(\frac{\exp(x_i\beta)}{1+\exp(x_i\beta)}\right)
+^{y_i}\left(\frac{1}{1+\exp(x_i\beta)}\right)^{1-y_i}.
+\]</span> The solution to this can be written as <span
+class="math display">\[
+\hat{\beta}=\max_{\beta}\prod_{i=1}^n\left(\frac{\exp(x_i\beta)}{1+\exp(x_i\beta)}\right)
+^{y_i}\left(\frac{1}{1+\exp(x_i\beta)}\right)^{1-y_i}
+\]</span> but this presents a challenge for finding an analytical
+solution. Instead we rely on numerical techniques to find estimates of
+the model parameters.</p>
+<div id="example-diabetes-risk-factor-modelling"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example: Diabetes Risk Factor
+Modelling</h3>
+<p>Diabetes is a chronic disease affecting millions of people around the
+world. Diabetes occurs when the body either can’t produce or properly
+use insulin, a hormone that regulates blood sugar. Hyperglycemia, or
+elevated blood sugar can damage many vital organs and systems in the
+human body, increasing risks of heart attacks and strokes, blindness,
+poor circulation and potential loss of limbs, and kidney failure.</p>
+<p>The Pima Indian Diabetes Data Set consists of 768 observations of 9
+variables:</p>
+<p><code>pregnant</code> Number of times pregnant</p>
+<p><code>glucose</code> Plasma glucose concentration (glucose tolerance
+test)</p>
+<p><code>pressure</code> Diastolic blood pressure (mm Hg)</p>
+<p><code>triceps</code> Triceps skin fold thickness (mm)</p>
+<p><code>insulin</code> 2-Hour serum insulin (mu U/ml)</p>
+<p><code>mass</code> Body mass index (weight in kg/(height in m)^2)</p>
+<p><code>pedigree</code> Diabetes pedigree function</p>
+<p><code>age</code> Age (years)</p>
+<p><code>diabetes</code> Class variable (test for diabetes)</p>
+<p>Fit a logistic regression model to determine which of these various
+factors affect the probability that an individual in the data set has
+diabetes.</p>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<p>A logistic regression model is a good choice to fit this data. The
+response variable is <span class="math display">\[\begin{align}
+y=&amp; \left\{\begin{array}{cc}
+1,&amp; \text{if the patient has diabetes}\\
+0, &amp; \text {if the patient doesn&#39;t have diabetes}
+\end{array}\right.
+\end{align}\]</span> and the covariates are on continuous numeric scales
+(with the exception of age).</p>
+<p>The resulting model will be <span class="math display">\[
+\log\left(\frac{p_i}{1-p_i}
+\right)=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}\dots\beta_8x_{i8}
+\]</span> with the likelihood function <span class="math display">\[
+L(\mathbf{\beta}|\mathbf{y})=\prod_{i=1}^n\left(\frac{\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}{1+\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}\right)^{y_i}\left(1-\frac{\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}{1+\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}
+\right)^{1-y_i}.
+\]</span> Of course solving this requires using a software based
+solution to use a numerical optimisation routine.</p>
+</div>
+<div id="code" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>
+import statsmodels
+
+##  We load the data from a CSV file
+##  Note that the variable diabetes has been coded as a 0-1 variable
+
+df = pandas.read_csv(&quot;diabetes.csv&quot;)
+
+##  We fit the model using the XXXX function
+
+model = statsmodels.formula.api.logit(&#39;diabetes~pregnant+glucose+pressure+triceps+insulin+mass+pedigree+age&#39;,df) 
+
+res = model.fit()
+#&gt; Optimization terminated successfully.
+#&gt;          Current function value: 0.470993
+#&gt;          Iterations 6
+res.summary()
+</code></pre>
+<table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>diabetes</td>     <th>  No. Observations:  </th>  <td>   768</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td>   759</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     8</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Mon, 21 Nov 2022</td> <th>  Pseudo R-squ.:     </th>  <td>0.2718</td>  
+</tr>
+<tr>
+  <th>Time:</th>                <td>15:12:40</td>     <th>  Log-Likelihood:    </th> <td> -361.72</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -496.74</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>9.652e-54</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -8.4047</td> <td>    0.717</td> <td>  -11.728</td> <td> 0.000</td> <td>   -9.809</td> <td>   -7.000</td>
+</tr>
+<tr>
+  <th>pregnant</th>  <td>    0.1232</td> <td>    0.032</td> <td>    3.840</td> <td> 0.000</td> <td>    0.060</td> <td>    0.186</td>
+</tr>
+<tr>
+  <th>glucose</th>   <td>    0.0352</td> <td>    0.004</td> <td>    9.481</td> <td> 0.000</td> <td>    0.028</td> <td>    0.042</td>
+</tr>
+<tr>
+  <th>pressure</th>  <td>   -0.0133</td> <td>    0.005</td> <td>   -2.540</td> <td> 0.011</td> <td>   -0.024</td> <td>   -0.003</td>
+</tr>
+<tr>
+  <th>triceps</th>   <td>    0.0006</td> <td>    0.007</td> <td>    0.090</td> <td> 0.929</td> <td>   -0.013</td> <td>    0.014</td>
+</tr>
+<tr>
+  <th>insulin</th>   <td>   -0.0012</td> <td>    0.001</td> <td>   -1.322</td> <td> 0.186</td> <td>   -0.003</td> <td>    0.001</td>
+</tr>
+<tr>
+  <th>mass</th>      <td>    0.0897</td> <td>    0.015</td> <td>    5.945</td> <td> 0.000</td> <td>    0.060</td> <td>    0.119</td>
+</tr>
+<tr>
+  <th>pedigree</th>  <td>    0.9452</td> <td>    0.299</td> <td>    3.160</td> <td> 0.002</td> <td>    0.359</td> <td>    1.531</td>
+</tr>
+<tr>
+  <th>age</th>       <td>    0.0149</td> <td>    0.009</td> <td>    1.593</td> <td> 0.111</td> <td>   -0.003</td> <td>    0.033</td>
+</tr>
+</table>
+<p>From the model summary we can see that some of the variables appear
+to be statistically significant.</p>
+</div>
+</div>
+</div>
+<div id="interpreting-results" class="section level2">
+<h2>Interpreting Results</h2>
+<p>The results from linear regression have relatively straightforward
+interpretations. The parameters of the linear model are easily
+interpretable as the coefficients describing the linear relationships
+between dependent and independent variables. The results for a logistic
+regression are a bit more difficult as the linear relationship between
+the variables are between a non-linear function of the dependent
+variable and the independent variables. In order to provide a means of
+interpreting the coefficients of the logistic regression we first define
+the concept of odds.</p>
+<div class="{\boxed}">
+<div id="odds" class="section level3">
+<h3>Odds</h3>
+<p>Odds are defined as the ratio of a probability and its compliment.
+For example, consider an event <span class="math inline">\(A\)</span>,
+the odds of <span class="math inline">\(A\)</span> are <span
+class="math display">\[
+\text{Odds of $A$}=\frac{\Pr(A)}{1-\Pr(A)}.
+\]</span> The odds are interpreted as a ratio in terms of
+<code>for'' and</code>against’’. For example if the odds of <span
+class="math inline">\(A\)</span> are 2, then we would say that the odds
+are 2 to 1 in favor of <span class="math inline">\(A\)</span>, in other
+words the probability that <span class="math inline">\(A\)</span> occurs
+is twice the probability that <span class="math inline">\(A\)</span>
+<em>doesn’t</em> occur.</p>
+<p>We can solve for <span class="math inline">\(\Pr(A)\)</span>
+algebraically as follows. Assuming the odds of <span
+class="math inline">\(A\)</span> are <span
+class="math inline">\(2\)</span> <span
+class="math display">\[\begin{align}
+2&amp;=\frac{\Pr(A)}{1-\Pr(A)}\\
+\frac{1}{2}&amp;=\frac{1-\Pr(A)}{\Pr(A)}\\
+\frac{3}{2}&amp;=\frac{1}{\Pr(A)}\\
+\frac{2}{3}&amp;=\Pr(A)
+\end{align}\]</span></p>
+</div>
+<div id="logistic-regression-coefficients" class="section level3">
+<h3>Logistic Regression Coefficients</h3>
+<p>We can see immediately that the linear relationship in the logistic
+regression model is between the <em>log</em> of the odds and the
+independent variables. It is natural then to assume that if we
+expotentiate both sides of the equation we can interpret the effects on
+the odds <span class="math display">\[
+\begin{align}
+\log\left(\frac{p_i}{1-p_i}\right) &amp;= \beta_0+\beta_1x_{1i}+\cdots
++\beta_Kx_{iK}\\
+\frac{p_i}{1-p_i}&amp;=\exp\left(\beta_0+\beta_1x_{1i}+\cdots
++\beta_Kx_{iK}\right)\\
+\frac{p_i}{1-p_i}&amp;=e^{\beta_0}e^{\beta_1x_{1i}}\cdots
+e^{\beta_Kx_{ki}}.
+\end{align}
+\]</span> The interpretation is that a unit increase in an independent
+variable increases the odds (i.e. the probability of an event) by a
+factor of <span class="math inline">\(\exp{\beta_K}\)</span>.</p>
+<div class="boxed">
+<div class="table-narrow">
+<table>
+<thead>
+<tr class="header">
+<th align="center"><span class="math inline">\(\beta\)</span></th>
+<th align="center"><span class="math inline">\(\exp(\beta)\)</span></th>
+<th align="center"><span class="math inline">\(\Delta X/\Delta
+\Pr(A)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\beta&lt;0\)</span></td>
+<td align="center"><span
+class="math inline">\(\exp{\beta}&lt;1\)</span></td>
+<td align="center"><span class="math inline">\(x\uparrow\)</span> <span
+class="math inline">\(\Pr(A)\downarrow\)</span></td>
+</tr>
+<tr class="even">
+<td align="center"><span class="math inline">\(\beta&gt;0\)</span></td>
+<td align="center"><span
+class="math inline">\(\exp(\beta)&gt;1\)</span></td>
+<td align="center"><span class="math inline">\(x\uparrow\)</span> <span
+class="math inline">\(\Pr(A)\uparrow\)</span></td>
+</tr>
+<tr class="odd">
+<td align="center"><span class="math inline">\(\beta=0\)</span></td>
+<td align="center"><span
+class="math inline">\(\exp(\beta)=0\)</span></td>
+<td align="center"><span class="math inline">\(x\uparrow\)</span> no
+change</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>These results give us a means of interpreting the coefficients of a
+logistic regression model. Note that as the odds of <span
+class="math inline">\(A\)</span> increase, so does <span
+class="math inline">\(\Pr(A)\)</span>, so the general interpretation of
+the coefficients applys to <span
+class="math inline">\(\Pr(A)\)</span>.</p>
+</div>
+</div>
+<div id="diabetes-risk-factor-modelling"
+class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Diabetes Risk Factor Modelling</h3>
+<p>Diabetes is a chronic disease affecting millions of people around the
+world. Diabetes occurs when the body either can’t produce or properly
+use insulin, a hormone that regulates blood sugar. Hyperglycemia, or
+elevated blood sugar can damage many vital organs and systems in the
+human body, increasing risks of heart attacks and strokes, blindness,
+poor circulation and potential loss of limbs, and kidney failure.</p>
+<p>The Pima Indian Diabetes Data Set consists of 768 observations of 9
+variables:</p>
+<p><code>pregnant</code> Number of times pregnant</p>
+<p><code>glucose</code> Plasma glucose concentration (glucose tolerance
+test)</p>
+<p><code>pressure</code> Diastolic blood pressure (mm Hg)</p>
+<p><code>triceps</code> Triceps skin fold thickness (mm)</p>
+<p><code>insulin</code> 2-Hour serum insulin (mu U/ml)</p>
+<p><code>mass</code> Body mass index (weight in kg/(height in m)^2)</p>
+<p><code>pedigree</code> Diabetes pedigree function</p>
+<p><code>age</code> Age (years)</p>
+<p><code>diabetes</code> Class variable (test for diabetes)</p>
+<p>Fit a logistic regression model and determine the affect of these
+various factors on the likelihood of an individual in the data set
+having diabetes.</p>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>A logistic regression model is a good choice to fit this data. The
+response variable is <span class="math display">\[\begin{align}
+y=&amp; \left\{\begin{array}{cc}
+1,&amp; \text{if the patient has diabetes}\\
+0, &amp; \text {if the patient doesn&#39;t have diabetes}
+\end{array}\right.
+\end{align}\]</span> and the covariates are on continuous numeric scales
+(with the exception of age).</p>
+<p>The resulting model will be <span class="math display">\[
+\log\left(\frac{p_i}{1-p_i}
+\right)=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}\dots\beta_8x_{i8}
+\]</span> with the likelihood function <span class="math display">\[
+L(\mathbf{\beta}|\mathbf{y})=\prod_{i=1}^n\left(\frac{\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}{1+\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}\right)^{y_i}\left(1-\frac{\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}{1+\exp\left(\beta_0+\sum_{j=1}^8\beta_jx_{ij}\right)}
+\right)^{1-y_i}.
+\]</span> Of course solving this requires using a software based
+solution to use a numerical optimisation routine.</p>
+</div>
+<div id="code-1" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>
+##  We load the data from a CSV file
+##  Note that the variable diabetes has been coded as a 0-1 variable
+
+df = pandas.read_csv(&quot;diabetes.csv&quot;)
+
+##  We fit the model using the XXXX function
+
+model = statsmodels.formula.api.logit(&#39;diabetes~pregnant+glucose+pressure+triceps+insulin+mass+pedigree+age&#39;,df) 
+
+res = model.fit()
+#&gt; Optimization terminated successfully.
+#&gt;          Current function value: 0.470993
+#&gt;          Iterations 6
+res.summary()
+</code></pre>
+<table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>diabetes</td>     <th>  No. Observations:  </th>  <td>   768</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>  <td>   759</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>  <td>     8</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Mon, 21 Nov 2022</td> <th>  Pseudo R-squ.:     </th>  <td>0.2718</td>  
+</tr>
+<tr>
+  <th>Time:</th>                <td>15:12:42</td>     <th>  Log-Likelihood:    </th> <td> -361.72</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th> <td> -496.74</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>9.652e-54</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -8.4047</td> <td>    0.717</td> <td>  -11.728</td> <td> 0.000</td> <td>   -9.809</td> <td>   -7.000</td>
+</tr>
+<tr>
+  <th>pregnant</th>  <td>    0.1232</td> <td>    0.032</td> <td>    3.840</td> <td> 0.000</td> <td>    0.060</td> <td>    0.186</td>
+</tr>
+<tr>
+  <th>glucose</th>   <td>    0.0352</td> <td>    0.004</td> <td>    9.481</td> <td> 0.000</td> <td>    0.028</td> <td>    0.042</td>
+</tr>
+<tr>
+  <th>pressure</th>  <td>   -0.0133</td> <td>    0.005</td> <td>   -2.540</td> <td> 0.011</td> <td>   -0.024</td> <td>   -0.003</td>
+</tr>
+<tr>
+  <th>triceps</th>   <td>    0.0006</td> <td>    0.007</td> <td>    0.090</td> <td> 0.929</td> <td>   -0.013</td> <td>    0.014</td>
+</tr>
+<tr>
+  <th>insulin</th>   <td>   -0.0012</td> <td>    0.001</td> <td>   -1.322</td> <td> 0.186</td> <td>   -0.003</td> <td>    0.001</td>
+</tr>
+<tr>
+  <th>mass</th>      <td>    0.0897</td> <td>    0.015</td> <td>    5.945</td> <td> 0.000</td> <td>    0.060</td> <td>    0.119</td>
+</tr>
+<tr>
+  <th>pedigree</th>  <td>    0.9452</td> <td>    0.299</td> <td>    3.160</td> <td> 0.002</td> <td>    0.359</td> <td>    1.531</td>
+</tr>
+<tr>
+  <th>age</th>       <td>    0.0149</td> <td>    0.009</td> <td>    1.593</td> <td> 0.111</td> <td>   -0.003</td> <td>    0.033</td>
+</tr>
+</table>
+<p>From the model summary we can see that some of the variables appear
+to be statistically significant. By examining the signs of the
+coeffcients, we know that the intercept is not useful as mathematically
+it is the log of the odds ratio when the independent variables are all
+equal to 0, which is not a realistic situation.</p>
+<p>We can note that based on the signs and significance of the
+coefficients, as glucose increases and insulin decreases the risk of
+diabetes increases. Considering that Type I diabetes is defined as a
+case where the pancreas produces little or no insulin, and Type II
+diabetes is defined as a deficient processing of glucose, so these
+relationships are expected and provide no insight into risk factors for
+diabetes.</p>
+<p>Of the remaining covariates all coefficients are positive with the
+exception of <code>pressure</code> which is the patient’s diastolic
+blood pressure; as this increases, the risk of diabetes decreases. The
+effect of weight (<code>mass</code>), family history
+(<code>pedigree</code>) and pregnancy status (<code>pregnant</code>) are
+statistically significant positive coefficients. Increasing weight, a
+family history of diabetes and being pregnant are associated with
+increased probability of diabetes.</p>
+</div>
+<div id="plots" class="section level4">
+<h4>Plots</h4>
+<pre class="python"><code>
+df[&quot;fitted_values&quot;] = 1/ (1+ numpy.exp(-res.fittedvalues))
+df[&quot;resid&quot;] = res.resid_generalized
+
+(ggplot(df)+
+geom_point(aes(x = &#39;pregnant&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;pregnant&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307447148)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-1.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;glucose&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;glucose&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (306223180)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-2.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;pressure&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;pressure&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307216048)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-3.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;insulin&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;insulin&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307181550)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-4.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;mass&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;mass&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307667671)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-5.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;pedigree&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;pedigree&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307777879)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-6.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+
+geom_point(aes(x = &#39;age&#39;, y = &#39;diabetes&#39; ))+
+geom_line(aes(x = &#39;age&#39;, y = &#39;fitted_values&#39;))
+)
+#&gt; &lt;ggplot: (307656014)&gt;</code></pre>
+<p><img src="chap7_files/figure-html/unnamed-chunk-4-7.png" width="614" style="display: block; margin: auto;" /></p>
+<p>Plotting the fitted values versus the coefficients illustrate the
+relationships in the summary. In come cases the trends are less clear
+than others, but in cases line the <code>glucose</code> and
+<code>mass</code> the relationships are fairly clear to observe.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
