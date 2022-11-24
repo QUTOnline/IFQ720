@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Module 8</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="QUTReadings.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">IFQ720</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="contact.html">Contacts</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Readings
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="chap1.html">Module 1</a>
+    </li>
+    <li>
+      <a href="chap2.html">Module 2</a>
+    </li>
+    <li>
+      <a href="chap3.html">Module 3</a>
+    </li>
+    <li>
+      <a href="chap4.html">Module 4</a>
+    </li>
+    <li>
+      <a href="chap5.html">Module 5</a>
+    </li>
+    <li>
+      <a href="chap6.html">Module 6</a>
+    </li>
+    <li>
+      <a href="chap7.html">Module 7</a>
+    </li>
+    <li>
+      <a href="chap8.html">Module 8</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Workshops
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-01/">Workshop 1</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-02/">Workshop 2</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-03/">Workshop 3</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-04/">Workshop 4</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-05/">Workshop 5</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-06/">Workshop 6</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-07/">Workshop 7</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-08/">Workshop 8</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-09/">Workshop 9</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-10/">Workshop 10</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-11/">Workshop 11</a>
+    </li>
+    <li>
+      <a href="https://shiny.qutmaths.net/MXB107/Workshops/ws-12/">Workshop 12</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assessment.html">Assessments</a>
+</li>
+<li>
+  <a href="videos.html">Videos</a>
+</li>
+<li>
+  <a href="https://blackboard.qut.edu.au/webapps/blackboard/execute/announcement?method=search&amp;context=course&amp;course_id=_164898_1&amp;handle=cp_announcements&amp;mode=reset">IFQ720 Canvas</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="mailto:gentry.white@qut.edu.au">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://mxb1072022.slack.com">
+    <span class="fab fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://https://qutvirtual4.qut.edu.au/web/qut/hiq">
+    <span class="fa fa-users"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+<div><a href="https://www.qut.edu.au">
+     <img alt="QUT" src="logo.png" width=50px" align="left" style="vertical-align:middle;margin:10px 10px 10px 0px"></a></div>
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Module 8</h1>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#diagnostics" id="toc-diagnostics">Diagnostics</a>
+<ul>
+<li><a href="#diagnostic-tools-for-testing-the-regression-results"
+id="toc-diagnostic-tools-for-testing-the-regression-results">Diagnostic
+Tools for Testing the Regression Results</a></li>
+<li><a href="#diagnostic-tools-for-anova-models"
+id="toc-diagnostic-tools-for-anova-models">Diagnostic Tools for ANOVA
+Models</a></li>
+<li><a href="#for-further-thought" id="toc-for-further-thought">For
+Further Thought</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="diagnostics" class="section level1">
+<h1>Diagnostics</h1>
+<p>All models, including those discussed so far, ANOVA, linear
+regression, and logisitic regression, rely on some assumptions. Model
+Diagnositics are a set of tools to checks the underlying model
+assumptions, including if there are any other exogenous effects not
+accounted for in the model.</p>
+<div id="diagnostic-tools-for-testing-the-regression-results"
+class="section level2">
+<h2>Diagnostic Tools for Testing the Regression Results</h2>
+<p>Let’s consider the model from Module 6 where we fit a simple linear
+regression model for the city and highway mileages from the
+<code>epa_data</code> dataset.</p>
+<p>Recall that the relationship between highway fuel economy (<span
+class="math inline">\(x\)</span>) and city fuel economy (<span
+class="math inline">\(y\)</span>) is <span class="math display">\[
+y_i = \beta_0 + \beta_1x_i.
+\]</span></p>
+<div class="sidenote">
+<p><strong>Example:</strong><br />
+Analyse the results for the model <span class="math display">\[
+city = \beta_0+\beta_1hwy
+\]</span> Do the assumptions for linear regression appear to be met?</p>
+</div>
+<p>The underlying assumptions about the distribution of the residuals
+and hence the sampling distributions of the parameter estimates have
+important implications for both inference and, as we will see, using the
+regression model for prediction. Luckily there are several useful tools
+that rely on using the residuals <span class="math display">\[
+e_i =y_i-\hat{\beta}_0-\hat{\beta}_1
+\]</span> available for exploring and testing the validity of these
+assumptions.</p>
+<div id="normality" class="section level3 unnumbered">
+<h3 class="unnumbered">Normality</h3>
+<p>The first assumption to check is that the residuals from the model
+are from a Gaussian distribution. We can do this using a normal
+probability plot. A normal probability plot is a plot of the residuals
+against their expected value if they had come from a Gaussian
+distribution. If the residuals are from a Gaussian distribution, they
+should fall more or less along a straight, diagonal line. We plot this
+is by first sorting the residuals in ascending order, then standardising
+them <span class="math display">\[e_i^* =
+\frac{e_i}{\sqrt{s^2}}\]</span> and plotting them against their
+corresponding quantiles from a standard Gaussian distribution.</p>
+<p>The use of this plot is not a rigorous test of normality versus
+non-normality, but instead can indicate potential deviance from the
+Gaussian assumption, particularly in the behaviour of the tails of the
+distribution. The results are not conclusive but should inform judgement
+when interpreting the model results.</p>
+</div>
+<div id="heteroskedasticity" class="section level3 unnumbered">
+<h3 class="unnumbered">Heteroskedasticity</h3>
+<p>The second residual plot we can use is to plot the fitted values of
+the model <span class="math display">\[
+\hat{y}_i = \hat{\beta}_0+\hat{\beta}_1x_i
+\]</span> against the residuals. The residuals should fall evenly along
+either side of a horizontal line centred at <span
+class="math inline">\(0\)</span>, with no evidence of trend or increase
+in magnitude as <span class="math inline">\(\hat{y}\)</span> increases.
+We use this plot to check the assumption that the variance of the
+residuals is equal for all observations, and specifically that the
+variance is not a function of the expected value of the observation.</p>
+<p>The plots for the residuals versus fitted values and the <span
+class="math inline">\(q-q\)</span> plots show that (despite the small
+sample size) the residuals appear to adhere to the model’s assumptions.
+The variance (i.e. the magnitude of the residuals) doesn’t appear to be
+a function of the fitted value, indicating that the variance of the
+residuals appears constant. The <span class="math inline">\(q-q\)</span>
+plot looks approximately Gaussian (supported by the histogram as well).
+We can disregard the index plot for now, but it also supports the notion
+of homoskedasticity in the residuals.</p>
+</div>
+<div id="other-concerns" class="section level3 unnumbered">
+<h3 class="unnumbered">Other concerns</h3>
+<p>The two techniques of using normal probability plots and plots of the
+residuals versus the fitted values address two of the three assumptions
+about the residuals: the unbiasedness of the regression model and the
+constant variance of the residuals. Tests of independence are
+technically possible and, while beyond the scope of this material,
+should be used in cases where the independent variables are temporally
+or spatially referenced. The specific tools for modelling time-series or
+spatial data exist, and we should use them where appropriate.</p>
+</div>
+<div id="example" class="section level3 tabset tabset-pills boxed">
+<h3 class="tabset tabset-pills">Example</h3>
+<p>Analyse the results for the model <span class="math display">\[
+city = \beta_0+\beta_1hwy
+\]</span> Do the assumptions for linear regression appear to be met?</p>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<p>The methods we want to check are graphical, meaning that they rely on
+our interpretation of visual plots. Hence, they are qualitative and not
+statistically rigorous, and somewhat subjective. Still, they are useful
+and relatively straightforward to understand. If needed, there are more
+rigorous methods for formally testing the regression assumptions.<br />
+<br />
+In general, we rely on computational tools for creating the images
+needed.</p>
+</div>
+<div id="code" class="section level4">
+<h4>Code</h4>
+<pre class="python"><code>
+import statsmodels
+
+df = pandas.read_csv(&quot;epa_data.csv&quot;)
+
+df = df[df[&quot;year&quot;]==1999]
+
+model = statsmodels.formula.api.ols(&#39;city~hwy&#39;,df)
+
+result = model.fit()
+
+residuals = result.resid
+
+fitted_values = result.fittedvalues
+
+df_fit = pandas.DataFrame({&#39;residuals&#39;:residuals,&#39;fitted_values&#39;:fitted_values})
+
+plot1 = (ggplot(df,aes(x = &#39;hwy&#39;, y = &#39;city&#39;))+
+  geom_point()+
+    geom_smooth(method = &quot;lm&quot;))
+
+plot2 = (ggplot(df_fit,aes(x = &#39;residuals&#39;))+
+  geom_histogram(bins = 21))
+
+plot3 = (ggplot(df_fit,aes(x = &#39;fitted_values&#39;,y = &#39;residuals&#39;))+
+  geom_point())
+
+plot4 = (ggplot(df_fit,aes(sample=&#39;residuals&#39;))+
+  geom_qq()+
+    geom_qq_line())</code></pre>
+</div>
+<div id="plot" class="section level4">
+<h4>Plot</h4>
+<pre><code>#&gt; &lt;ggplot: (302188896)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-3-1.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (302236405)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-3-2.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (302241285)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-3-3.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (302241123)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-3-4.png" width="614" style="display: block; margin: auto;" />
+The first plot shows that the linear relationship between city and
+highway full economy is reasonable. The histogram of the residuals and
+the <span class="math inline">\(q\)</span>-<span
+class="math inline">\(q\)</span> plot show that the residuals are
+approximately Gaussian. The plot of the residuals versus the fitted
+values shows some evidence of heteroskedasticity, which doesn’t look
+extreme but is likely as the full economy measures are based on counts
+(i.e. Poisson-like), indicating that the variance is proportional to the
+expected value.</p>
+</div>
+<div id="improvement" class="section level4">
+<h4>Improvement</h4>
+<p>Note that there are some areas of concern, and in particular the
+residuals versus fitted plot shows some clear outliers. One way we can
+address this is by looking at adding additional variable to the
+model.</p>
+<p>In practice you might try different variable and decide on which ones
+to include in your model by trial and error (though the study of
+systematic and rigourous ways to do this are quite extensive). But in
+our case we are going to select the number of cylinders in the engine
+(<code>cyl</code>) as our additional variable just to see what if that
+can reduce the outliers and “clean up” the results</p>
+<pre class="python"><code>
+result_2 = statsmodels.formula.api.ols(&#39;city~hwy+cyl&#39;,df).fit()
+
+df_fit = pandas.DataFrame({&#39;residuals_2&#39;:result_2.resid,&#39;fitted_values_2&#39;:result_2.fittedvalues})
+
+plot1 = (ggplot(df,aes(x = &#39;hwy&#39;, y = &#39;city&#39;))+
+  geom_point()+
+    geom_smooth(method = &quot;lm&quot;))
+
+plot2 = (ggplot(df_fit,aes(x = &#39;residuals_2&#39;))+
+  geom_histogram(bins = 21))
+
+plot3 = (ggplot(df_fit,aes(x = &#39;fitted_values_2&#39;,y = &#39;residuals_2&#39;))+
+  geom_point())
+
+plot4 = (ggplot(df_fit,aes(sample=&#39;residuals_2&#39;))+
+  geom_qq()+
+    geom_qq_line())</code></pre>
+<pre><code>#&gt; &lt;ggplot: (302520795)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-5-9.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (305561012)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-5-10.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (305560850)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-5-11.png" width="614" style="display: block; margin: auto;" /></p>
+<pre><code>#&gt; &lt;ggplot: (302240964)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-5-12.png" width="614" style="display: block; margin: auto;" /></p>
+<p>We can note that the second model residuals appear to be much better
+behaved. While there are still some outliers, they aren’t as extreme as
+in the first model and the residual versus fitted values plot looks more
+like what we would like to see.</p>
+<p>Note that finally we can compare the <span
+class="math inline">\(R^2_{adj}\)</span> values to compare model and
+pick the “better” one. We note that the second model (including
+<code>cyl</code>) is the preferred model under this criteria.</p>
+</div>
+</div>
+</div>
+<div id="diagnostic-tools-for-anova-models" class="section level2">
+<h2>Diagnostic Tools for ANOVA Models</h2>
+<p>ANOVA and ANCOVA models rely on a similar set of assumptions as
+linear regerssion models, but they also have some additional areas of
+concern that need to be addressed. We will look at some data for the
+salaries for IT professionals to understand how to diagnose ANOVA models
+and address some issues that might arise.</p>
+<p>Our data is an example Salary Table for IT professionals with varying
+educational backgrounds (Bachelors, Masters, and PhD), experience
+(Years), and level (Management or Lower). First let’s explore the data,
+noting that Experience in years is a continuous variable which we are
+going to set aside for now.</p>
+<pre class="python"><code>
+#S = Salary 
+#X = Experience
+#E = Education
+#P = Managment or Lower Level
+
+df = pandas.read_csv(&quot;salary.csv&quot;)
+
+df = df.rename(columns = {&#39;S&#39;: &#39;Salary&#39;, &#39;X&#39;: &#39;Experience&#39;,&#39;E&#39;: &#39;Education&#39;,&#39;P&#39;: &#39;Level&#39;})
+
+(
+  ggplot(df)+
+  geom_boxplot(aes(y = &#39;Salary&#39;, x = &#39;Education&#39;))
+)
+
+#&gt; &lt;ggplot: (305630248)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-6-17.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(
+  ggplot(df)+
+  geom_boxplot(aes(y = &#39;Salary&#39;, x = &#39;Level&#39;))
+)
+
+#&gt; &lt;ggplot: (305656316)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-6-18.png" width="614" style="display: block; margin: auto;" /></p>
+<p>Note that we are interested in the relationship between Salary and
+Education,</p>
+<pre class="python"><code>
+import statsmodels
+
+model = statsmodels.formula.api.ols(&#39;Salary ~ C(Education)+C(Level)&#39;,df).fit()
+
+aov_model = statsmodels.stats.anova.anova_lm(model)
+
+print(aov_model)
+
+#&gt;                 df        sum_sq       mean_sq          F        PR(&gt;F)
+#&gt; C(Education)   2.0  1.091346e+08  5.456732e+07   6.009323  5.067776e-03
+#&gt; C(Level)       1.0  5.105843e+08  5.105843e+08  56.229001  2.837753e-09
+#&gt; Residual      42.0  3.813786e+08  9.080444e+06        NaN           NaN</code></pre>
+<p>It appears that both education and your level are statistically
+significant. Look at the summary of the OLS model and see that</p>
+<pre class="python"><code>
+model.summary()</code></pre>
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>Salary</td>      <th>  R-squared:         </th> <td>   0.619</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.592</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   22.75</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 24 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>6.63e-09</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>10:51:49</td>     <th>  Log-Likelihood:    </th> <td> -431.68</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    46</td>      <th>  AIC:               </th> <td>   871.4</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    42</td>      <th>  BIC:               </th> <td>   878.7</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+          <td></td>             <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>         <td> 1.248e+04</td> <td>  869.899</td> <td>   14.342</td> <td> 0.000</td> <td> 1.07e+04</td> <td> 1.42e+04</td>
+</tr>
+<tr>
+  <th>C(Education)[T.M]</th> <td> 3267.0051</td> <td> 1061.428</td> <td>    3.078</td> <td> 0.004</td> <td> 1124.957</td> <td> 5409.053</td>
+</tr>
+<tr>
+  <th>C(Education)[T.P]</th> <td> 1568.4764</td> <td> 1184.748</td> <td>    1.324</td> <td> 0.193</td> <td> -822.443</td> <td> 3959.396</td>
+</tr>
+<tr>
+  <th>C(Level)[T.M]</th>     <td> 6903.8785</td> <td>  920.689</td> <td>    7.499</td> <td> 0.000</td> <td> 5045.853</td> <td> 8761.904</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 1.814</td> <th>  Durbin-Watson:     </th> <td>   0.394</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.404</td> <th>  Jarque-Bera (JB):  </th> <td>   1.583</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.319</td> <th>  Prob(JB):          </th> <td>   0.453</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.352</td> <th>  Cond. No.          </th> <td>    4.25</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+<p>This looks a little odd, there is not a statistically significant
+difference between Bachelors and PhD, this seems counter intuitive.</p>
+<p>Let’s check the residuals</p>
+<pre class="python"><code>
+df[&quot;res&quot;] = model.resid
+df[&#39;ind&#39;] = df.index
+
+(ggplot(df)+
+geom_point(aes(y = &#39;res&#39;, x = &#39;ind&#39;))
+
+)
+#&gt; &lt;ggplot: (305563688)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-9-21.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+geom_qq(aes(sample = &#39;res&#39;))+
+geom_qq_line(aes(sample = &#39;res&#39;))
+)
+
+#&gt; &lt;ggplot: (305597074)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-9-22.png" width="614" style="display: block; margin: auto;" />
+Uh-Oh this looks very odd, the residuals aren’t centered at 0 and
+instead are linearly related to the order of observations? Seems like
+our model might be missing something, perhaps we ought to look at
+experience. This is an example of an ANCOVA model and we need to check
+to see if there is an interaction between the other variables.</p>
+<pre class="python"><code>(
+  ggplot(df)+
+  geom_point(aes(y = &#39;Salary&#39;, x = &#39;Experience&#39;, color = &#39;Education&#39;))
+)
+#&gt; &lt;ggplot: (302246288)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-10-25.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(
+  ggplot(df)+
+  geom_point(aes(y = &#39;Salary&#39;, x = &#39;Experience&#39;, color = &#39;Level&#39;))
+)
+#&gt; &lt;ggplot: (302241009)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-10-26.png" width="614" style="display: block; margin: auto;" /></p>
+<p>The data for experience versus salary appear to be parallel for
+Education and Level, so it appears that the assumption for ANCOVA is
+valid.</p>
+<pre class="python"><code>
+model_2 = statsmodels.formula.api.ols(&#39;Salary ~ C(Education)+C(Level)+Experience&#39;,df).fit()
+
+aov_model_2 = statsmodels.stats.anova.anova_lm(model_2)
+
+print(aov_model_2)
+#&gt;                 df        sum_sq       mean_sq           F        PR(&gt;F)
+#&gt; C(Education)   2.0  1.091346e+08  5.456732e+07   51.691845  6.193659e-12
+#&gt; C(Level)       1.0  5.105843e+08  5.105843e+08  483.678556  2.594015e-24
+#&gt; Experience     1.0  3.380979e+08  3.380979e+08  320.281524  5.546313e-21
+#&gt; Residual      41.0  4.328072e+07  1.055627e+06         NaN           NaN
+model_2.summary()
+</code></pre>
+<table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>         <td>Salary</td>      <th>  R-squared:         </th> <td>   0.957</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.953</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   226.8</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 24 Nov 2022</td> <th>  Prob (F-statistic):</th> <td>2.23e-27</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>10:51:53</td>     <th>  Log-Likelihood:    </th> <td> -381.63</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>    46</td>      <th>  AIC:               </th> <td>   773.3</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    41</td>      <th>  BIC:               </th> <td>   782.4</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     4</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+          <td></td>             <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th>         <td> 8035.5976</td> <td>  386.689</td> <td>   20.781</td> <td> 0.000</td> <td> 7254.663</td> <td> 8816.532</td>
+</tr>
+<tr>
+  <th>C(Education)[T.M]</th> <td> 3144.0352</td> <td>  361.968</td> <td>    8.686</td> <td> 0.000</td> <td> 2413.025</td> <td> 3875.045</td>
+</tr>
+<tr>
+  <th>C(Education)[T.P]</th> <td> 2996.2103</td> <td>  411.753</td> <td>    7.277</td> <td> 0.000</td> <td> 2164.659</td> <td> 3827.762</td>
+</tr>
+<tr>
+  <th>C(Level)[T.M]</th>     <td> 6883.5310</td> <td>  313.919</td> <td>   21.928</td> <td> 0.000</td> <td> 6249.559</td> <td> 7517.503</td>
+</tr>
+<tr>
+  <th>Experience</th>        <td>  546.1840</td> <td>   30.519</td> <td>   17.896</td> <td> 0.000</td> <td>  484.549</td> <td>  607.819</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 2.293</td> <th>  Durbin-Watson:     </th> <td>   2.237</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.318</td> <th>  Jarque-Bera (JB):  </th> <td>   1.362</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.077</td> <th>  Prob(JB):          </th> <td>   0.506</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.171</td> <th>  Cond. No.          </th> <td>    33.5</td>
+</tr>
+</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+<pre class="python"><code>
+df[&quot;resid_2&quot;] = model_2.resid
+
+df[&#39;ind&#39;] = df.index
+
+(ggplot(df)+
+geom_point(aes(y = &#39;resid_2&#39;, x = &#39;ind&#39;))+ylim(-9000,9000)
+)
+#&gt; &lt;ggplot: (305700792)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-12-29.png" width="614" style="display: block; margin: auto;" /></p>
+<pre class="python"><code>(ggplot(df)+geom_qq(aes(sample = &#39;resid_2&#39;))+
+geom_qq_line(aes(sample = &#39;resid_2&#39;))+ylim(-9000,9000)
+)
+#&gt; &lt;ggplot: (305751461)&gt;</code></pre>
+<p><img src="chap8_files/figure-html/unnamed-chunk-12-30.png" width="614" style="display: block; margin: auto;" />
+This looks a better. The residuals now appear unbiased and the range of
+variables is much smaller. The <code>q-q</code> plot looks a bit better
+too. As for linear models we can alos compare the <span
+class="math inline">\(R^2_{adj}\)</span> values as well to make some
+judgement about model performance and preference.</p>
+</div>
+<div id="for-further-thought" class="section level2">
+<h2>For Further Thought</h2>
+<p>In this module we have barely scratched the surface of tools and
+techniques for evaluating models. There are numerous tools including
+information criteria for model selection, stepwise procedures for
+variable selections, and cross validation for testing the predictive
+capabilities of a model.</p>
+<p>We should also note that for the logistic regression model the
+diagnostics become much more complicated and their derivation and
+explanation are beyond the scoe of this course. It is our advice that
+you should consult other resources or seek out expert advice if you have
+any other questions or concerns when fitting a logistic regression
+model.</p>
+</div>
+</div>
+
+<!--
+&nbsp;
+&nbsp;
+<footer class="copyright">
+<p>Copyright &copy;2021 Queensland University of Technology, All rights reserved.</p>
+</footer>
+-->
+
+<!-- js for accordion button -->
+<script>
+var acc = document.getElementsByClassName("week");
+var i   ;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
