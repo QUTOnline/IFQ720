@@ -671,21 +671,25 @@ the table as 6 and 63 respectively use <code>R</code> to determine that
 <span class="math display">\[
 F_{\mbox{critical}}=2.25
 \]</span> for <span class="math inline">\(\alpha = 0.05\)</span>.</p>
-<p>Unfortunately, further analysis requires using <code>R</code> rather
-than the tedious hand calculations involved.</p>
+<p>Unfortunately, further analysis requires using a computer rather than
+the tedious hand calculations involved.</p>
 </div>
 <div id="code" class="section level4">
 <h4>Code</h4>
-<pre class="python"><code># Ordinary Least Squares (OLS) model
-from bioinfokit.analys import stat
-res = stat()
-res.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(lab)&#39;)
-res.anova_summary
+<pre class="python"><code># Ordinary Least Squares (OLS) model to ANOVA
+
+model = statsmodels.api.formula.ols(&quot;y~lab&quot;,df).fit()
+aov_model = statsmodels.stats.anova.anova_lm(model)
+
+print(aov_model)
 #&gt;             df    sum_sq   mean_sq         F    PR(&gt;F)
-#&gt; C(lab)     6.0  0.124737  0.020790  5.660069  0.000095
+#&gt; lab        6.0  0.124737  0.020790  5.660069  0.000095
 #&gt; Residual  63.0  0.231400  0.003673       NaN       NaN</code></pre>
-<p>We can see from the results that the <em>MSE</em>=0.0207895 and
-<em>MSTR</em>= resulting in <em>F</em>=5.6600691, since the critical
+<pre><code>#&gt; Mean squared error = 0.0036730158730158683
+#&gt; Mean squared treatment =  0.020789523809523536
+#&gt; F =  5.66006914433874</code></pre>
+<p>We can see from the results that the <em>MSE</em>=0.004 and
+<em>MSTR</em>=0.021 resulting in <em>F</em>= 5.66, since the critical
 value of <em>F</em> is 2.25, we can reject the null hypothesis and
 assume that the measuring process in at least one lab is different than
 the others.</p>
@@ -894,14 +898,14 @@ usage. The resulting data are:</p>
 <h4>Solution</h4>
 <p>The results for the ANOVA without blocking on the usage level
 are:</p>
-<pre><code>#&gt;              df         sum_sq       mean_sq         F    PR(&gt;F)
-#&gt; C(company)  3.0     222.250000     74.083333  0.003126  0.999738
-#&gt; Residual    8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
+<pre><code>#&gt;            df         sum_sq       mean_sq         F    PR(&gt;F)
+#&gt; company   3.0     222.250000     74.083333  0.003126  0.999738
+#&gt; Residual  8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
 <p><br> The results for the ANOVA blocking by usage label are:</p>
-<pre><code>#&gt;              df         sum_sq       mean_sq            F        PR(&gt;F)
-#&gt; C(company)  3.0     222.250000     74.083333     1.840580  2.403784e-01
-#&gt; C(usage)    2.0  189335.166667  94667.583333  2351.989648  2.067268e-09
-#&gt; Residual    6.0     241.500000     40.250000          NaN           NaN</code></pre>
+<pre><code>#&gt;            df         sum_sq       mean_sq            F        PR(&gt;F)
+#&gt; company   3.0     222.250000     74.083333     1.840580  2.403784e-01
+#&gt; usage     2.0  189335.166667  94667.583333  2351.989648  2.067268e-09
+#&gt; Residual  6.0     241.500000     40.250000          NaN           NaN</code></pre>
 <p>Notice that when we block on the usage level, the <span
 class="math inline">\(p\)</span>-value for <code>Company</code>
 decreases, though it is still <em>not</em> statistically significant at
@@ -925,41 +929,20 @@ usage = numpy.concatenate((u,u,u,u))
 
 df = pandas.DataFrame({&quot;y&quot;:y,&quot;company&quot;:company, &quot;usage&quot;:usage})
 
-res_1 = stat()
-res_1.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(company)&#39;)
-res_1.anova_summary
-#&gt;              df         sum_sq       mean_sq         F    PR(&gt;F)
-#&gt; C(company)  3.0     222.250000     74.083333  0.003126  0.999738
-#&gt; Residual    8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
-<p><br> <!---
-And the results for Tukey's HSD for Company without blocking by usage level are:
 
-```python
-from statsmodels.stats.multicomp import pairwise_tukeyhsd
-
-tukey = pairwise_tukeyhsd(endog=df['y'],
-                          groups=df['company'],
-                          alpha=0.05)
-
-print(tukey)
-#>   Multiple Comparison of Means - Tukey HSD, FWER=0.05  
-#> =======================================================
-#> group1 group2 meandiff p-adj    lower    upper   reject
-#> -------------------------------------------------------
-#>      A      B   7.6667 0.9999  -394.838 410.1713  False
-#>      A      C   1.6667    1.0  -400.838 404.1713  False
-#>      A      D  -4.3333    1.0  -406.838 398.1713  False
-#>      B      C     -6.0    1.0 -408.5046 396.5046  False
-#>      B      D    -12.0 0.9997 -414.5046 390.5046  False
-#>      C      D     -6.0    1.0 -408.5046 396.5046  False
-#> -------------------------------------------------------
-```
----> <br></p>
+model_1 = statsmodels.api.formula.ols(&quot;y~company&quot;,df).fit()
+res_1 = statsmodels.stats.anova.anova_lm(model_1)
+print(res_1)
+#&gt;            df         sum_sq       mean_sq         F    PR(&gt;F)
+#&gt; company   3.0     222.250000     74.083333  0.003126  0.999738
+#&gt; Residual  8.0  189576.666667  23697.083333       NaN       NaN</code></pre>
 <p><strong>With Blocking</strong><br />
 </p>
 <p>Now we add blocking on <code>Usage_Level</code></p>
-<pre class="python"><code>res_2 = stat()
-res_2.anova_stat(df=df, res_var = &quot;y&quot;, anova_model = &#39;y~C(company)+C(usage)&#39;)</code></pre>
+<pre class="python"><code>
+model_2 = statsmodels.api.formula.ols(&quot;y~company+usage&quot;,df).fit()
+res_2 = statsmodels.stats.anova.anova_lm(model_2)
+</code></pre>
 <p><br></p>
 <p>Note that there appear to be significant differences between costs
 for various usage levels, but not between companies. So while it is
@@ -982,6 +965,11 @@ style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;"
 </div>
 <div id="two-factor-experiments" class="section level2">
 <h2>Two-Factor Experiments</h2>
+<pre><code>#&gt;                     df   sum_sq  mean_sq          F        PR(&gt;F)
+#&gt; Supervisor         1.0  19208.0  19208.0  26.677778  2.350642e-04
+#&gt; Shift              2.0    247.0    123.5   0.171528  8.444061e-01
+#&gt; Supervisor:Shift   2.0  81127.0  40563.5  56.338194  7.950276e-07
+#&gt; Residual          12.0   8640.0    720.0        NaN           NaN</code></pre>
 <div class="sidenote">
 <p><strong>Example:</strong><br />
 The manager of a manufacturing plant knows that the output of a
@@ -1159,11 +1147,11 @@ The following data are collected echo
 <div id="solution-2" class="section level4">
 <h4>Solution</h4>
 <p>The results for the ANOVA analysis in tabular form are:</p>
-<pre><code>#&gt;                           df   sum_sq  mean_sq          F        PR(&gt;F)
-#&gt; C(Supervisor)            1.0  19208.0  19208.0  26.677778  2.350642e-04
-#&gt; C(Shift)                 2.0    247.0    123.5   0.171528  8.444061e-01
-#&gt; C(Supervisor):C(Shift)   2.0  81127.0  40563.5  56.338194  7.950276e-07
-#&gt; Residual                12.0   8640.0    720.0        NaN           NaN</code></pre>
+<pre><code>#&gt;                     df   sum_sq  mean_sq          F        PR(&gt;F)
+#&gt; Supervisor         1.0  19208.0  19208.0  26.677778  2.350642e-04
+#&gt; Shift              2.0    247.0    123.5   0.171528  8.444061e-01
+#&gt; Supervisor:Shift   2.0  81127.0  40563.5  56.338194  7.950276e-07
+#&gt; Residual          12.0   8640.0    720.0        NaN           NaN</code></pre>
 <p>These results indicate that there doesn’t appear to be a significant
 difference between shifts, but that there is a significant difference
 between supervisors.</p>
@@ -1178,15 +1166,16 @@ Supervisor = numpy.concatenate((s,s,s))
 
 df = pandas.DataFrame({&quot;y&quot;:y,&quot;Supervisor&quot;:Supervisor, &quot;Shift&quot;:Shift})
 
-res_3 = stat()
-res_3.anova_stat(df=df, res_var=&#39;y&#39;, anova_model=&#39;y ~ C(Supervisor)+C(Shift)+C(Supervisor)*C(Shift)&#39;)
 
-res_3.anova_summary
-#&gt;                           df   sum_sq  mean_sq          F        PR(&gt;F)
-#&gt; C(Supervisor)            1.0  19208.0  19208.0  26.677778  2.350642e-04
-#&gt; C(Shift)                 2.0    247.0    123.5   0.171528  8.444061e-01
-#&gt; C(Supervisor):C(Shift)   2.0  81127.0  40563.5  56.338194  7.950276e-07
-#&gt; Residual                12.0   8640.0    720.0        NaN           NaN</code></pre>
+model_3 = statsmodels.api.formula.ols(&quot;y~Supervisor+Shift+Supervisor*Shift&quot;,df).fit()
+
+res_3 = statsmodels.stats.anova.anova_lm(model_3)
+print(res_3)
+#&gt;                     df   sum_sq  mean_sq          F        PR(&gt;F)
+#&gt; Supervisor         1.0  19208.0  19208.0  26.677778  2.350642e-04
+#&gt; Shift              2.0    247.0    123.5   0.171528  8.444061e-01
+#&gt; Supervisor:Shift   2.0  81127.0  40563.5  56.338194  7.950276e-07
+#&gt; Residual          12.0   8640.0    720.0        NaN           NaN</code></pre>
 </div>
 <div id="video-2" class="section level4">
 <h4>Video</h4>
